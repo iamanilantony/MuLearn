@@ -215,10 +215,10 @@ const LcReportAttendee = () => {
                                     onChange={e => {
                                         if (e.target.files) {
                                             if (
-                                                e.target.files[0].size > 5000000
+                                                e.target.files[0].size > 2500000
                                             ) {
                                                 toast.error(
-                                                    "File size should not exceed 5MB"
+                                                    "File size should not exceed 2.5MB"
                                                 );
                                                 return;
                                             }
