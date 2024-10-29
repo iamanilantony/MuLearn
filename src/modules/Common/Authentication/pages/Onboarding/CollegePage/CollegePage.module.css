@@ -62,3 +62,11 @@
     color: red;
     font-size: small;
 }
+
+.skipButton {
+    color: var(--blue) !important;
+
+    &:hover {
+        color: #fff !important;
+    }
+}

@@ -236,6 +236,31 @@ export const getCommunities = ({
     setIsLoading && setIsLoading(false);
 };
 
+export const createNewOrganization = async ({
+    setIsLoading,
+    org_data
+}: {
+    setIsLoading: Dispatch<SetStateAction<boolean>>;
+    org_data: Object;
+}) => {
+    try {
+        setIsLoading(true);
+        const res = await privateGateway.post(
+            "/api/v1/register/organization/create/",
+            org_data
+        );
+        if (res.status == 200 && !res.data.hasError) {
+            toast.success(res.data.message.general[0]);
+            return true;
+        } else {
+            toast.error("Organization selection failed.");
+        }
+        setIsLoading(false);
+    } catch (err: any) {
+        toast.error("Unable to select organization.");
+    }
+    return false;
+};
 export const selectOrganization = async ({
     setIsLoading,
     userData
