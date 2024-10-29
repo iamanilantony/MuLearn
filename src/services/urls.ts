@@ -220,6 +220,7 @@ export const organizationRoutes = {
     putUpdateOrganization: "/api/v1/dashboard/organisation/institutes/edit/",
     deleteOrgnaization: "/api/v1/dashboard/organisation/institutes/delete/",
     postGetInfo: "/api/v1/dashboard/organisation/institutes/info/",
+    getUnverifiedOrganizations: "/api/v1/dashboard/organisation/verify/list/",
     getOrgCsv: (org_type: string) =>
         `/api/v1/dashboard/organisation/institutes/${org_type}/csv/`,
 

@@ -183,6 +183,12 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     roles: [roles.ADMIN]
                 },
                 {
+                    url: "/dashboard/verify-organizations",
+                    title: "Verify Organization",
+                    hasView: true,
+                    roles: [roles.ADMIN, roles.FELLOW]
+                },
+                {
                     url: "/dashboard/college-levels",
                     title: "College Levels",
                     hasView: true,
