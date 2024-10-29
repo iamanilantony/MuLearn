@@ -14,7 +14,10 @@ import { useLocation, useNavigate } from "react-router-dom";
 import OnboardingTemplate from "../../../components/OnboardingTeamplate/OnboardingTemplate";
 import OnboardingHeader from "../../../components/OnboardingHeader/OnboardingHeader";
 import { Switch } from "@chakra-ui/react";
-import { selectOrganization } from "../../../services/onboardingApis";
+import {
+    createNewOrganization,
+    selectOrganization
+} from "../../../services/onboardingApis";
 
 const inputObject = {
     organization: "Organization",
@@ -61,6 +64,11 @@ export default function CollegePage() {
         id: "",
         title: ""
     });
+    const [organizationInput, setOrganizationInput] = useState("");
+    const [createOrganization, setCreateOrganization] = useState<{
+        title: string;
+        org_type: string;
+    } | null>(null);
 
     const ruri = window.location.href.split("=")[1];
 
@@ -68,7 +76,6 @@ export default function CollegePage() {
         { label, value }: { label: string; value: string },
         string: string
     ): boolean => {
-        if (value === "Others") return true; // Always show "Others" option
         if (!string) return true;
         return label.toLowerCase().includes(string.toLowerCase());
     };
@@ -88,6 +95,21 @@ export default function CollegePage() {
         });
     }, []);
     const onSubmit = async (values: any) => {
+        if (createOrganization) {
+            createNewOrganization({
+                setIsLoading: setIsLoading,
+                org_data: createOrganization
+            }).then(res => {
+                if (res) {
+                    if (ruri) {
+                        navigate(`/${ruri}`);
+                    } else {
+                        navigate("/dashboard/connect-discord");
+                    }
+                }
+            });
+            return;
+        }
         selectOrganization({
             setIsLoading: setIsLoading,
             userData: {
@@ -112,6 +134,40 @@ export default function CollegePage() {
                 }
             }
         });
+    };
+    const getOptions = () => {
+        var orgs = isCollege ? colleges : companies;
+        var options: any[] = [];
+        orgs.forEach(org => {
+            options.push({ value: org.id, label: org.title });
+        });
+        if (
+            organizationInput &&
+            !options.some(opt => opt.label === organizationInput)
+        ) {
+            options.push({
+                value: organizationInput,
+                label: `Create "${organizationInput}"`
+            });
+        }
+        return options;
+    };
+    const onOrgSelectChange = (e: any, formik: any) => {
+        if (
+            (isCollege ? colleges : companies).filter(val => val.id == e.value)
+                .length < 1
+        ) {
+            setCreateOrganization({
+                title: e.value,
+                org_type: isCollege ? "College" : "Company"
+            });
+            formik.setFieldValue("organization", e.value);
+            return;
+        }
+        setCreateOrganization(null);
+        setSelectedOrganization(e);
+        formik.setFieldValue("organization", e.value);
+        inputObject.organization = e.value;
     };
     return (
         <OnboardingTemplate>
@@ -144,41 +200,20 @@ export default function CollegePage() {
                                 </div>
                                 <div className={styles.inputBox}>
                                     <ReactSelect
-                                        options={
-                                            [
-                                                {
-                                                    value: "Others",
-                                                    label: "Others"
-                                                },
-                                                ...(isCollege
-                                                    ? colleges.map(college => ({
-                                                          value: college.id,
-                                                          label: college.title
-                                                      }))
-                                                    : companies.map(
-                                                          company => ({
-                                                              value: company.id,
-                                                              label: company.title
-                                                          })
-                                                      ))
-                                            ] as any
-                                        }
+                                        onInputChange={e => {
+                                            setOrganizationInput(e);
+                                        }}
+                                        options={getOptions()}
                                         name="organization"
                                         placeholder={
                                             isCollege
                                                 ? "College"
                                                 : "Organization"
                                         }
-                                        value={selectedOrganization.title}
                                         filterOption={CustomFilter}
                                         isDisabled={isloading}
                                         onChange={(e: any) => {
-                                            setSelectedOrganization(e);
-                                            formik.setFieldValue(
-                                                "organization",
-                                                e.value
-                                            );
-                                            inputObject.organization = e.value;
+                                            onOrgSelectChange(e, formik);
                                         }}
                                     />
                                 </div>
@@ -188,7 +223,7 @@ export default function CollegePage() {
                                             {formik.errors.college}
                                         </span>
                                     )}
-                                {isCollege ? (
+                                {isCollege && !createOrganization ? (
                                     <>
                                         <div className={styles.inputBox}>
                                             <ReactSelect
@@ -265,7 +300,7 @@ export default function CollegePage() {
 
                                 <div className={styles.submit}>
                                     <PowerfulButton
-                                        style={{ color: "var(--blue)" }}
+                                        className={styles.skipButton}
                                         variant="outline"
                                         onClick={e => {
                                             e.preventDefault();

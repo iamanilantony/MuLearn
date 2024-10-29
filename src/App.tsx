@@ -49,6 +49,7 @@ import OrganizationSetting from "./modules/Dashboard/modules/Settings/pages/Orga
 import SettingsHome from "./modules/Dashboard/modules/Settings/pages/Settings/SettingsHome";
 import LcReportAttendee from "./modules/Dashboard/modules/LearningCircle/pages/LcDashboard/components/LcAttendeeReport";
 import LcAdmin from "./modules/Dashboard/modules/LearningCircle/pages/LcAdmin/LcAdmin";
+import VerifyOrganizations from "./modules/Dashboard/modules/VerifyOrganizations/VerifyOrganizations";
 
 const Profile = lazy(
     () => import("./modules/Dashboard/modules/Profile/pages/Profile")
@@ -373,6 +374,15 @@ function App() {
                                 <AuthChecker
                                     roles={[roles.ADMIN, roles.FELLOW]}
                                     children={<LcAdmin />}
+                                />
+                            )
+                        },
+                        {
+                            path: "verify-organizations",
+                            element: (
+                                <AuthChecker
+                                    roles={[roles.ADMIN, roles.FELLOW]}
+                                    children={<VerifyOrganizations />}
                                 />
                             )
                         },
