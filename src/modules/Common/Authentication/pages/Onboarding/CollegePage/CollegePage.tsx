@@ -55,7 +55,9 @@ export default function CollegePage() {
     const [colleges, setColleges] = useState([{ id: "", title: "" }]);
     const [departments, setDepartments] = useState([{ id: "", title: "" }]);
     const [isCollege, setIsCollege] = useState(true);
-    const [companies, setCompanies] = useState([{ id: "", title: "" }]);
+    const [companies, setCompanies] = useState<{ id: string; title: string }[]>(
+        []
+    );
     const [selectedOrganization, setSelectedOrganization] = useState({
         id: "",
         title: ""
@@ -64,12 +66,12 @@ export default function CollegePage() {
         id: "",
         title: ""
     });
+    const [selectedOrgType, setSelectedOrgType] = useState<string | null>(null);
     const [organizationInput, setOrganizationInput] = useState("");
-    const [createOrganization, setCreateOrganization] = useState<{
-        title: string;
-        org_type: string;
-    } | null>(null);
-
+    const [createOrganizationTitle, setCreateOrganizationTitle] = useState<
+        string | null
+    >(null);
+    const college_types = ["School", "College"];
     const ruri = window.location.href.split("=")[1];
 
     const CustomFilter = (
@@ -89,16 +91,38 @@ export default function CollegePage() {
             setIsLoading: setIsLoading,
             setDepartments: setDepartments
         });
-        getCompanies({
-            setIsLoading: setIsLoading,
-            setCompanies: setCompanies
-        });
     }, []);
+    useEffect(() => {
+        if (!isCollege && companies.length < 1) {
+            getCompanies({
+                setIsLoading: setIsLoading,
+                setCompanies: setCompanies
+            });
+        }
+    }, [isCollege]);
     const onSubmit = async (values: any) => {
-        if (createOrganization) {
+        if (createOrganizationTitle) {
             createNewOrganization({
                 setIsLoading: setIsLoading,
-                org_data: createOrganization
+                org_data: {
+                    department:
+                        values.department == "Others"
+                            ? null
+                            : values.department,
+                    graduation_year:
+                        values.graduationYear == null ||
+                        values.graduationYear != ""
+                            ? values.graduationYear
+                            : null,
+                    title: createOrganizationTitle,
+                    org_type: isCollege
+                        ? selectedOrgType == null ||
+                          selectedOrgType == "" ||
+                          selectedOrgType == "Others"
+                            ? null
+                            : selectedOrgType
+                        : "Company"
+                }
             }).then(res => {
                 if (res) {
                     if (ruri) {
@@ -157,14 +181,11 @@ export default function CollegePage() {
             (isCollege ? colleges : companies).filter(val => val.id == e.value)
                 .length < 1
         ) {
-            setCreateOrganization({
-                title: e.value,
-                org_type: isCollege ? "College" : "Company"
-            });
+            setCreateOrganizationTitle(e.value);
             formik.setFieldValue("organization", e.value);
             return;
         }
-        setCreateOrganization(null);
+        setCreateOrganizationTitle(null);
         setSelectedOrganization(e);
         formik.setFieldValue("organization", e.value);
         inputObject.organization = e.value;
@@ -190,7 +211,7 @@ export default function CollegePage() {
                                     Please enter your organization details
                                 </h5>
                                 <div className={styles.input_field}>
-                                    Not a college ?{" "}
+                                    Not a student ?{" "}
                                     <Switch
                                         checked={isCollege}
                                         onChange={e => {
@@ -223,7 +244,31 @@ export default function CollegePage() {
                                             {formik.errors.college}
                                         </span>
                                     )}
-                                {isCollege && !createOrganization ? (
+                                {isCollege && createOrganizationTitle ? (
+                                    <ReactSelect
+                                        options={
+                                            [
+                                                ...college_types.map(type => ({
+                                                    value: type,
+                                                    label: type
+                                                })),
+                                                {
+                                                    value: "Others",
+                                                    label: "Others"
+                                                }
+                                            ] as any
+                                        }
+                                        name="org_type"
+                                        className={styles.inputBox}
+                                        placeholder="Institute Type"
+                                        isDisabled={isloading}
+                                        filterOption={CustomFilter}
+                                        onChange={(e: any) => {
+                                            setSelectedOrgType(e.value);
+                                        }}
+                                    />
+                                ) : null}
+                                {isCollege ? (
                                     <>
                                         <div className={styles.inputBox}>
                                             <ReactSelect
