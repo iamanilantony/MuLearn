@@ -18,6 +18,12 @@ export default function VerifyOrganizations() {
         { column: "title", Label: "Title", isSortable: false },
         { column: "org_type", Label: "Org Type", isSortable: false },
         { column: "created_by", Label: "Craeted By", isSortable: false },
+        {
+            column: "graduation_year",
+            Label: "Graduation Year",
+            isSortable: false
+        },
+        { column: "department", Label: "Department", isSortable: false },
         { column: "created_at", Label: "Created At", isSortable: false }
     ];
     useEffect(() => {
