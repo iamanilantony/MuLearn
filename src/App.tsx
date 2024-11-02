@@ -50,6 +50,7 @@ import SettingsHome from "./modules/Dashboard/modules/Settings/pages/Settings/Se
 import LcReportAttendee from "./modules/Dashboard/modules/LearningCircle/pages/LcDashboard/components/LcAttendeeReport";
 import LcAdmin from "./modules/Dashboard/modules/LearningCircle/pages/LcAdmin/LcAdmin";
 import VerifyOrganizations from "./modules/Dashboard/modules/VerifyOrganizations/VerifyOrganizations";
+import CreateLC from "./modules/Dashboard/modules/LearningCircleV2/pages/CreateLC/CreateLC";
 
 const Profile = lazy(
     () => import("./modules/Dashboard/modules/Profile/pages/Profile")
@@ -720,6 +721,10 @@ function App() {
                         {
                             path: "learning-circle",
                             element: <LearningCircleLandingPage />
+                        },
+                        {
+                            path: "learningcircle/create",
+                            element: <CreateLC />
                         },
                         {
                             path: "learning-circle/meetup/:id",
