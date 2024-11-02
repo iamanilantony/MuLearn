@@ -51,6 +51,7 @@ import LcReportAttendee from "./modules/Dashboard/modules/LearningCircle/pages/L
 import LcAdmin from "./modules/Dashboard/modules/LearningCircle/pages/LcAdmin/LcAdmin";
 import VerifyOrganizations from "./modules/Dashboard/modules/VerifyOrganizations/VerifyOrganizations";
 import CreateLC from "./modules/Dashboard/modules/LearningCircleV2/pages/CreateLC/CreateLC";
+import LearningCircleLanding from "./modules/Dashboard/modules/LearningCircleV2/pages/landing/LearningCircleLanding";
 
 const Profile = lazy(
     () => import("./modules/Dashboard/modules/Profile/pages/Profile")
@@ -721,6 +722,10 @@ function App() {
                         {
                             path: "learning-circle",
                             element: <LearningCircleLandingPage />
+                        },
+                        {
+                            path: "learningcircle",
+                            element: <LearningCircleLanding />
                         },
                         {
                             path: "learningcircle/create",
