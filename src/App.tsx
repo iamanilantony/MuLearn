@@ -52,6 +52,8 @@ import LcAdmin from "./modules/Dashboard/modules/LearningCircle/pages/LcAdmin/Lc
 import VerifyOrganizations from "./modules/Dashboard/modules/VerifyOrganizations/VerifyOrganizations";
 import CreateLC from "./modules/Dashboard/modules/LearningCircleV2/pages/CreateLC/CreateLC";
 import LearningCircleLanding from "./modules/Dashboard/modules/LearningCircleV2/pages/landing/LearningCircleLanding";
+import CreateLCMeetup from "./modules/Dashboard/modules/LearningCircleV2/pages/CreateLCMeetup/CreateLCMeetup";
+import DashboardLC from "./modules/Dashboard/modules/LearningCircleV2/pages/dashboard/DashboardLC";
 
 const Profile = lazy(
     () => import("./modules/Dashboard/modules/Profile/pages/Profile")
@@ -728,8 +730,16 @@ function App() {
                             element: <LearningCircleLanding />
                         },
                         {
+                            path: "learningcircle/dashboard/:id",
+                            element: <DashboardLC />
+                        },
+                        {
                             path: "learningcircle/create",
                             element: <CreateLC />
+                        },
+                        {
+                            path: "learningcircle/create-meetup/:circle_id",
+                            element: <CreateLCMeetup />
                         },
                         {
                             path: "learning-circle/meetup/:id",
