@@ -23,6 +23,7 @@ interface LCMeetCreate {
     report_description: string;
     meet_place: string;
 }
+
 interface LCMeetup {
     id: string;
     is_scheduled: boolean;
@@ -42,10 +43,20 @@ interface LCMeetup {
 }
 interface LearningCircleInfo {
     id: string;
+    ig: string;
     org: string;
     is_recurring: boolean;
     recurrence_type: string;
     recurrence: number;
     next_meetup: LCMeetup;
     past_meetups: LCMeetup[];
+}
+interface LearningCircleInfoBasic {
+    id: string;
+    ig: string;
+    org: string;
+    is_recurring: boolean;
+    recurrence_type: string;
+    recurrence: number;
+    next_meetup: LCMeetup;
 }

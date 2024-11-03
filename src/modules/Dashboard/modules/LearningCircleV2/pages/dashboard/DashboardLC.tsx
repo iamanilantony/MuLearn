@@ -3,7 +3,11 @@ import styles from "./DashboardLC.module.css";
 import { useEffect, useState } from "react";
 import { getLearningCircleInfo } from "../../services/LearningCircleAPIs";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
-import { convertDateToDayAndMonthAndYear } from "../../../../utils/common";
+import {
+    convertDateToDayAndMonthAndYear,
+    getLocalDateTimeFormatted,
+    getLocalDateTimeObject
+} from "../../../../utils/common";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { BiChevronRight, BiEdit } from "react-icons/bi";
 
@@ -29,9 +33,9 @@ export default function DashboardLC() {
                                 <div className={styles.info}>
                                     <h1 className={styles.date}>
                                         {convertDateToDayAndMonthAndYear(
-                                            circleInfo.next_meetup.meet_time.split(
-                                                "T"
-                                            )[0]
+                                            getLocalDateTimeFormatted(
+                                                circleInfo.next_meetup.meet_time
+                                            ).split("T")[0]
                                         )}
                                     </h1>
                                     <span className={styles.title}>
@@ -43,13 +47,11 @@ export default function DashboardLC() {
                                     </span>
                                     <span className={styles.time}>
                                         Time:
-                                        {circleInfo.next_meetup.meet_time
-                                            .split("T")[1]
-                                            .split(":")[0] +
-                                            ":" +
-                                            circleInfo.next_meetup.meet_time
-                                                .split("T")[1]
-                                                .split(":")[1]}
+                                        {
+                                            getLocalDateTimeFormatted(
+                                                circleInfo.next_meetup.meet_time
+                                            ).split("T")[1]
+                                        }
                                     </span>
                                     <span className={styles.duration}>
                                         Duration:{" "}

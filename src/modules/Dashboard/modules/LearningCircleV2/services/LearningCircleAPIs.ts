@@ -19,6 +19,25 @@ export const searchCoordinates = async (
     }
 };
 
+export const getCreatedLearningCircles = async (): Promise<
+    LearningCircleInfoBasic[]
+> => {
+    try {
+        const response = await privateGateway.get(
+            learningCircleRoutes.getCreatedLearningCircles
+        );
+        return response.data.response;
+    } catch (err) {
+        const error = err as AxiosError;
+        toast.error(
+            ((error?.response as any)?.data?.message?.general ?? [
+                "Unable to fetch learning circles."
+            ])[0]
+        );
+        return [];
+    }
+};
+
 export const getLearningCircleInfo = async (
     circleId: string
 ): Promise<LearningCircleInfo | null> => {
