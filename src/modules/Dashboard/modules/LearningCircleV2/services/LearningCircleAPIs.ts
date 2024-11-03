@@ -19,6 +19,21 @@ export const searchCoordinates = async (
     }
 };
 
+export const getLearningCircleInfo = async (
+    circleId: string
+): Promise<LearningCircleInfo | null> => {
+    try {
+        const response = await privateGateway.get(
+            learningCircleRoutes.getLearningCircleInfo + circleId
+        );
+        return response.data.response;
+    } catch (err) {
+        const error = err as AxiosError;
+        console.log(error);
+        return null;
+    }
+};
+
 export const createLearningCircle = async (
     params: LearningCircleCreate
 ): Promise<boolean> => {

@@ -64,7 +64,7 @@ export default function CreateLC() {
             recurrence_type: values.recurrence_type,
             recurrence:
                 values.recurrence_type == "weekly"
-                    ? selectedWeekdays
+                    ? selectedWeekdays + 1
                     : selectedMonthdays
         };
         setIsLoading(true);

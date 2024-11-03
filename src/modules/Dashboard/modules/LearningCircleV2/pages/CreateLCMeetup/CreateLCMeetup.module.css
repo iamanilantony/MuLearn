@@ -109,3 +109,16 @@
         }
     }
 }
+
+@media screen and (max-width: 768px) {
+    .createLCMeetup {
+        .form {
+            .formGroup {
+                width: 90%;
+                .searchResults {
+                    width: 90%;
+                }
+            }
+        }
+    }
+}
