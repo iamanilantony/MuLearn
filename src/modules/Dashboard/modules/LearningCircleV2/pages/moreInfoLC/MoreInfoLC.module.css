@@ -1,0 +1,100 @@
+.container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+.backLink {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    background-color: white;
+    padding: 0.5rem 1rem;
+    width: fit-content;
+    color: #5d5d5d;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.card {
+    background: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    margin-bottom: 1rem;
+}
+
+.cardContent {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    flex: 1;
+}
+.descriptionSection {
+    height: 300px;
+}
+
+.headerSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex: 1;
+}
+
+.title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #3b82f6;
+    margin: 0;
+}
+
+.locationWrapper {
+    display: flex;
+    align-items: center;
+    color: #4b5563;
+    margin-top: 0.5rem;
+}
+
+.iconWrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.moreButton {
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    color: #6b7280;
+}
+
+.dateTime {
+    margin-bottom: 1.5rem;
+}
+
+.date {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.time {
+    color: #4b5563;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.sectionTitle {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.description {
+    color: #4b5563;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    width: 800px;
+}
