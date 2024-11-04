@@ -54,7 +54,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
             icon: <i className="fi fi-sr-head-side-thinking"></i>
         },
         {
-            url: "/dashboard/learning-circle",
+            url: "/dashboard/learningcircle",
             title: "Learning Circle",
             hasView: true,
             icon: <i className="fi fi-sr-books"></i>
