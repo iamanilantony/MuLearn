@@ -152,7 +152,23 @@
     display: flex;
     align-items: center;
 }
-
+.joinCodeInput {
+    width: 70%;
+    margin: 10px;
+    padding: 0.5rem;
+    border: 1px solid #d1d1d1;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    margin-right: 1rem;
+    color: #000;
+}
+.joinInfo {
+    color: #515151;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    display: block;
+    padding: 20px;
+}
 @media (width<1060px) {
     .learningCircleLandingPageDesc h1 {
         font-size: 1.65rem;
@@ -217,21 +233,20 @@
     }
 }
 
-
 /* css for dropdown and your learning circle */
 
-.cardContainer{
+.cardContainer {
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
     justify-content: center;
 }
-.card div:nth-child(1){
+.card div:nth-child(1) {
     display: flex;
-    width: 100%;   
+    width: 100%;
     justify-content: end;
 }
-.card div:nth-child(1) span{
+.card div:nth-child(1) span {
     padding: 0rem 1rem;
     border-radius: 01rem;
     border: 2px dotted #2d5bf7;
@@ -312,13 +327,22 @@
     color: white;
     border: none;
     border-radius: 8px;
-    padding:5px 10px;
+    padding: 5px 10px;
     font-size: 21px;
     cursor: pointer;
     width: 100%;
     text-align: center;
     transition: background-color 0.3s;
     text-transform: capitalize;
+
+    &:disabled {
+        background-color: #d1d1d1;
+        cursor: not-allowed;
+
+        &:hover {
+            background-color: #d1d1d1;
+        }
+    }
 }
 
 .joinButton:hover {
@@ -326,24 +350,21 @@
 }
 
 @media screen and (max-width: 1920px) {
-    .cardContainer{
+    .cardContainer {
         justify-content: space-between;
     }
     .card {
         width: calc(33% - 20px);
-        
     }
-    
 }
 
 @media screen and (max-width: 1440px) {
     .card {
         width: calc(50% - 20px);
     }
-    
 }
 
-@media screen and (max-width:650px) {
+@media screen and (max-width: 650px) {
     .card {
         width: 100%;
     }

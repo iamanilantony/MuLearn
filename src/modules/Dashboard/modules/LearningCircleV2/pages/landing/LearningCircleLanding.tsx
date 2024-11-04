@@ -1,134 +1,149 @@
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import styles from "./LearningCircleLanding.module.css";
 import imageTop from "../../assets/images/LC2.webp";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { customReactSelectStyles } from "../../utils/buttonConfiguration/common";
 import SelectTab from "react-select";
 import { FaBookmark, FaMapMarkerAlt } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import {
+    getMeetups,
+    joinMeetup,
+    unsaveMeetup
+} from "../../services/LearningCircleAPIs";
+import { color } from "framer-motion";
+import MuModal from "@/MuLearnComponents/MuModal/MuModal";
+import { Input } from "@chakra-ui/react";
 
 interface Option {
     value: string;
     label: string;
 }
-const options: Option[] = [
-    { value: "value1", label: "catagory" },
-    { value: "value2", label: "Peer" }
+
+const INITIAL_INTERESTS = [
+    { label: "All Categories", value: "all" },
+    { label: "Coder", value: "coder" },
+    { label: "Hardware", value: "hardware" },
+    { label: "Manager", value: "manager" },
+    { label: "Creative", value: "creative" }
 ];
 
 const LearningCircleLanding = () => {
     const [isLoading, setisLoading] = useState(false);
-    const [selected, setselected] = useState<Option | null>(options[0]);
-
+    const [selectedCategory, setSelectedCategory] = useState<Option | null>(
+        INITIAL_INTERESTS[0]
+    );
+    const [meetups, setMeetups] = useState<CircleMeetupInfo[]>([]);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [meetCode, setMeetCode] = useState("");
+    const [selectedMeetup, setSelectedMeetup] = useState<CircleMeetupInfo>();
+    const navigate = useNavigate();
+    useEffect(() => {
+        setisLoading(true);
+        getMeetups(selectedCategory?.value).then(res => {
+            setMeetups(res);
+            setisLoading(false);
+        });
+    }, [selectedCategory]);
+    const handleMainButton = (event: CircleMeetupInfo) => {
+        if (event.is_started) {
+            if (event.attendee && event.attendee.is_joined) {
+                if (!event.attendee.is_report_submitted) {
+                    navigate(
+                        `/dashboard/learningcircle/attendee-report/${event.id}`
+                    );
+                }
+            } else {
+                setSelectedMeetup(event);
+                setIsModalOpen(true);
+            }
+        } else {
+            navigate(`/dashboard/learningcircle/meetup/${event.id}`);
+        }
+    };
+    const saveMeetup = (meetId: string) => {
+        if (meetups.find(meetup => meetup.id === meetId)?.attendee) {
+            unsaveMeetup(meetId).then(res => {
+                if (res) {
+                    setMeetups(prevMeetups => {
+                        return prevMeetups.map(meetup => {
+                            if (meetup.id === meetId) {
+                                return {
+                                    ...meetup,
+                                    attendee: null
+                                };
+                            }
+                            return meetup;
+                        });
+                    });
+                }
+            });
+            return;
+        }
+        joinMeetup(meetId).then(res => {
+            setIsModalOpen(false);
+            if (res) {
+                setMeetups(prevMeetups => {
+                    return prevMeetups.map(meetup => {
+                        if (meetup.id === meetId) {
+                            return {
+                                ...meetup,
+                                attendee: {
+                                    is_joined: false,
+                                    is_lc_approved: false,
+                                    is_report_submitted: false
+                                }
+                            };
+                        }
+                        return meetup;
+                    });
+                });
+            }
+        });
+    };
     const selectionChange = (selected: Option | null) => {
-        setselected(selected);
+        setSelectedCategory(selected);
     };
 
     const handleCreate = () => {
-        console.log("Create");
+        navigate("/dashboard/learningcircle/create");
     };
 
-    //temp response data
-    const dummyEvents = [
-        {
-            id: "331f8e89-3aef-46d0-bd47-a2f5c4cbcc1f",
-            title: "Learn web development using django",
-            is_report_needed: true,
-            report_description:
-                "Want to submit report with github pull request link",
-            coord_x: 120.0,
-            coord_y: 11.0,
-            meet_place: "Government College Thalassery",
-            meet_time: "2024-11-02T12:00:00Z",
-            duration: 10,
-            is_approved: false,
-            is_started: true,
-            is_ended: false,
-            attendee: {
-                is_joined: true,
-                is_report_submitted: false,
-                is_lc_approved: false
-            }
-        },
-        {
-            id: "331f8e89-3aef-46d0-bd47-a2f5c4cbcc1f",
-            title: "Learn web development using django",
-            is_report_needed: true,
-            report_description:
-                "Want to submit report with github pull request link",
-            coord_x: 120.0,
-            coord_y: 11.0,
-            meet_place: "Government College Thalassery",
-            meet_time: "2024-11-02T12:00:00Z",
-            duration: 10,
-            is_approved: false,
-            is_started: true,
-            is_ended: false
-        },
-        {
-            id: "331f8e89-3aef-46d0-bd47-a2f5c4cbcc1f",
-            title: "Learn web development using django",
-            is_report_needed: true,
-            report_description:
-                "Want to submit report with github pull request link",
-            coord_x: 120.0,
-            coord_y: 11.0,
-            meet_place: "Government College Thalassery",
-            meet_time: "2024-11-02T12:00:00Z",
-            duration: 10,
-            is_approved: false,
-            is_started: false,
-            is_ended: false
-        },
-        {
-            id: "331f8e89-3aef-46d0-bd47-a2f5c4cbcc1f",
-            title: "Learn web development using django",
-            is_report_needed: true,
-            report_description:
-                "Want to submit report with github pull request link",
-            coord_x: 120.0,
-            coord_y: 11.0,
-            meet_place: "Government College Thalassery",
-            meet_time: "2024-11-02T12:00:00Z",
-            duration: 10,
-            is_approved: false,
-            is_started: false,
-            is_ended: false
-        },
-        {
-            id: "331f8e89-3aef-46d0-bd47-a2f5c4cbcc1f",
-            title: "Learn web development using django",
-            is_report_needed: true,
-            report_description:
-                "Want to submit report with github pull request link",
-            coord_x: 120.0,
-            coord_y: 11.0,
-            meet_place: "Government College Thalassery",
-            meet_time: "2024-11-02T12:00:00Z",
-            duration: 10,
-            is_approved: false,
-            is_started: false,
-            is_ended: false
-        },
-        {
-            id: "331f8e89-3aef-46d0-bd47-a2f5c4cbcc1f",
-            title: "Learn web development using django",
-            is_report_needed: true,
-            report_description:
-                "Want to submit report with github pull request link",
-            coord_x: 120.0,
-            coord_y: 11.0,
-            meet_place: "Government College Thalassery",
-            meet_time: "2024-11-02T12:00:00Z",
-            duration: 10,
-            is_approved: false,
-            is_started: true,
-            is_ended: false
-        }
-    ];
+    const handleJoin = () => {
+        joinMeetup(selectedMeetup?.id ?? "", meetCode).then(res => {
+            setIsModalOpen(false);
+        });
+    };
 
     return (
         <>
+            <MuModal
+                type="success"
+                onDone={() => {
+                    handleJoin();
+                }}
+                onClose={() => {
+                    setIsModalOpen(false);
+                }}
+                title="Enter Join Code"
+                isOpen={isModalOpen}
+            >
+                <span className={styles.joinInfo}>
+                    Enter the 6 digit join code provided by the organizers to
+                    join the meetup.
+                </span>
+                <input
+                    className={styles.joinCodeInput}
+                    placeholder="Enter Join Code"
+                    maxLength={6}
+                    value={meetCode}
+                    onChange={e => {
+                        e.preventDefault();
+                        setMeetCode(e.target.value.toLocaleUpperCase());
+                    }}
+                />
+            </MuModal>
             {isLoading ? (
                 <div className={styles.loader_container}>
                     <MuLoader />
@@ -176,9 +191,9 @@ const LearningCircleLanding = () => {
                     >
                         <SelectTab
                             placeholder={"Select Role"}
-                            options={options}
+                            options={INITIAL_INTERESTS}
                             styles={customReactSelectStyles}
-                            value={selected}
+                            value={selectedCategory}
                             onChange={selectionChange}
                         />
 
@@ -189,6 +204,11 @@ const LearningCircleLanding = () => {
                                 backgroundColor: "rgba(69, 111, 246, 1)",
                                 fontWeight: "bold",
                                 padding: "0.5rem 1rem"
+                            }}
+                            onClick={() => {
+                                navigate(
+                                    "/dashboard/learningcircle/your-circles"
+                                );
                             }}
                         >
                             Your Learning Circles{" "}
@@ -209,30 +229,49 @@ const LearningCircleLanding = () => {
                         </PowerfulButton>
                     </div>
                     <div className={styles.cardContainer}>
-                        {dummyEvents.map((event, index) => (
+                        {meetups.map((event, index) => (
                             <div
                                 style={{
                                     border: "2px solid #FFFFFF",
                                     borderColor: event.is_started
-                                        ? "rgba(255, 198, 40, 1)"
+                                        ? event.attendee &&
+                                          event.attendee.is_joined &&
+                                          !event.attendee.is_report_submitted
+                                            ? "#DF4141"
+                                            : "rgba(255, 198, 40, 1)"
                                         : "#FFFFFF"
                                 }}
                                 className={styles.card}
                                 key={index}
                             >
-                                <div
-                                    style={{
-                                        opacity: event.is_started ? 1 : 0,
-                                        color: event.is_started
-                                            ? "rgba(255, 198, 40, 1)"
-                                            : "#FFFFFF"
-                                    }}
-                                >
-                                    <span>tag</span>
-                                    {
-                                        // make the oppacity 0 if not needed
-                                    }
-                                </div>
+                                {event.is_started ? (
+                                    <div
+                                        style={{
+                                            borderColor:
+                                                event.attendee &&
+                                                event.attendee.is_joined &&
+                                                !event.attendee
+                                                    .is_report_submitted
+                                                    ? "#DF4141"
+                                                    : "rgba(255, 198, 40, 1)",
+                                            color:
+                                                event.attendee &&
+                                                event.attendee.is_joined &&
+                                                !event.attendee
+                                                    .is_report_submitted
+                                                    ? "#DF4141"
+                                                    : "rgba(255, 198, 40, 1)"
+                                        }}
+                                    >
+                                        <span>
+                                            {event.attendee &&
+                                            event.attendee.is_joined &&
+                                            !event.attendee.is_report_submitted
+                                                ? "Report Submission Pending"
+                                                : "Happening Now"}
+                                        </span>
+                                    </div>
+                                ) : null}
                                 <h2 className={styles.title}>{event.title}</h2>
                                 <div className={styles.location}>
                                     <FaMapMarkerAlt className={styles.icon} />
@@ -240,21 +279,62 @@ const LearningCircleLanding = () => {
                                 </div>
                                 <div className={styles.details}>
                                     <span className={styles.date}>
-                                        {event.meet_time}
+                                        {new Date(
+                                            event.meet_time
+                                        ).toLocaleString()}
                                     </span>
                                     <span className={styles.duration}>
-                                        {event.duration}hrs
+                                        {event.duration} Hours
                                     </span>
-                                    <span className={styles.karmaPoints}>
+                                    {/* <span className={styles.karmaPoints}>
                                         Earn Karma Points
-                                    </span>
+                                    </span> */}
                                 </div>
                                 <div className={styles.footer}>
-                                    <FaBookmark
-                                        className={styles.bookmarkIcon}
-                                    />
-                                    <button className={styles.joinButton}>
-                                        Join Now
+                                    {!event.attendee ||
+                                    (event.attendee &&
+                                        !event.attendee.is_joined) ? (
+                                        <PowerfulButton
+                                            variant={
+                                                event.attendee
+                                                    ? "primary"
+                                                    : "outline"
+                                            }
+                                            onClick={() => {
+                                                saveMeetup(event.id);
+                                            }}
+                                        >
+                                            <FaBookmark
+                                                style={{
+                                                    color: event.attendee
+                                                        ? "white"
+                                                        : "blue"
+                                                }}
+                                                className={styles.bookmarkIcon}
+                                            />
+                                        </PowerfulButton>
+                                    ) : null}
+                                    <button
+                                        className={styles.joinButton}
+                                        onClick={() => {
+                                            handleMainButton(event);
+                                        }}
+                                        disabled={
+                                            (event.attendee &&
+                                                event.attendee.is_joined &&
+                                                event.attendee
+                                                    .is_report_submitted) ??
+                                            false
+                                        }
+                                    >
+                                        {!event.is_started
+                                            ? "More Info"
+                                            : event.attendee &&
+                                              event.attendee.is_joined
+                                            ? event.attendee.is_report_submitted
+                                                ? "Report Submitted"
+                                                : "Submit Report"
+                                            : "Join Now"}
                                     </button>
                                 </div>
                             </div>

@@ -1,5 +1,20 @@
 .dashboardLC {
     width: 100%;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+
+    .backLink {
+        display: flex;
+        align-items: center;
+        background-color: white;
+        padding: 0.5rem 1rem;
+        margin-bottom: 10px;
+        width: fit-content;
+        color: #5d5d5d;
+        text-decoration: none;
+        cursor: pointer;
+        border-radius: 10px;
+    }
     .nextMeet {
         display: flex;
         justify-content: space-between;

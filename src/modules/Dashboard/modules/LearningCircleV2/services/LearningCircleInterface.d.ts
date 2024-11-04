@@ -60,3 +60,25 @@ interface LearningCircleInfoBasic {
     recurrence: number;
     next_meetup: LCMeetup;
 }
+
+interface CircleMeetupInfo {
+    id: string;
+    title: string;
+    is_report_needed: boolean;
+    report_description: string;
+    coord_x: number;
+    coord_y: number;
+    meet_place: string;
+    meet_time: string; // Using string type to represent DateTime (ISO format)
+    duration: number;
+    is_approved: boolean;
+    is_started: boolean;
+    is_ended: boolean;
+    attendee: CircleMeetingAttendee | null;
+}
+
+interface CircleMeetingAttendee {
+    is_joined: boolean;
+    is_report_submitted: boolean;
+    is_lc_approved: boolean;
+}
