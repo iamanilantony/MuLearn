@@ -15,6 +15,7 @@ const options: Option[] = [
     { value: "value1", label: "catagory" },
     { value: "value2", label: "Peer" }
 ];
+
 const LearningCircleLanding = () => {
     const [isLoading, setisLoading] = useState(false);
     const [selected, setselected] = useState<Option | null>(options[0]);
@@ -27,69 +28,102 @@ const LearningCircleLanding = () => {
         console.log("Create");
     };
 
+    //temp response data
     const dummyEvents = [
         {
-            title: "Learn Web development using django",
-            location: "Government College Thalassery",
-            date: "Aug 10, 10:00 PM",
-            duration: "5 Hours",
-            karmaPoints: "Earn Karma Points"
+            id: "331f8e89-3aef-46d0-bd47-a2f5c4cbcc1f",
+            title: "Learn web development using django",
+            is_report_needed: true,
+            report_description:
+                "Want to submit report with github pull request link",
+            coord_x: 120.0,
+            coord_y: 11.0,
+            meet_place: "Government College Thalassery",
+            meet_time: "2024-11-02T12:00:00Z",
+            duration: 10,
+            is_approved: false,
+            is_started: true,
+            is_ended: false,
+            attendee: {
+                is_joined: true,
+                is_report_submitted: false,
+                is_lc_approved: false
+            }
         },
         {
-            title: "Introduction to Machine Learning",
-            location: "Online",
-            date: "Sep 15, 2:00 PM",
-            duration: "3 Hours",
-            karmaPoints: "Earn Karma Points"
+            id: "331f8e89-3aef-46d0-bd47-a2f5c4cbcc1f",
+            title: "Learn web development using django",
+            is_report_needed: true,
+            report_description:
+                "Want to submit report with github pull request link",
+            coord_x: 120.0,
+            coord_y: 11.0,
+            meet_place: "Government College Thalassery",
+            meet_time: "2024-11-02T12:00:00Z",
+            duration: 10,
+            is_approved: false,
+            is_started: true,
+            is_ended: false
         },
         {
-            title: "Advanced React Workshop",
-            location: "Tech Park",
-            date: "Oct 5, 11:00 AM",
-            duration: "4 Hours",
-            karmaPoints: "Earn Karma Points"
+            id: "331f8e89-3aef-46d0-bd47-a2f5c4cbcc1f",
+            title: "Learn web development using django",
+            is_report_needed: true,
+            report_description:
+                "Want to submit report with github pull request link",
+            coord_x: 120.0,
+            coord_y: 11.0,
+            meet_place: "Government College Thalassery",
+            meet_time: "2024-11-02T12:00:00Z",
+            duration: 10,
+            is_approved: false,
+            is_started: false,
+            is_ended: false
         },
         {
-            title: "Data Science Bootcamp",
-            location: "City Library",
-            date: "Nov 20, 9:00 AM",
-            duration: "6 Hours",
-            karmaPoints: "Earn Karma Points"
+            id: "331f8e89-3aef-46d0-bd47-a2f5c4cbcc1f",
+            title: "Learn web development using django",
+            is_report_needed: true,
+            report_description:
+                "Want to submit report with github pull request link",
+            coord_x: 120.0,
+            coord_y: 11.0,
+            meet_place: "Government College Thalassery",
+            meet_time: "2024-11-02T12:00:00Z",
+            duration: 10,
+            is_approved: false,
+            is_started: false,
+            is_ended: false
         },
         {
-            title: "Cybersecurity Basics",
-            location: "Community Center",
-            date: "Dec 1, 1:00 PM",
-            duration: "2 Hours",
-            karmaPoints: "Earn Karma Points"
+            id: "331f8e89-3aef-46d0-bd47-a2f5c4cbcc1f",
+            title: "Learn web development using django",
+            is_report_needed: true,
+            report_description:
+                "Want to submit report with github pull request link",
+            coord_x: 120.0,
+            coord_y: 11.0,
+            meet_place: "Government College Thalassery",
+            meet_time: "2024-11-02T12:00:00Z",
+            duration: 10,
+            is_approved: false,
+            is_started: false,
+            is_ended: false
         },
         {
-            title: "AI and Ethics",
-            location: "University Hall",
-            date: "Jan 15, 3:00 PM",
-            duration: "4 Hours",
-            karmaPoints: "Earn Karma Points"
-        },
-        {
-            title: "Blockchain Fundamentals",
-            location: "Innovation Hub",
-            date: "Feb 10, 10:00 AM",
-            duration: "3 Hours",
-            karmaPoints: "Earn Karma Points"
-        },
-        {
-            title: "Cloud Computing Essentials",
-            location: "Online",
-            date: "Mar 5, 4:00 PM",
-            duration: "2 Hours",
-            karmaPoints: "Earn Karma Points"
-        },
-        {
-            title: "Introduction to Quantum Computing",
-            location: "Tech Conference Center",
-            date: "Apr 12, 1:00 PM",
-            duration: "5 Hours",
-            karmaPoints: "Earn Karma Points"
+            id: "331f8e89-3aef-46d0-bd47-a2f5c4cbcc1f",
+            title: "Learn web development using django",
+            is_report_needed: true,
+            report_description:
+                "Want to submit report with github pull request link",
+            coord_x: 120.0,
+            coord_y: 11.0,
+            meet_place: "Government College Thalassery",
+            meet_time: "2024-11-02T12:00:00Z",
+            duration: 10,
+            is_approved: false,
+            is_started: true,
+            is_ended: false
         }
     ];
 
@@ -176,8 +210,24 @@ const LearningCircleLanding = () => {
                     </div>
                     <div className={styles.cardContainer}>
                         {dummyEvents.map((event, index) => (
-                            <div className={styles.card} key={index}>
-                                <div>
+                            <div
+                                style={{
+                                    border: "2px solid #FFFFFF",
+                                    borderColor: event.is_started
+                                        ? "rgba(255, 198, 40, 1)"
+                                        : "#FFFFFF"
+                                }}
+                                className={styles.card}
+                                key={index}
+                            >
+                                <div
+                                    style={{
+                                        opacity: event.is_started ? 1 : 0,
+                                        color: event.is_started
+                                            ? "rgba(255, 198, 40, 1)"
+                                            : "#FFFFFF"
+                                    }}
+                                >
                                     <span>tag</span>
                                     {
                                         // make the oppacity 0 if not needed
@@ -186,17 +236,17 @@ const LearningCircleLanding = () => {
                                 <h2 className={styles.title}>{event.title}</h2>
                                 <div className={styles.location}>
                                     <FaMapMarkerAlt className={styles.icon} />
-                                    <span>{event.location}</span>
+                                    <span>{event.meet_place}</span>
                                 </div>
                                 <div className={styles.details}>
                                     <span className={styles.date}>
-                                        {event.date}
+                                        {event.meet_time}
                                     </span>
                                     <span className={styles.duration}>
-                                        {event.duration}
+                                        {event.duration}hrs
                                     </span>
                                     <span className={styles.karmaPoints}>
-                                        {event.karmaPoints}
+                                        Earn Karma Points
                                     </span>
                                 </div>
                                 <div className={styles.footer}>

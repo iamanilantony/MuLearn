@@ -241,6 +241,7 @@
     background-color: #f7f9fc;
     border-radius: 1rem;
     padding: 20px;
+
     width: 480px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: flex;
@@ -274,7 +275,7 @@
 .details {
     display: flex;
     gap: 10px;
-    font-size: 15px;
+    font-size: 12px;
 }
 
 .date,
