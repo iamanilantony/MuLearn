@@ -310,9 +310,10 @@ const LearningCircleLanding = () => {
                                     </span> */}
                                     </div>
                                     <div className={styles.footer}>
-                                        {!event.attendee ||
-                                        (event.attendee &&
-                                            !event.attendee.is_joined) ? (
+                                        {!event.is_started &&
+                                        (!event.attendee ||
+                                            (event.attendee &&
+                                                !event.attendee.is_joined)) ? (
                                             <PowerfulButton
                                                 variant={
                                                     event.attendee
