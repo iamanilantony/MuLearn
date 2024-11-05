@@ -1,3 +1,20 @@
+.joinCodeInput {
+    width: 70%;
+    margin: 10px;
+    padding: 0.5rem;
+    border: 1px solid #d1d1d1;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    margin-right: 1rem;
+    color: #000;
+}
+.joinInfo {
+    color: #515151;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    display: block;
+    padding: 20px;
+}
 .container {
     display: flex;
     flex-direction: column;

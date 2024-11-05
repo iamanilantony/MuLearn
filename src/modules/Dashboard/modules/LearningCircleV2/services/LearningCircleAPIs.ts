@@ -6,6 +6,60 @@ import toast from "react-hot-toast";
 const openstreetmapurl =
     "https://nominatim.openstreetmap.org/search?format=json&q=";
 
+export const getLcReportInfo = async (
+    meet_id: string
+): Promise<LCReportInfo | null> => {
+    try {
+        const response = await privateGateway.get(
+            learningCircleRoutes.getLcReportInfo + meet_id
+        );
+        return response.data.response;
+    } catch (err) {
+        const error = err as AxiosError;
+        toast.error(
+            ((error?.response?.data as any)?.message?.general ?? [
+                "Unexpected error occured."
+            ])[0]
+        );
+        return null;
+    }
+};
+
+export const submitLcReport = async (
+    meet_id: string,
+    report: string,
+    attendees: Record<string, boolean>
+): Promise<boolean> => {
+    try {
+        const response = await privateGateway.post(
+            learningCircleRoutes.getLcReportInfo + meet_id,
+            {
+                report: report,
+                attendees: attendees
+            }
+        );
+        if (response.status === 200) {
+            toast.success(
+                [response.data?.message?.general ?? "Report Submited.."][0]
+            );
+            return true;
+        }
+        toast.error(
+            (response.data?.message?.general ?? ["Unable to submit report."])[0]
+        );
+        return false;
+    } catch (err) {
+        const error = err as AxiosError;
+        console.log(error);
+        toast.error(
+            ((error.response as any)?.data?.message?.general ?? [
+                "Unable to join learning circle."
+            ])[0]
+        );
+        return false;
+    }
+};
+
 export const searchCoordinates = async (
     searchString: string
 ): Promise<MapResult[]> => {

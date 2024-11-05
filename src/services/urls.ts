@@ -6,6 +6,7 @@ import {
 import {
     createLearningCircle,
     getCreatedLearningCircles,
+    getLcReportInfo,
     getLearningCircleInfo,
     scheduleMeetup
 } from "src/modules/Dashboard/modules/LearningCircleV2/services/LearningCircleAPIs";
@@ -55,7 +56,8 @@ export const learningCircleRoutes = {
     submitAttendeeReport:
         "/api/v1/dashboard/learningcircle/meeting/attendee-report/",
     getMeetups: "/api/v1/dashboard/learningcircle/meeting/list/",
-    joinMeetup: "/api/v1/dashboard/learningcircle/meeting/join/"
+    joinMeetup: "/api/v1/dashboard/learningcircle/meeting/join/",
+    getLcReportInfo: "/api/v1/dashboard/learningcircle/meeting/report/"
 };
 export const dashboardRoutes = {
     forgetPassword: "/api/v1/dashboard/user/forgot-password/",
