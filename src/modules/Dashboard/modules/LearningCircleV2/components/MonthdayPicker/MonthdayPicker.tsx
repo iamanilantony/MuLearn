@@ -28,7 +28,6 @@ export default function MonthdayPicker({
                         }
                     >
                         <input
-                            required
                             name="day"
                             type="checkbox"
                             id={`${index + 1}`}
