@@ -1,9 +1,7 @@
 .container {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    width: 95%;
     .backLink {
         display: flex;
         align-items: center;
@@ -111,5 +109,11 @@
             padding-left: 10px;
             line-height: 1;
         }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        width: 100%;
     }
 }
