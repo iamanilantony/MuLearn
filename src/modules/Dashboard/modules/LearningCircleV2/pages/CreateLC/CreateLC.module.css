@@ -31,45 +31,48 @@
             background: #fff;
             /* box-shadow: 1px 1px 5px #d3ddfb; */
         }
-        .form {
+        .formContent {
             width: 100%;
-            padding: 20px;
-            border-radius: 10px;
-            background: #fff;
-            /* box-shadow: 1px 1px 5px #d3ddfb; */
-            .submitButton {
-                margin-top: 20px;
-            }
-            .formGroup {
-                display: flex;
-                flex-direction: column;
-                align-items: start;
-                gap: 20px;
+            .form {
                 width: 100%;
-                background: #fff;
-                box-shadow: 1px 1px 5px #d3ddfb;
+                padding: 20px;
                 border-radius: 10px;
-                padding: 10px;
-                margin-top: 10px;
-                &.horizontal {
-                    justify-content: space-between;
-                    flex-direction: row;
-                    align-items: center;
+                background: #fff;
+                /* box-shadow: 1px 1px 5px #d3ddfb; */
+                .submitButton {
+                    margin-top: 20px;
                 }
-                label {
-                    font-size: 16px;
-                    font-weight: 500;
-                    color: #000;
+                .formGroup {
                     display: flex;
-                    position: relative;
-                    gap: 10px;
-                    align-items: center;
-                    justify-content: center;
-                }
-                .select {
+                    flex-direction: column;
+                    align-items: start;
+                    gap: 20px;
                     width: 100%;
-                    background: #d3ddfb;
+                    background: #fff;
+                    box-shadow: 1px 1px 5px #d3ddfb;
                     border-radius: 10px;
+                    padding: 10px;
+                    margin-top: 10px;
+                    &.horizontal {
+                        justify-content: space-between;
+                        flex-direction: row;
+                        align-items: center;
+                    }
+                    label {
+                        font-size: 16px;
+                        font-weight: 500;
+                        color: #000;
+                        display: flex;
+                        position: relative;
+                        gap: 10px;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                    .select {
+                        width: 100%;
+                        background: #d3ddfb;
+                        border-radius: 10px;
+                    }
                 }
             }
         }
