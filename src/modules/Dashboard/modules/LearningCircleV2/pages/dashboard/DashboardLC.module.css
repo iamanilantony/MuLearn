@@ -65,7 +65,29 @@
                     color: #000;
                     display: flex;
                     gap: 10px;
-                    margin-bottom: 20px;
+                    margin-bottom: 10px;
+                }
+                .buttons {
+                    margin-bottom: 10px;
+                    width: fit-content;
+                    display: flex;
+                    gap: 10px;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    .tag {
+                        cursor: pointer;
+                        display: flex;
+                        width: fit-content;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 10px;
+                        border: 2px dashed #547cff;
+                        padding: 4px 15px;
+                        color: #547cff;
+                        border-radius: 10px;
+                        font-size: 12px;
+                    }
                 }
             }
             .buttons {
