@@ -2,7 +2,7 @@ import styles from "./MoreInfoLC.module.css";
 import { FiChevronLeft } from "react-icons/fi";
 import { CiLocationOn, CiClock2 } from "react-icons/ci";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {
     getMeetupInfo,
@@ -23,13 +23,21 @@ export default function MoreInfoLC() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [meetCode, setMeetCode] = useState("");
     const params = useParams();
+    const [searchParams, setSearchParams] = useSearchParams();
 
     useEffect(() => {
+        var code = searchParams.get("code");
+        if (code) {
+            setMeetCode(code);
+        }
         getMeetupInfo(params.id ?? "").then(res => {
             setMeetup(res as any);
         });
     }, []);
     const handleMainButton = () => {
+        if (meetup?.attendee?.is_report_submitted) {
+            navigate(`/dashboard/learningcircle/report/${meetup.id}`);
+        }
         if (meetup?.is_started) {
             if (meetup.attendee && meetup.attendee.is_joined) {
                 if (!meetup.attendee.is_report_submitted) {
@@ -38,6 +46,17 @@ export default function MoreInfoLC() {
                     );
                 }
             } else {
+                if (meetCode) {
+                    handleJoin();
+                    setMeetup({
+                        ...meetup,
+                        attendee: {
+                            ...(meetup.attendee as any),
+                            is_joined: 1
+                        }
+                    });
+                    return;
+                }
                 setIsModalOpen(true);
             }
         } else {

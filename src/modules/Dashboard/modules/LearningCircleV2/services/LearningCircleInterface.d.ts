@@ -82,3 +82,16 @@ interface CircleMeetingAttendee {
     is_report_submitted: boolean;
     is_lc_approved: boolean;
 }
+
+interface LCReportInfo {
+    is_report_submitted: boolean;
+    report: string | null;
+    attendees: {
+        user_id: string;
+        full_name: string;
+        muid: string;
+        is_lc_approved: boolean;
+        report: string | null;
+        report_link: string | null;
+    }[];
+}
