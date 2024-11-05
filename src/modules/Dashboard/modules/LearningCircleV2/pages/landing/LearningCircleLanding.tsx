@@ -182,11 +182,6 @@ const LearningCircleLanding = () => {
                         </div>
                     </div>
                     <div
-                        style={{
-                            width: "100%",
-                            display: "flex",
-                            justifyContent: "space-between"
-                        }}
                         className={styles.middleContainer}
                     >
                         <SelectTab
