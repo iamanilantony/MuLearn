@@ -169,6 +169,12 @@
     display: block;
     padding: 20px;
 }
+.learningCircleLandingPage .middleContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
 @media (width<1060px) {
     .learningCircleLandingPageDesc h1 {
         font-size: 1.65rem;
@@ -220,6 +226,11 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+    }
+    .learningCircleLandingPage .middleContainer {
+        justify-content: center;
+        flex-direction: column-reverse;
+        gap: 10px;
     }
 }
 
