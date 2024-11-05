@@ -12,6 +12,7 @@ import {
     joinMeetup,
     unsaveMeetup
 } from "../../services/LearningCircleAPIs";
+import imageBottom from "../../assets/images/LC3.webp";
 import { color } from "framer-motion";
 import MuModal from "@/MuLearnComponents/MuModal/MuModal";
 import { Input } from "@chakra-ui/react";
@@ -181,9 +182,7 @@ const LearningCircleLanding = () => {
                             </div>
                         </div>
                     </div>
-                    <div
-                        className={styles.middleContainer}
-                    >
+                    <div className={styles.middleContainer}>
                         <SelectTab
                             placeholder={"Select Role"}
                             options={INITIAL_INTERESTS}
@@ -223,118 +222,147 @@ const LearningCircleLanding = () => {
                             </svg>
                         </PowerfulButton>
                     </div>
-                    <div className={styles.cardContainer}>
-                        {meetups.map((event, index) => (
-                            <div
-                                style={{
-                                    border: "2px solid #FFFFFF",
-                                    borderColor: event.is_started
-                                        ? event.attendee &&
-                                          event.attendee.is_joined &&
-                                          !event.attendee.is_report_submitted
-                                            ? "#DF4141"
-                                            : "rgba(255, 198, 40, 1)"
-                                        : "#FFFFFF"
-                                }}
-                                className={styles.card}
-                                key={index}
-                            >
-                                {event.is_started ? (
-                                    <div
-                                        style={{
-                                            borderColor:
-                                                event.attendee &&
-                                                event.attendee.is_joined &&
-                                                !event.attendee
-                                                    .is_report_submitted
-                                                    ? "#DF4141"
-                                                    : "rgba(255, 198, 40, 1)",
-                                            color:
-                                                event.attendee &&
-                                                event.attendee.is_joined &&
-                                                !event.attendee
-                                                    .is_report_submitted
-                                                    ? "#DF4141"
-                                                    : "rgba(255, 198, 40, 1)"
-                                        }}
-                                    >
-                                        <span>
-                                            {event.attendee &&
-                                            event.attendee.is_joined &&
-                                            !event.attendee.is_report_submitted
-                                                ? "Report Submission Pending"
-                                                : "Happening Now"}
-                                        </span>
-                                    </div>
-                                ) : null}
-                                <h2 className={styles.title}>{event.title}</h2>
-                                <div className={styles.location}>
-                                    <FaMapMarkerAlt className={styles.icon} />
-                                    <span>{event.meet_place}</span>
-                                </div>
-                                <div className={styles.details}>
-                                    <span className={styles.date}>
-                                        {new Date(
-                                            event.meet_time
-                                        ).toLocaleString()}
-                                    </span>
-                                    <span className={styles.duration}>
-                                        {event.duration} Hours
-                                    </span>
-                                    {/* <span className={styles.karmaPoints}>
-                                        Earn Karma Points
-                                    </span> */}
-                                </div>
-                                <div className={styles.footer}>
-                                    {!event.attendee ||
-                                    (event.attendee &&
-                                        !event.attendee.is_joined) ? (
-                                        <PowerfulButton
-                                            variant={
-                                                event.attendee
-                                                    ? "primary"
-                                                    : "outline"
-                                            }
-                                            onClick={() => {
-                                                saveMeetup(event.id);
+                    {meetups.length === 0 ? (
+                        <div
+                            style={{
+                                background: "#fff",
+                                padding: 10,
+                                borderRadius: 10
+                            }}
+                            className={styles.learningCircleLandingPageMiddle}
+                        >
+                            <img
+                                src={imageBottom}
+                                alt="No meetups"
+                                loading="eager"
+                                className={styles.desaturate}
+                            />
+                            <b>No Meetups!</b>
+                            <p>No meetups are currently running now</p>
+                        </div>
+                    ) : (
+                        <div className={styles.cardContainer}>
+                            {meetups.map((event, index) => (
+                                <div
+                                    style={{
+                                        border: "2px solid #FFFFFF",
+                                        borderColor: event.is_started
+                                            ? event.attendee &&
+                                              event.attendee.is_joined &&
+                                              !event.attendee
+                                                  .is_report_submitted
+                                                ? "#DF4141"
+                                                : "rgba(255, 198, 40, 1)"
+                                            : "#FFFFFF"
+                                    }}
+                                    className={styles.card}
+                                    key={index}
+                                >
+                                    {event.is_started ? (
+                                        <div
+                                            style={{
+                                                borderColor:
+                                                    event.attendee &&
+                                                    event.attendee.is_joined &&
+                                                    !event.attendee
+                                                        .is_report_submitted
+                                                        ? "#DF4141"
+                                                        : "rgba(255, 198, 40, 1)",
+                                                color:
+                                                    event.attendee &&
+                                                    event.attendee.is_joined &&
+                                                    !event.attendee
+                                                        .is_report_submitted
+                                                        ? "#DF4141"
+                                                        : "rgba(255, 198, 40, 1)"
                                             }}
                                         >
-                                            <FaBookmark
-                                                style={{
-                                                    color: event.attendee
-                                                        ? "white"
-                                                        : "blue"
-                                                }}
-                                                className={styles.bookmarkIcon}
-                                            />
-                                        </PowerfulButton>
-                                    ) : null}
-                                    <button
-                                        className={styles.joinButton}
-                                        onClick={() => {
-                                            handleMainButton(event);
-                                        }}
-                                        disabled={
-                                            (event.attendee &&
+                                            <span>
+                                                {event.attendee &&
                                                 event.attendee.is_joined &&
-                                                event.attendee
-                                                    .is_report_submitted) ??
-                                            false
-                                        }
-                                    >
-                                        {!event.is_started
-                                            ? "More Info"
-                                            : event.attendee &&
-                                              event.attendee.is_joined
-                                            ? event.attendee.is_report_submitted
-                                                ? "Report Submitted"
-                                                : "Submit Report"
-                                            : "Join Now"}
-                                    </button>
+                                                !event.attendee
+                                                    .is_report_submitted
+                                                    ? "Report Submission Pending"
+                                                    : "Happening Now"}
+                                            </span>
+                                        </div>
+                                    ) : null}
+                                    <h2 className={styles.title}>
+                                        {event.title}
+                                    </h2>
+                                    <div className={styles.location}>
+                                        <FaMapMarkerAlt
+                                            className={styles.icon}
+                                        />
+                                        <span>{event.meet_place}</span>
+                                    </div>
+                                    <div className={styles.details}>
+                                        <span className={styles.date}>
+                                            {new Date(
+                                                event.meet_time
+                                            ).toLocaleString()}
+                                        </span>
+                                        <span className={styles.duration}>
+                                            {event.duration} Hours
+                                        </span>
+                                        {/* <span className={styles.karmaPoints}>
+                                        Earn Karma Points
+                                    </span> */}
+                                    </div>
+                                    <div className={styles.footer}>
+                                        {!event.attendee ||
+                                        (event.attendee &&
+                                            !event.attendee.is_joined) ? (
+                                            <PowerfulButton
+                                                variant={
+                                                    event.attendee
+                                                        ? "primary"
+                                                        : "outline"
+                                                }
+                                                onClick={() => {
+                                                    saveMeetup(event.id);
+                                                }}
+                                            >
+                                                <FaBookmark
+                                                    style={{
+                                                        color: event.attendee
+                                                            ? "white"
+                                                            : "blue"
+                                                    }}
+                                                    className={
+                                                        styles.bookmarkIcon
+                                                    }
+                                                />
+                                            </PowerfulButton>
+                                        ) : null}
+                                        <button
+                                            className={styles.joinButton}
+                                            onClick={() => {
+                                                handleMainButton(event);
+                                            }}
+                                            disabled={
+                                                (event.attendee &&
+                                                    event.attendee.is_joined &&
+                                                    event.attendee
+                                                        .is_report_submitted) ??
+                                                false
+                                            }
+                                        >
+                                            {!event.is_started
+                                                ? "More Info"
+                                                : event.attendee &&
+                                                  event.attendee.is_joined
+                                                ? event.attendee
+                                                      .is_report_submitted
+                                                    ? "Report Submitted"
+                                                    : "Submit Report"
+                                                : "Join Now"}
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
-                    </div>
+                            ))}
+                        </div>
+                    )}
                 </div>
             )}
         </>

@@ -222,15 +222,20 @@
         font-size: 0.65rem;
         margin-right: 0.5rem;
     }
-    .learningCircleLandingPage .learningCircleLandingPageButton { 
+    .learningCircleLandingPage .learningCircleLandingPageButton {
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
     .learningCircleLandingPage .middleContainer {
+        width: 100%;
         justify-content: center;
+        align-items: center;
         flex-direction: column-reverse;
         gap: 10px;
+        button {
+            width: 100%;
+        }
     }
 }
 
@@ -255,7 +260,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
-    justify-content: center;
+    justify-content: start;
 }
 .card div:nth-child(1) {
     display: flex;
@@ -368,7 +373,7 @@
 
 @media screen and (max-width: 1920px) {
     .cardContainer {
-        justify-content: space-between;
+        justify-content: start;
     }
     .card {
         width: calc(33% - 20px);
