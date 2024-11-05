@@ -295,6 +295,7 @@
     align-items: center;
     font-size: 18px;
     color: #6e6e6e;
+    text-align: left;
     gap: 6px;
 }
 
@@ -383,5 +384,8 @@
 @media screen and (max-width: 650px) {
     .card {
         width: 100%;
+    }
+    .location {
+        font-size: 15px;
     }
 }
