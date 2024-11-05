@@ -169,6 +169,12 @@
     display: block;
     padding: 20px;
 }
+.learningCircleLandingPage .middleContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
 @media (width<1060px) {
     .learningCircleLandingPageDesc h1 {
         font-size: 1.65rem;
@@ -215,6 +221,16 @@
     .learningCircleLandingPageMiddle p {
         font-size: 0.65rem;
         margin-right: 0.5rem;
+    }
+    .learningCircleLandingPage .learningCircleLandingPageButton { 
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .learningCircleLandingPage .middleContainer {
+        justify-content: center;
+        flex-direction: column-reverse;
+        gap: 10px;
     }
 }
 
@@ -279,6 +295,7 @@
     align-items: center;
     font-size: 18px;
     color: #6e6e6e;
+    text-align: left;
     gap: 6px;
 }
 
@@ -367,5 +384,8 @@
 @media screen and (max-width: 650px) {
     .card {
         width: 100%;
+    }
+    .location {
+        font-size: 15px;
     }
 }
