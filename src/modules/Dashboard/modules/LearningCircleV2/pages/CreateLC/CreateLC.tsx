@@ -128,7 +128,7 @@ export default function CreateLC() {
                                             className={
                                                 styles.formGroup +
                                                 " " +
-                                                styles.horizontal
+                                                styles.horizontal + " " + styles.radioContainer
                                             }
                                         >
                                             <label htmlFor="recurrence_type">
