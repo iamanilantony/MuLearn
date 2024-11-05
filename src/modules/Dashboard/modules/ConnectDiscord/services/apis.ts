@@ -37,7 +37,7 @@ export const getInfo = (
             );
             if (response.data.response?.interest_selected) {
                 toast.error(response.data.response?.interest_selected);
-                navigate("/register/interests");
+                navigate("/register/interests?ruri=noredirect");
             }
             if (setMuid) setMuid(response.data.response.muid);
             if (onComplete) onComplete();

@@ -56,6 +56,7 @@ import CreateLCMeetup from "./modules/Dashboard/modules/LearningCircleV2/pages/C
 import DashboardLC from "./modules/Dashboard/modules/LearningCircleV2/pages/dashboard/DashboardLC";
 import YourLC from "./modules/Dashboard/modules/LearningCircleV2/pages/YourLC/YourLC";
 import MoreInfoLC from "./modules/Dashboard/modules/LearningCircleV2/pages/moreInfoLC/MoreInfoLC";
+import AttendeeReport from "./modules/Dashboard/modules/LearningCircleV2/pages/AttendeeReport/AttendeeReport";
 
 const Profile = lazy(
     () => import("./modules/Dashboard/modules/Profile/pages/Profile")
@@ -732,7 +733,7 @@ function App() {
                             element: <LearningCircleLanding />
                         },
                         {
-                            path: "learningcircle/yours",
+                            path: "learningcircle/your-circles",
                             element: <YourLC />
                         },
                         {
@@ -746,6 +747,10 @@ function App() {
                         {
                             path: "learningcircle/meetup/:id",
                             element: <MoreInfoLC />
+                        },
+                        {
+                            path: "learningcircle/attendee-report/:meet_id",
+                            element: <AttendeeReport />
                         },
                         {
                             path: "learningcircle/create-meetup/:circle_id",

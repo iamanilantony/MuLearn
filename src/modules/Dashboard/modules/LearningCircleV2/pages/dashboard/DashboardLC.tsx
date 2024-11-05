@@ -10,6 +10,7 @@ import {
 } from "../../../../utils/common";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { BiChevronRight, BiEdit } from "react-icons/bi";
+import { FiChevronLeft } from "react-icons/fi";
 
 export default function DashboardLC() {
     const [circleInfo, setCircleInfo] = useState<LearningCircleInfo | null>(
@@ -25,6 +26,15 @@ export default function DashboardLC() {
     }, [params.id]);
     return (
         <div className={styles.dashboardLC}>
+            <div
+                className={styles.backLink}
+                onClick={() => {
+                    navigate(-1);
+                }}
+            >
+                <FiChevronLeft />
+                <span>Learning Circles</span>
+            </div>
             {circleInfo ? (
                 <>
                     {circleInfo.next_meetup.is_scheduled ? (
@@ -70,7 +80,12 @@ export default function DashboardLC() {
                                     </PowerfulButton>
                                     <PowerfulButton
                                         style={{ padding: "5px 40px" }}
-                                        onClick={() => {}}
+                                        onClick={() => {
+                                            navigate(
+                                                "/dashboard/learningcircle/attendee-report/" +
+                                                    circleInfo.next_meetup.id
+                                            );
+                                        }}
                                     >
                                         Report
                                     </PowerfulButton>
