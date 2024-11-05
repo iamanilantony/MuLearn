@@ -57,6 +57,7 @@ import DashboardLC from "./modules/Dashboard/modules/LearningCircleV2/pages/dash
 import YourLC from "./modules/Dashboard/modules/LearningCircleV2/pages/YourLC/YourLC";
 import MoreInfoLC from "./modules/Dashboard/modules/LearningCircleV2/pages/moreInfoLC/MoreInfoLC";
 import AttendeeReport from "./modules/Dashboard/modules/LearningCircleV2/pages/AttendeeReport/AttendeeReport";
+import LCReport from "./modules/Dashboard/modules/LearningCircleV2/pages/LCReport/LCReport";
 
 const Profile = lazy(
     () => import("./modules/Dashboard/modules/Profile/pages/Profile")
@@ -724,10 +725,10 @@ function App() {
                                 />
                             )
                         },
-                        {
-                            path: "learning-circle",
-                            element: <LearningCircleLandingPage />
-                        },
+                        // {
+                        //     path: "learning-circle",
+                        //     element: <LearningCircleLandingPage />
+                        // },
                         {
                             path: "learningcircle",
                             element: <LearningCircleLanding />
@@ -753,33 +754,37 @@ function App() {
                             element: <AttendeeReport />
                         },
                         {
+                            path: "learningcircle/report/:meet_id",
+                            element: <LCReport />
+                        },
+                        {
                             path: "learningcircle/create-meetup/:circle_id",
                             element: <CreateLCMeetup />
                         },
-                        {
-                            path: "learning-circle/meetup/:id",
-                            element: <LcMeetupIfo />
-                        },
-                        {
-                            path: "learning-circle/meetup/:id/attendee-report",
-                            element: <LcReportAttendee />
-                        },
-                        {
-                            path: "learning-circle/details/:id",
-                            element: <LearningCircle />
-                        },
-                        {
-                            path: "learning-circle/dashboard/:id",
-                            element: <LcDashboard />
-                        },
-                        {
-                            path: "learning-circle/find-circle",
-                            element: <FindCircle />
-                        },
-                        {
-                            path: "learning-circle/create-circle",
-                            element: <LearningCircleCreate />
-                        },
+                        // {
+                        //     path: "learning-circle/meetup/:id",
+                        //     element: <LcMeetupIfo />
+                        // },
+                        // {
+                        //     path: "learning-circle/meetup/:id/attendee-report",
+                        //     element: <LcReportAttendee />
+                        // },
+                        // {
+                        //     path: "learning-circle/details/:id",
+                        //     element: <LearningCircle />
+                        // },
+                        // {
+                        //     path: "learning-circle/dashboard/:id",
+                        //     element: <LcDashboard />
+                        // },
+                        // {
+                        //     path: "learning-circle/find-circle",
+                        //     element: <FindCircle />
+                        // },
+                        // {
+                        //     path: "learning-circle/create-circle",
+                        //     element: <LearningCircleCreate />
+                        // },
                         {
                             path: "organization-transfer",
                             element: (

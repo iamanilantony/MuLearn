@@ -53,7 +53,7 @@ export default function DashboardLC() {
                                         {circleInfo.next_meetup.title}
                                     </span>
                                     <div className={styles.buttons}>
-                                        {/* <span
+                                        <span
                                             onClick={() => {
                                                 var url =
                                                     `${window.location.protocol}//${window.location.host}/dashboard/learningcircle/meetup/${circleInfo.next_meetup.id}` +
@@ -78,7 +78,7 @@ export default function DashboardLC() {
                                         >
                                             <BiCopy />
                                             Copy Link
-                                        </span> */}
+                                        </span>
                                         <span
                                             className={styles.tag}
                                             onClick={() => {
@@ -134,7 +134,7 @@ export default function DashboardLC() {
                                         style={{ padding: "5px 40px" }}
                                         onClick={() => {
                                             navigate(
-                                                "/dashboard/learningcircle/attendee-report/" +
+                                                "/dashboard/learningcircle/report/" +
                                                     circleInfo.next_meetup.id
                                             );
                                         }}
