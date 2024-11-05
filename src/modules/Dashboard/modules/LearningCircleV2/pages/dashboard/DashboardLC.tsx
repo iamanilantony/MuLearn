@@ -9,8 +9,9 @@ import {
     getLocalDateTimeObject
 } from "../../../../utils/common";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
-import { BiChevronRight, BiEdit } from "react-icons/bi";
+import { BiChevronRight, BiCopy, BiEdit } from "react-icons/bi";
 import { FiChevronLeft } from "react-icons/fi";
+import toast from "react-hot-toast";
 
 export default function DashboardLC() {
     const [circleInfo, setCircleInfo] = useState<LearningCircleInfo | null>(
@@ -51,6 +52,57 @@ export default function DashboardLC() {
                                     <span className={styles.title}>
                                         {circleInfo.next_meetup.title}
                                     </span>
+                                    <div className={styles.buttons}>
+                                        {/* <span
+                                            onClick={() => {
+                                                var url =
+                                                    `${window.location.protocol}//${window.location.host}/dashboard/learningcircle/meetup/${circleInfo.next_meetup.id}` +
+                                                    (circleInfo.next_meetup
+                                                        .is_started
+                                                        ? `?code=${circleInfo.next_meetup.meet_code}`
+                                                        : "");
+                                                navigator.clipboard
+                                                    .writeText(url)
+                                                    .then(() => {
+                                                        toast.success(
+                                                            "Copied to Clipboard!"
+                                                        );
+                                                    })
+                                                    .catch(error => {
+                                                        toast.error(
+                                                            "Failed to copy"
+                                                        );
+                                                    });
+                                            }}
+                                            className={styles.tag}
+                                        >
+                                            <BiCopy />
+                                            Copy Link
+                                        </span> */}
+                                        <span
+                                            className={styles.tag}
+                                            onClick={() => {
+                                                navigator.clipboard
+                                                    .writeText(
+                                                        circleInfo.next_meetup
+                                                            .meet_code
+                                                    )
+                                                    .then(() => {
+                                                        toast.success(
+                                                            "Copied to Clipboard!"
+                                                        );
+                                                    })
+                                                    .catch(error => {
+                                                        toast.error(
+                                                            "Failed to copy"
+                                                        );
+                                                    });
+                                            }}
+                                        >
+                                            <BiCopy />
+                                            {circleInfo.next_meetup.meet_code}
+                                        </span>
+                                    </div>
                                     <span className={styles.venue}>
                                         Venue:{" "}
                                         {circleInfo.next_meetup.meet_place}
