@@ -88,6 +88,12 @@
             }
             .form {
                 padding: 10px;
+                .formGroup {
+                    &.radioContainer {
+                        flex-direction: column !important;
+                        justify-content: center;
+                    }
+                }
             }
         }
     }
