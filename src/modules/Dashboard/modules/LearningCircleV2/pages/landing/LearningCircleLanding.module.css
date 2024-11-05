@@ -216,6 +216,11 @@
         font-size: 0.65rem;
         margin-right: 0.5rem;
     }
+    .learningCircleLandingPage .learningCircleLandingPageButton { 
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 @media (width<350px) {
