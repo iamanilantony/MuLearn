@@ -156,7 +156,9 @@ export default function UserInterest() {
             toast.success(res.data?.message.general[0]);
             navigate(
                 ruri
-                    ? `/register/organization/?ruri=${ruri}`
+                    ? ruri == "noredirect"
+                        ? "/dashboard/profile"
+                        : `/register/organization/?ruri=${ruri}`
                     : "/register/organization"
             );
         } catch (err: any) {

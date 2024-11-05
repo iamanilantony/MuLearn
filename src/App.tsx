@@ -50,6 +50,13 @@ import SettingsHome from "./modules/Dashboard/modules/Settings/pages/Settings/Se
 import LcReportAttendee from "./modules/Dashboard/modules/LearningCircle/pages/LcDashboard/components/LcAttendeeReport";
 import LcAdmin from "./modules/Dashboard/modules/LearningCircle/pages/LcAdmin/LcAdmin";
 import VerifyOrganizations from "./modules/Dashboard/modules/VerifyOrganizations/VerifyOrganizations";
+import CreateLC from "./modules/Dashboard/modules/LearningCircleV2/pages/CreateLC/CreateLC";
+import LearningCircleLanding from "./modules/Dashboard/modules/LearningCircleV2/pages/landing/LearningCircleLanding";
+import CreateLCMeetup from "./modules/Dashboard/modules/LearningCircleV2/pages/CreateLCMeetup/CreateLCMeetup";
+import DashboardLC from "./modules/Dashboard/modules/LearningCircleV2/pages/dashboard/DashboardLC";
+import YourLC from "./modules/Dashboard/modules/LearningCircleV2/pages/YourLC/YourLC";
+import MoreInfoLC from "./modules/Dashboard/modules/LearningCircleV2/pages/moreInfoLC/MoreInfoLC";
+import AttendeeReport from "./modules/Dashboard/modules/LearningCircleV2/pages/AttendeeReport/AttendeeReport";
 
 const Profile = lazy(
     () => import("./modules/Dashboard/modules/Profile/pages/Profile")
@@ -720,6 +727,34 @@ function App() {
                         {
                             path: "learning-circle",
                             element: <LearningCircleLandingPage />
+                        },
+                        {
+                            path: "learningcircle",
+                            element: <LearningCircleLanding />
+                        },
+                        {
+                            path: "learningcircle/your-circles",
+                            element: <YourLC />
+                        },
+                        {
+                            path: "learningcircle/dashboard/:id",
+                            element: <DashboardLC />
+                        },
+                        {
+                            path: "learningcircle/create",
+                            element: <CreateLC />
+                        },
+                        {
+                            path: "learningcircle/meetup/:id",
+                            element: <MoreInfoLC />
+                        },
+                        {
+                            path: "learningcircle/attendee-report/:meet_id",
+                            element: <AttendeeReport />
+                        },
+                        {
+                            path: "learningcircle/create-meetup/:circle_id",
+                            element: <CreateLCMeetup />
                         },
                         {
                             path: "learning-circle/meetup/:id",

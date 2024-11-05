@@ -67,11 +67,7 @@ const LcAdmin = () => {
                 id={["id"]}
                 onVerifyClick={() => {}}
             >
-                <THead
-                    columnOrder={columnOrder}
-                    onIconClick={() => {}}
-                    action={false}
-                />
+                <THead columnOrder={columnOrder} onIconClick={() => {}} />
                 <div>
                     {!isLoading && (
                         <Pagination
