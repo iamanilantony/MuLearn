@@ -18,10 +18,10 @@ const IntrestGroupForm = forwardRef(
         const interestGroup = [
             { label: "Coder", value: "coder" },
             { label: "Hardware", value: "hardware" },
-            {
-                label: "Manager",
-                value: "manager"
-            },
+            // {
+            //     label: "Manager",
+            //     value: "manager"
+            // },
             { label: "Creative", value: "creative" },
             { label: "Others", value: "others" }
         ];
