@@ -58,6 +58,7 @@ import YourLC from "./modules/Dashboard/modules/LearningCircleV2/pages/YourLC/Yo
 import MoreInfoLC from "./modules/Dashboard/modules/LearningCircleV2/pages/moreInfoLC/MoreInfoLC";
 import AttendeeReport from "./modules/Dashboard/modules/LearningCircleV2/pages/AttendeeReport/AttendeeReport";
 import LCReport from "./modules/Dashboard/modules/LearningCircleV2/pages/LCReport/LCReport";
+import PathFinder from "./modules/Common/Authentication/pages/Onboarding/PathFinder/PathFinder";
 
 const Profile = lazy(
     () => import("./modules/Dashboard/modules/Profile/pages/Profile")
@@ -324,6 +325,10 @@ function App() {
         {
             path: "/register/organization",
             element: <CollegePage />
+        },
+        {
+            path: "/register/pathfinder",
+            element: <PathFinder />
         },
         {
             path: "/signin",
