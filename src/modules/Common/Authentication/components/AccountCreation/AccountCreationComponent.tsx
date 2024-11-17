@@ -1,29 +1,17 @@
-import styles from "./AccountCreation.module.css";
-import { HiEye, HiEyeSlash } from "react-icons/hi2";
-
-import OnboardingTemplate from "../../../components/OnboardingTeamplate/OnboardingTemplate";
-import OnboardingHeader from "../../../components/OnboardingHeader/OnboardingHeader";
-import { getDWMSDetails } from "../../../services/newOnboardingApis";
+import OnboardingHeader from "../OnboardingHeader/OnboardingHeader";
+import OnboardingTemplate from "../OnboardingTeamplate/OnboardingTemplate";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { Form, Formik } from "formik";
-import * as z from "yup";
-import { FormikTextInputWithoutLabel as SimpleInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
-import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
-import { useEffect, useState } from "react";
-
-import { useNavigate, useParams } from "react-router-dom";
-import makeAnimated from "react-select/animated";
-import { BiSupport } from "react-icons/bi";
 import { isDev } from "@/MuLearnServices/common_functions";
-import { submitUserData } from "../../../services/newOnboardingApis";
+import * as z from "yup";
+import styles from "./AccountCreationComponent.module.css";
+import { FormikTextInputWithoutLabel as SimpleInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
+import { HiEye } from "react-icons/hi";
+import { HiEyeSlash } from "react-icons/hi2";
+import { BiSupport } from "react-icons/bi";
+import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { getDWMSDetails } from "../../services/newOnboardingApis";
 import toast from "react-hot-toast";
-
-type DWMSData = {
-    email: string;
-    fullName: string;
-    phoneNumber: string;
-    gender?: string;
-    dob?: string;
-};
 
 const scheme = z.object({
     email: z
@@ -31,16 +19,11 @@ const scheme = z.object({
         .required(`Email is Required`)
         .min(5, `Email must be at least 3 characters`)
         .max(100, `Email must be at most 100 characters`),
-    fullName: z
+    full_name: z
         .string()
         .required(`Full Name is Required`)
         .min(3, `Full Name must be at least 3 characters`)
         .max(100, `Full Name must be at most 100 characters`),
-    // phoneNumber: z
-    //     .string()
-    //     .required(`Phone number is Required`)
-    //     .min(10, `Phone number must be at least 10 characters`)
-    //     .max(10, `Phone number must be at most 10 characters`),
     ...(isDev()
         ? {
               password: z.string().required(`Password is Required`)
@@ -52,51 +35,62 @@ const scheme = z.object({
                   .min(8, `Password must be at least 8 characters`)
                   .max(100, `Password must be at most 100 characters`)
           })
-    // confirmPassword: z
-    //     .string()
-    //     .required(`Password is Required`)
-    //     .test(
-    //         "passwords-match",
-    //         "Passwords are not matching",
-    //         function (value) {
-    //             return this.parent.password === value;
-    //         }
-    //     )
 });
 
-export default function AccountCreation() {
-    let { role } = useParams();
-    const navigate = useNavigate();
-    const urlParams = new URLSearchParams(window.location.search);
-    const param = urlParams.get("param");
-    const referralId = urlParams.get("referral_id");
-
-    const [isLoading, setIsLoading] = useState(false);
-    const [isVisible, setVisible] = useState(false);
+export default function AccountCreationComponent({
+    ruri,
+    isLoading,
+    setIsLoading,
+    dwmsParam,
+    refferalId,
+    onContinue
+}: {
+    ruri?: string;
+    isLoading: boolean;
+    setIsLoading: Dispatch<SetStateAction<boolean>>;
+    dwmsParam?: string;
+    refferalId?: string;
+    onContinue: (data: RegisterRequestDataType) => void;
+}) {
+    const [initialValues, setInitialValues] = useState<RegisterUserData>({
+        full_name: "",
+        email: "",
+        password: ""
+    });
     const [dwmsData, setDWMSData] = useState<DWMSData>();
-
+    const [isVisible, setVisible] = useState(false);
     const [isTncChecked, setTncChecked] = useState(false);
 
-    const [initialValues, setInitialValues] = useState({
-        email: "",
-        fullName: "",
-        password: "",
-        role: "",
-        muid: "",
-        communities: []
-    });
-    const ruri = window.location.href.split("=")[1];
-
-    role =
-        role === "student" || role === "mentor" || role === "enabler"
-            ? role
-            : "other";
+    const onSubmit = (values: any) => {
+        if (!isTncChecked) {
+            toast.error("Please accept the terms and conditions");
+            return;
+        }
+        const userData: RegisterRequestDataType = {
+            user: {
+                full_name: values.full_name,
+                email: values.email,
+                password: values.password
+            },
+            interests: {
+                choosen_interests: [],
+                choosen_endgoals: [],
+                other_interests: [],
+                other_endgoals: []
+            },
+            integration: dwmsParam
+                ? { param: dwmsParam, title: "DWMS" }
+                : undefined,
+            referral: refferalId ? { muid: refferalId } : undefined
+        };
+        onContinue(userData);
+    };
 
     useEffect(() => {
         if (isLoading) return;
         setIsLoading(true);
-        if (param) {
-            getDWMSDetails(param, (data: any) => {
+        if (dwmsParam) {
+            getDWMSDetails(dwmsParam, (data: any) => {
                 setDWMSData({
                     email: data?.email_id || "",
                     fullName:
@@ -110,73 +104,15 @@ export default function AccountCreation() {
                 setInitialValues({
                     ...initialValues,
                     email: data?.email_id || "",
-                    fullName:
+                    full_name:
                         data?.job_seeker_fname + " " + data?.job_seeker_lname ||
                         ""
-                    // phoneNumber: data?.mobile_no || ""
                 });
             });
         }
 
         setIsLoading(false);
     }, []);
-
-    const onsubmit = async (values: any, actions: any) => {
-        if (!isTncChecked) {
-            toast.error("Please accept the terms and conditions");
-            return;
-        }
-        const userData: {
-            user: {
-                full_name: any;
-                email: any;
-                password: any;
-            };
-            role?: string;
-            referral?: { muid: string };
-            gender?: string;
-            dob?: string;
-            communities?: string[];
-            integration?: {
-                param: string;
-                title: string;
-            };
-        } = {
-            user: {
-                full_name: values.fullName,
-                email: values.email,
-                password: values.password
-            }
-        };
-
-        if (dwmsData && dwmsData.gender) {
-            userData.gender = dwmsData.gender;
-        }
-
-        if (param) {
-            userData.integration = {
-                param: param,
-                title: "DWMS"
-            };
-        }
-
-        if (dwmsData && dwmsData.dob) {
-            userData.dob = dwmsData.dob;
-        }
-
-        submitUserData({
-            setIsLoading: setIsLoading,
-            userData: userData
-        }).then(res => {
-            if (res) {
-                navigate(
-                    ruri
-                        ? `/register/interests/?ruri=${ruri}`
-                        : "/register/interests"
-                );
-            }
-        });
-    };
 
     return (
         <OnboardingTemplate>
@@ -188,7 +124,7 @@ export default function AccountCreation() {
                 initialValues={initialValues}
                 enableReinitialize={true}
                 validationSchema={scheme}
-                onSubmit={onsubmit}
+                onSubmit={onSubmit}
             >
                 {formik => (
                     <Form>
@@ -221,12 +157,12 @@ export default function AccountCreation() {
                                 <div className={styles.accountCreationName}>
                                     <div className={styles.inputBox}>
                                         <SimpleInput
-                                            name={"fullName"}
+                                            name={"full_name"}
                                             onChange={formik.handleChange}
                                             type="text"
                                             placeholder="Full Name"
                                             value={
-                                                formik.values.fullName ||
+                                                formik.values.full_name ||
                                                 dwmsData?.fullName
                                             }
                                             required
