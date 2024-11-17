@@ -17,10 +17,8 @@ import { CampusStudentList, ConnectDiscord } from "./modules/Dashboard/modules";
 
 import LandingPage from "./modules/Public/LearningCircles/pages/LandingPage";
 import ProfileV2 from "./modules/Dashboard/modules/ProfileV2/pages/Profile";
-import AccountCreation from "./modules/Common/Authentication/pages/Onboarding/AccountCreation/AccountCreation";
 import Rolepage from "./modules/Common/Authentication/pages/Onboarding/RolePage/RolePage";
 import CollegePage from "./modules/Common/Authentication/pages/Onboarding/CollegePage/CollegePage";
-import CompanyPage from "./modules/Common/Authentication/pages/Onboarding/CompanyPage/CompanyPage";
 import SignIn from "./modules/Common/Authentication/pages/Onboarding/SignIn/SignIn";
 
 import ErrorLog from "./modules/Dashboard/modules/ErrorLog/ErrorLog";
@@ -43,7 +41,6 @@ import Donation from "./modules/Public/Donation/Donation";
 import Refund from "./modules/Public/Donation/pages/Refund";
 import DonationSuccess from "./modules/Public/Donation/pages/DonationSuccess";
 import OpenGrad from "./modules/Dashboard/modules/OpenGrad";
-import UserInterest from "./modules/Common/Authentication/pages/Onboarding/UserInterest/UserInterest";
 import LcMeetupIfo from "./modules/Dashboard/modules/LearningCircle/pages/Meetup/LcMeetup";
 import OrganizationSetting from "./modules/Dashboard/modules/Settings/pages/Organization/Organization";
 import SettingsHome from "./modules/Dashboard/modules/Settings/pages/Settings/SettingsHome";
@@ -58,6 +55,9 @@ import YourLC from "./modules/Dashboard/modules/LearningCircleV2/pages/YourLC/Yo
 import MoreInfoLC from "./modules/Dashboard/modules/LearningCircleV2/pages/moreInfoLC/MoreInfoLC";
 import AttendeeReport from "./modules/Dashboard/modules/LearningCircleV2/pages/AttendeeReport/AttendeeReport";
 import LCReport from "./modules/Dashboard/modules/LearningCircleV2/pages/LCReport/LCReport";
+import UserInterest from "./modules/Common/Authentication/pages/Onboarding/UserInterest/UserInterest";
+import PathFinder from "./modules/Common/Authentication/pages/Onboarding/PathFinder/PathFinder";
+import RegisterPage from "./modules/Common/Authentication/pages/Onboarding/Register/Register";
 
 const Profile = lazy(
     () => import("./modules/Dashboard/modules/Profile/pages/Profile")
@@ -301,17 +301,16 @@ function App() {
             path: "/",
             element: <AuthRoutes />,
             children: [
-                { path: "register/:role", element: <AccountCreation /> },
+                { path: "register/:role", element: <RegisterPage /> },
                 {
                     path: "register/",
                     children: [
                         {
                             path: "",
-                            element: <AccountCreation />
+                            element: <RegisterPage />
                         }
                     ]
                 },
-
                 { path: "login", element: <SignIn /> },
                 { path: "forgot-password", element: <ForgetPassword /> },
                 { path: "reset-password", element: <ResetPassword /> }
@@ -324,6 +323,10 @@ function App() {
         {
             path: "/register/organization",
             element: <CollegePage />
+        },
+        {
+            path: "/register/pathfinder",
+            element: <PathFinder />
         },
         {
             path: "/signin",

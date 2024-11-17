@@ -251,11 +251,7 @@ export default function CollegePage() {
                                                 ...college_types.map(type => ({
                                                     value: type,
                                                     label: type
-                                                })),
-                                                {
-                                                    value: "Others",
-                                                    label: "Others"
-                                                }
+                                                }))
                                             ] as any
                                         }
                                         name="org_type"
@@ -266,6 +262,7 @@ export default function CollegePage() {
                                         onChange={(e: any) => {
                                             setSelectedOrgType(e.value);
                                         }}
+                                        required
                                     />
                                 ) : null}
                                 {isCollege ? (
