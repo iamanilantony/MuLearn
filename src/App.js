@@ -54,6 +54,7 @@ import Pathway from "./Pages/Pathway/Pathway";
 import EnablersPage from "./Pages/EnablersPage/EnablersPage";
 import In50Hours from "./Pages/In50Hours/In50Hours";
 import Manifesto from "./Pages/Manifesto/Manifesto";
+import InterestGroups from "./Pages/IG/InterestGroups";
 function App() {
   const [redirects, setRedirects] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -126,6 +127,7 @@ function App() {
             <Route path="/maveliportfolio" element={<MaveliPortfolio />} />
             <Route path="/wadhwani" element={<Wadhwani />} />
             <Route path="/manifesto" element={<Manifesto />} />
+            <Route path="/ig/:id" element={<InterestGroups />} />
 
             <Route path="/team">
               <Route path="" element={<Teams />} />
