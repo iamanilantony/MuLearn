@@ -9,8 +9,16 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
+import { useParams } from "react-router-dom";
+import { webdev } from "../data/web-dev";
+import { datascience } from "../data/datascience";
+import { gamedev } from "../data/gamedev";
+import { devops } from "../data/devops";
+import { cybersecurity } from "../data/cybersecurity";
 
 export default function Dashboard() {
+  const { id } = useParams();
+
   const mentors = [
     {
       name: "Shameem Hyder",
@@ -154,7 +162,19 @@ export default function Dashboard() {
       {/* new code start */}
       <div className="flex">
         <div className={styles.contentSide}>
-          <h1 className={styles.title}>Web Development</h1>
+          <h1 className={styles.title}>
+            {id === "web-dev"
+              ? webdev.title
+              : id === "datascience"
+              ? datascience.title
+              : id === "gamedev"
+              ? gamedev.title
+              : id === "devops"
+              ? devops.title
+              : id === "cybersecurity"
+              ? cybersecurity.title
+              : "Interest Group"}
+          </h1>
 
           <p className={styles.description}>
             Ever wondered how web development works? Learn everything about how
@@ -301,6 +321,21 @@ export default function Dashboard() {
           nec, cursus felis. Pellentesque et nunc vel nunc accumsan fermentum.
           Cras in lorem euismod, condimentum urna at, fermentum sapien.
         </p>
+      </Section>
+
+      {/* learning path */}
+      <Section className="w-full" title="Learning Path">
+        <div className=" max-w-6xl mx-auto px-4 py-8">
+          <div className="w-full border rounded-lg overflow-hidden bg-white">
+            <iframe
+              src={`https://roadmap.sh/r/embed?id=6738b39ff20970fd484189ca`}
+              width="100%"
+              height="900px"
+              frameBorder="0"
+              title="Roadmap Preview"
+            />
+          </div>
+        </div>
       </Section>
       {/* new code end */}
 
