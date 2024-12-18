@@ -15,6 +15,7 @@ import { datascience } from "../data/datascience";
 import { gamedev } from "../data/gamedev";
 import { devops } from "../data/devops";
 import { cybersecurity } from "../data/cybersecurity";
+import { useEffect, useState } from "react";
 
 export default function Dashboard() {
   const { id } = useParams();
@@ -23,27 +24,27 @@ export default function Dashboard() {
     {
       name: "Shameem Hyder",
       role: "Founder & CEO, Programmer",
-      imageUrl: "/placeholder.svg?height=48&width=48",
+      imageUrl: null,
     },
     {
       name: "Arjun A G",
       role: "Software Engineer (Lead/Sr), Programmer",
-      imageUrl: "/placeholder.svg?height=48&width=48",
+      imageUrl: null,
     },
     {
       name: "Altaf Shaikh",
       role: "Web Development",
-      imageUrl: "/placeholder.svg?height=48&width=48",
+      imageUrl: null,
     },
     {
       name: "Ganesh Kumar",
       role: "Web Development",
-      imageUrl: "/placeholder.svg?height=48&width=48",
+      imageUrl: null,
     },
     {
       name: "Mujeed Rahman",
       role: "Web Development",
-      imageUrl: "/placeholder.svg?height=48&width=48",
+      imageUrl: null,
     },
   ];
 
@@ -156,11 +157,20 @@ export default function Dashboard() {
     },
   ];
   // code for learning circles end
+  const [ismobile, setismobile] = useState(true);
+  useEffect(() => {
+    const handleResize = () => {
+      setismobile(window.innerWidth <= 768);
+    };
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
-    <div className={`${styles.container} min-h-screen p-4 md:p-8`}>
+    <div className={`${styles.container} min-h-screen p-8 md:p-12 w-full `}>
       {/* new code start */}
-      <div className="flex">
+      <div className="flex text-left">
         <div className={styles.contentSide}>
           <h1 className={styles.title}>
             {id === "web-dev"
@@ -194,7 +204,9 @@ export default function Dashboard() {
 
           <button className={styles.primaryButton}>Discover More</button>
         </div>
-        <div className={styles.imageSide}>
+        <div
+          className={`flex-1 min-w-[300px] flex justify-center items-center max-md:hidden`}
+        >
           <div className={styles.heroImage}>
             <img
               src={fvimg}
@@ -206,16 +218,19 @@ export default function Dashboard() {
       </div>
       <div className="py-4 md:py-8">
         {/* Section Title */}
-        <h2 className="text-2xl font-bold text-orange-500 mb-4 md:mb-6 ml-0 text-left">
+        <h2 className="text-2xl font-bold text-[#F6842C] mb-4 md:mb-6 ml-0 text-left text-nowrap">
           Community Partners
         </h2>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+        <div className="flex max-sm:flex-col gap-8">
           {/* Placeholder Boxes */}
           {[...Array(4)].map((_, index) => (
             <div
+              style={{
+                boxShadow: "0px 0px 24px rgba(0, 0, 0, 0.3)",
+              }}
               key={index}
-              className="flex flex-col items-center shadow-lg rounded-lg p-2 md:p-4"
+              className="flex flex-col items-center  rounded-lg p-4 md:p-8"
             >
               <img
                 className="w-full max-w-[200px]"
@@ -228,27 +243,29 @@ export default function Dashboard() {
       </div>
 
       {/* learning circle div */}
-      <div className="w-full max-w-[90rem]">
-        <h2 className="text-2xl font-bold text-orange-500 mb-4 md:mb-6 ml-0 text-left">
+      <div className="w-full">
+        <h2 className="text-2xl font-bold text-[#F6842C] mb-4 md:mb-6 ml-0 text-left">
           Learning Circles
         </h2>
 
         <div className="">
           <Swiper
             spaceBetween={20}
-            slidesPerView={3}
+            slidesPerView={ismobile ? 1 : 3}
             breakpoints={{
               640: { slidesPerView: 2 },
               1024: { slidesPerView: 3 },
             }}
-            navigation
             modules={[Navigation, Pagination]}
           >
             {learningCircles.map((circle) => (
               <SwiperSlide>
                 <div
+                  style={{
+                    boxShadow: "0px 0px 24px rgba(0, 0, 0, 0.3)",
+                  }}
                   key={circle.id}
-                  className="w-full  flex-shrink-0 bg-white rounded-lg drop-shadow-xl my-4 p-6"
+                  className="w-full m-8 flex-shrink-0 bg-white rounded-lg p-6"
                 >
                   <h3 className="text-xl font-semibold mb-2">{circle.title}</h3>
                   <p className="text-gray-600 text-sm mb-4">
@@ -282,17 +299,19 @@ export default function Dashboard() {
 
       {/* muchallengs */}
       <div className="py-4 md:py-8 w-full">
-        <h2 className="text-2xl font-bold text-orange-500 mb-4 md:mb-6 ml-0 text-left">
+        <h2 className="text-2xl font-bold text-[#F6842C] mb-4 md:mb-6 ml-0 text-left">
           µ Challenges
         </h2>
-        <div className="flex gap-4 md:gap-6 w-full">
-          {/* Placeholder Boxes */}
+        <div className="flex max-sm:flex-col gap-8 w-full">
           {[...Array(3)].map((_, index) => (
             <div
+              style={{
+                boxShadow: "0px 0px 24px rgba(0, 0, 0, 0.3)",
+              }}
               key={index}
-              className="flex flex-col items-center justify-center shadow-xl rounded-lg p-4 md:p-8 w-full gap-4 md:gap-8"
+              className="flex flex-col items-center justify-center rounded-lg p-4 md:p-8 w-full gap-4 md:gap-8"
             >
-              <div className="text-2xl md:text-4xl font-bold text-orange-500 text-center">
+              <div className="text-2xl md:text-4xl font-semibold text-[#F6842C] text-center pt-12">
                 Preview card <br />
                 component
               </div>
@@ -395,7 +414,7 @@ export default function Dashboard() {
             </ul>
           </Section>
 
-          <Section title="Top People to Follow">
+          <Section title="Top People to Follow ">
             <p className="text-gray-600">
               These are list of people you should be following/connecting to
               learn as well as stay updated!

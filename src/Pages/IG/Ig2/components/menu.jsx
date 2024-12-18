@@ -22,7 +22,7 @@ const ContentsMenu = () => {
       style={{
         boxShadow: "0px 0px 16px rgba(0, 0, 0, 0.1)",
       }}
-      className="p-4 rounded-md w-64 bg-white "
+      className="p-4 rounded-md sticky top-10 min-w-64 bg-white hidden md:block m-8"
     >
       {/* Heading */}
       <h2 className="text-xl font-bold text-orange-500 mb-4 text-left ml-0">
