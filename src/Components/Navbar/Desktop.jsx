@@ -24,8 +24,9 @@ export const Resources = ({ notificationOpen }) => {
           <ion-icon name="notifications-circle-outline"></ion-icon>
         </div>
         <div
-          className={`notifications group-hover:lg:block hover:lg:block z-10 ${notificationOpen ? "block" : "hidden"
-            }`}
+          className={`notifications group-hover:lg:block hover:lg:block z-10 ${
+            notificationOpen ? "block" : "hidden"
+          }`}
         >
           <Notification />
         </div>
@@ -48,7 +49,7 @@ export const Resources = ({ notificationOpen }) => {
         className="py-7 px-3 inline-block"
       >
         <button className="border-2 border-muorange text-muorange px-6 py-2 rounded-md">
-         Donate
+          Donate
         </button>
       </a>
     </div>
@@ -65,7 +66,6 @@ export const MenuName = ({ name }) => {
 };
 
 export const SubMenu = ({ submenu, sublinks }) => {
-
   return (
     <>
       {submenu && (
@@ -90,12 +90,13 @@ export const SubMenu = ({ submenu, sublinks }) => {
 export const SubHeader = ({ link, name }) => {
   return (
     <h1 className="text-lg font-medium drop-shadow-sm opacity-100">
-      <div className="hover:text-orange-500 " >
+      <div className="hover:text-orange-500 ">
         {link ? (
-          <Link to={link.includes("https") ? '' : link}
+          <Link
+            to={link.includes("https") ? "" : link}
             onClick={() => {
-              if (link.includes('https')) {
-                window.open(link, '_blank');
+              if (link.includes("https")) {
+                window.open(link, "_blank");
               }
             }}
             style={{ color: "#000" }}

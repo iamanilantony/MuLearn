@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 import { DesktopMenu, Resources } from "./Desktop";
 import { MobileTopBar, MobileMenu } from "./Mobile";
 
-
-
 const Navbar = () => {
   function handleScrolling(setter) {
     if (setter) document.body.style.overflow = "unset";
@@ -16,9 +14,13 @@ const Navbar = () => {
   const [notificationOpen, setNotificationOpen] = useState(false);
   return (
     <>
-      <nav className="bg-white " >
+      <nav className="bg-white w-full ">
         <div className="flex items-center font-medium justify-around">
-          <div className={`mobile-nav-bar lg:w-auto w-full ${open ? "absolute top-1" : ""}`}>
+          <div
+            className={`mobile-nav-bar lg:w-auto w-full ${
+              open ? "absolute top-1" : ""
+            }`}
+          >
             <Logo />
             <MobileTopBar
               setNotificationOpen={setNotificationOpen}
@@ -28,10 +30,7 @@ const Navbar = () => {
               open={open}
             />
           </div>
-          <DesktopMenu
-            notificationOpen={notificationOpen}
-            open={open}
-          />
+          <DesktopMenu notificationOpen={notificationOpen} open={open} />
           <Resources notificationOpen={notificationOpen} />
           <MobileMenu
             setNotificationOpen={setNotificationOpen}
@@ -55,6 +54,6 @@ const Logo = () => {
         className="lg:cursor-pointer h-8 z-0 mt-[-.5rem]"
       />
     </Link>
-  )
-}
+  );
+};
 export default Navbar;
