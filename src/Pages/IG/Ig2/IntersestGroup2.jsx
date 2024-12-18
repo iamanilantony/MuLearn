@@ -168,7 +168,7 @@ export default function Dashboard() {
   }, []);
 
   return (
-    <div className={`${styles.container} min-h-screen p-8 md:p-12 w-full `}>
+    <div className={`${styles.container} min-h-screen w-full flex-1`}>
       {/* new code start */}
       <div className="flex text-left">
         <div className={styles.contentSide}>
@@ -205,7 +205,7 @@ export default function Dashboard() {
           <button className={styles.primaryButton}>Discover More</button>
         </div>
         <div
-          className={`flex-1 min-w-[300px] flex justify-center items-center max-md:hidden`}
+          className={`flex-1 lg: min-w-[300px] flex justify-center items-center max-lg:hidden`}
         >
           <div className={styles.heroImage}>
             <img

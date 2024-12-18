@@ -271,4 +271,10 @@
   }
 }
 
+.flex-1 {
+  flex: 1;
+}
 
+.overflow-auto {
+  overflow: auto;
+}
