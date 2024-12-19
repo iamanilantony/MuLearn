@@ -170,7 +170,7 @@ export default function Dashboard() {
   return (
     <div className={`${styles.container} min-h-screen w-full flex-1`}>
       {/* new code start */}
-      <div className="flex text-left">
+      <div className="flex text-left w-full mb-8">
         <div className={styles.contentSide}>
           <h1 className={styles.title}>
             {id === "web-dev"
@@ -218,7 +218,7 @@ export default function Dashboard() {
       </div>
       <div className="py-4 md:py-8">
         {/* Section Title */}
-        <h2 className="text-2xl font-bold text-[#F6842C] mb-4 md:mb-6 ml-0 text-left text-nowrap">
+        <h2 className="text-2xl font-bold text-[#FF6B35] my-4 md:my-6 ml-0 text-left text-nowrap">
           Community Partners
         </h2>
 
@@ -243,8 +243,8 @@ export default function Dashboard() {
       </div>
 
       {/* learning circle div */}
-      <div className="w-full">
-        <h2 className="text-2xl font-bold text-[#F6842C] mb-4 md:mb-6 ml-0 text-left">
+      <div className="w-full py-4 md:py-8">
+        <h2 className="text-2xl font-bold text-[#FF6B35] my-4 md:my-6 ml-0 text-left">
           Learning Circles
         </h2>
 
@@ -299,7 +299,7 @@ export default function Dashboard() {
 
       {/* muchallengs */}
       <div className="py-4 md:py-8 w-full">
-        <h2 className="text-2xl font-bold text-[#F6842C] mb-4 md:mb-6 ml-0 text-left">
+        <h2 className="text-2xl font-bold text-[#FF6B35] my-4 md:my-6 ml-0 text-left">
           µ Challenges
         </h2>
         <div className="flex max-sm:flex-col gap-8 w-full">
@@ -311,7 +311,7 @@ export default function Dashboard() {
               key={index}
               className="flex flex-col items-center justify-center rounded-lg p-4 md:p-8 w-full gap-4 md:gap-8"
             >
-              <div className="text-2xl md:text-4xl font-semibold text-[#F6842C] text-center pt-12">
+              <div className="text-2xl md:text-4xl font-semibold text-[#FF6B35] text-center pt-12">
                 Preview card <br />
                 component
               </div>
