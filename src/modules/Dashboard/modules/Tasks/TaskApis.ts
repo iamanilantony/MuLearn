@@ -112,9 +112,15 @@ export const editTask = async (
     bonus_karma?: string
 ) => {
     try {
-        const formattedBonusTime = (bonus_time && bonus_time != "")
-            ? new Date(bonus_time).toISOString() // Convert bonus_time to ISO format
-            : null;
+        let formattedBonusTime: string | null;
+        try {
+            formattedBonusTime = (bonus_time && bonus_time !== "")
+                ? new Date(bonus_time).toISOString() // Convert bonus_time to ISO format
+                : null;
+        } catch (error) {
+            console.error("Error converting bonus_time to ISO format:", error);
+            formattedBonusTime = null; // Fallback value in case of an error
+        }
 
         const response = await privateGateway.put(
             dashboardRoutes.getTasksData + id,
