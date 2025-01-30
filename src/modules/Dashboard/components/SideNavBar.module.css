@@ -94,7 +94,7 @@
 .side_nav_bar_main_items {
     overflow-y: scroll;
     width: 100%;
-    max-width: 250px;
+    max-width: 240px;
 }
 
 .side_nav_bar_item :hover {
@@ -142,7 +142,7 @@
 .right_side .top_nav .nav .nav_items .greetings {
     font-size: 22px;
     font-weight: 600;
-    color: #456ff6;
+    color: #525254;
 }
 
 .mulearn_brand2 svg {

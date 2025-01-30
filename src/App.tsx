@@ -349,6 +349,7 @@ function App() {
                     path: "/dashboard",
                     element: <DashboardRootLayout />,
                     children: [
+                        { path: "home", element: <ProfileV2 /> },
                         { path: "profile", element: <Profile /> },
                         { path: "profileV2", element: <ProfileV2 /> },
                         {

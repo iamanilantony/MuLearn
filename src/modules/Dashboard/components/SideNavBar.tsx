@@ -85,7 +85,7 @@ const SideNavBar = ({ sidebarButtons }: Props) => {
             <div
                 id="side_nav"
                 className={styles.side_nav_bar_container}
-                style={{ display: `${sideNavDisplay}` }}
+                style={{ display: `${sideNavDisplay}` , marginLeft: "20px"}}
             >
                 <div className={styles.side_nav_bar}>
                     <div className={styles.mulearn_brand}>

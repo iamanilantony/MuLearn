@@ -4,6 +4,9 @@ import SideNavBar from "../components/SideNavBar";
 import TopNavBar from "../components/TopNavBar";
 import { Suspense, useEffect, useState } from "react";
 // import companyButtons from "../utils/userwiseButtonsData/companyButtons";
+import { FaMagnifyingGlass, FaMapLocationDot, FaWandMagicSparkles } from "react-icons/fa6";
+import { IoGlobeOutline } from "react-icons/io5";
+import { CiGlobe } from "react-icons/ci";
 // import userButtons from "../utils/userwiseButtonsData/userButtons";
 import { roles, managementTypes } from "@/MuLearnServices/types";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
@@ -26,8 +29,8 @@ const DashboardRootLayout = (props: { component?: any }) => {
 
     const buttons = [
         {
-            url: "/dashboard/profile",
-            title: "Profile",
+            url: "/dashboard/home",
+            title: "Home",
             hasView: true,
             icon: <i className="fi fi-sr-clipboard-user"></i>
         },
@@ -47,12 +50,44 @@ const DashboardRootLayout = (props: { component?: any }) => {
         },
         {
             url: "/dashboard/hackathon",
-            title: "Hackathon",
+            title: "Search",
             hasView: true,
             roles: [roles.ADMIN],
             dynamicType: [managementTypes.HACKATHON],
-            icon: <i className="fi fi-sr-head-side-thinking"></i>
+            icon: <FaMagnifyingGlass/>
         },
+        {
+            url: "/dashboard/hackathon",
+            title: "Learning Paths",
+            hasView: true,
+            roles: [roles.ADMIN],
+            dynamicType: [managementTypes.HACKATHON],
+            icon: <FaMapLocationDot/>
+        },
+        {
+            url: "/dashboard/hackathon",
+            title: "Mentors",
+            hasView: true,
+            roles: [roles.ADMIN],
+            dynamicType: [managementTypes.HACKATHON],
+            icon: <FaWandMagicSparkles/>
+        },
+        {
+            url: "/dashboard/hackathon",
+            title: "Communities",
+            hasView: true,
+            roles: [roles.ADMIN],
+            dynamicType: [managementTypes.HACKATHON],
+            icon: <IoGlobeOutline />
+        },
+        // {
+        //     url: "/dashboard/hackathon",
+        //     title: "Hackathon",
+        //     hasView: true,
+        //     roles: [roles.ADMIN],
+        //     dynamicType: [managementTypes.HACKATHON],
+        //     icon: <i className="fi fi-sr-head-side-thinking"></i>
+        // },
         {
             url: "/dashboard/learningcircle",
             title: "Learning Circle",
@@ -60,22 +95,36 @@ const DashboardRootLayout = (props: { component?: any }) => {
             icon: <i className="fi fi-sr-books"></i>
         },
         {
-            url: "/dashboard/wadhwani",
-            title: "Wadhwani",
+            url: "",
+            title: "Courses",
             hasView: true,
-            icon: <i className="fi fi-sr-building"></i>
+            icon: <i className="fi fi-sr-building"></i>,
+            children: [
+                {
+                    url: "/dashboard/wadhwani",
+                    title: "Wadhwani",
+                    hasView: true,
+                    icon: <i className="fi fi-sr-building"></i>
+                },
+                {
+                    url: "/dashboard/opengrad",
+                    title: "OpenGrad",
+                    hasView: true,
+                    icon: <i className="fi fi-sr-building"></i>
+                },
+            ]
         },
+        // {
+        //     url: "/dashboard/refer",
+        //     title: "Referrals",
+        //     hasView: true,
+        //     icon: <i className="fi fi-sr-building"></i>
+        // },
         {
-            url: "/dashboard/opengrad",
-            title: "OpenGrad",
+            url: "/dashboard/profile",
+            title: "Profile",
             hasView: true,
-            icon: <i className="fi fi-sr-building"></i>
-        },
-        {
-            url: "/dashboard/refer",
-            title: "Referrals",
-            hasView: true,
-            icon: <i className="fi fi-sr-building"></i>
+            icon: <i className="fi fi-sr-clipboard-user"></i>
         },
         {
             url: "",

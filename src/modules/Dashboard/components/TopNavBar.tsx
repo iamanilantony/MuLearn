@@ -71,7 +71,7 @@ const TopNavBar = () => {
             <div id="top_nav" className={styles.top_nav}>
                 <div className={styles.nav}>
                     <div className={styles.nav_items}>
-                        <b className={styles.greetings}>Hello, {name} 👋</b>
+                        <b className={styles.greetings}><i>Hello</i>, <b>{name}</b> 👋</b>
                         <div className={styles.mulearn_brand2}></div>
                         <div className={styles.menu}>
                             <a
