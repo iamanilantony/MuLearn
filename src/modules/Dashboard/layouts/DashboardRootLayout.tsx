@@ -61,8 +61,6 @@ const DashboardRootLayout = (props: { component?: any }) => {
             url: "/dashboard/learning-paths",
             title: "Learning Paths",
             hasView: true,
-            roles: [roles.ADMIN],
-            dynamicType: [managementTypes.HACKATHON],
             icon: <FaMapLocationDot/>
         },
         {

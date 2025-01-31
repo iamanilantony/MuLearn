@@ -4,12 +4,14 @@ import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { Option } from "@/MuLearnComponents/FormikComponents/FormikComponents";
 import { Data } from "@/MuLearnComponents/Table/Table";
 import { NavigateFunction } from "react-router-dom";
-import LearningCirclesList from "./LearningCirclesList";
+import LearningPathListData from "./LearningPathList";
+import LearningPathOneListData from "../services/LearningPathListOne";
 import {
     ColumnDefinition,
     HackList,
     HackathonApplication,
-    LearningPathList
+    LearningPathList,
+    SingleLearningPath
 } from "./LearningPathInterfaces";
 import { formatErrorMessage, transformData } from "./HackathonUtils";
 import toast from "react-hot-toast";
@@ -19,7 +21,19 @@ export const getLearningPaths = async (setData: UseStateFunc<LearningPathList[]>
         // const response = await privateGateway.get(
         //     dashboardRoutes.getHackathons
         // );
-        const defaultForm: any = LearningCirclesList;
+        const defaultForm: any = LearningPathListData;
+        setData(defaultForm);
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+    }
+};
+
+export const getLearningPathOne = async (id: string, setData: UseStateFunc<SingleLearningPath>) => {
+    try {
+        // const response = await privateGateway.get(
+        //     dashboardRoutes.getHackathons
+        // );
+        const defaultForm: any = LearningPathOneListData.find(lpOne => lpOne.id === id);
         setData(defaultForm);
     } catch (err: unknown) {
         const error = err as AxiosError;

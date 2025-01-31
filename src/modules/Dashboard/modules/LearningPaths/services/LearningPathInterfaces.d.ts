@@ -32,7 +32,34 @@ type LearningPathList = {
     ig: string | null
     learners: number | null
     status: string
-    
+
+}
+interface Topic {
+    title: string;
+    code: string;
+    content: Content[];
+}
+
+interface Content {
+    title: string;
+    url: string;
+    content: Content[]
+}
+
+interface SingleLearningPath {
+    id: string;
+    title: string;
+    desc: string;
+    overview: string;
+    learnings: string[];
+    level: number;
+    skills: string[];
+    projects: string[];
+    mainTopics: string[];
+    ig: string;
+    learners: number;
+    mentors: number;
+    topics: Topic[];
 }
 
 interface HackathonApplication {

@@ -31,7 +31,7 @@ export const MuButton = (props: {
                 //         ? "#DEE6FF"
                 //         : "",
                 color:
-                    `${props.buttonUrl}` === window.location.pathname
+                    window.location.pathname.includes(props.buttonUrl || 'no url')
                         ? "#5570F1"
                         : "#525254",
                 width: props.isMinWidth ? "fit-content" : "",

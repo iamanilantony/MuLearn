@@ -59,6 +59,7 @@ import UserInterest from "./modules/Common/Authentication/pages/Onboarding/UserI
 import PathFinder from "./modules/Common/Authentication/pages/Onboarding/PathFinder/PathFinder";
 import RegisterPage from "./modules/Common/Authentication/pages/Onboarding/Register/Register";
 import LearningPaths from "./modules/Dashboard/modules/LearningPaths/pages/LearningPaths";
+import LearningPathOne from "./modules/Dashboard/modules/LearningPaths/pages/LearningPathOne/LearningPathOne";
 
 const Profile = lazy(
     () => import("./modules/Dashboard/modules/Profile/pages/Profile")
@@ -653,10 +654,13 @@ function App() {
                         {
                             path: "learning-paths",
                             element: (
-                                <AuthChecker
-                                    roles={[roles.ADMIN]}
-                                    children={<LearningPaths />}
-                                />
+                                <LearningPaths />
+                            )
+                        },
+                        {
+                            path: "learning-paths/:id",
+                            element: (
+                                <LearningPathOne/>
                             )
                         },
                         {
