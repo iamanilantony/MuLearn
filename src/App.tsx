@@ -58,6 +58,7 @@ import LCReport from "./modules/Dashboard/modules/LearningCircleV2/pages/LCRepor
 import UserInterest from "./modules/Common/Authentication/pages/Onboarding/UserInterest/UserInterest";
 import PathFinder from "./modules/Common/Authentication/pages/Onboarding/PathFinder/PathFinder";
 import RegisterPage from "./modules/Common/Authentication/pages/Onboarding/Register/Register";
+import LearningPaths from "./modules/Dashboard/modules/LearningPaths/pages/LearningPaths";
 
 const Profile = lazy(
     () => import("./modules/Dashboard/modules/Profile/pages/Profile")
@@ -646,6 +647,15 @@ function App() {
                                 <AuthChecker
                                     roles={[roles.ADMIN]}
                                     children={<Hackathon />}
+                                />
+                            )
+                        },
+                        {
+                            path: "learning-paths",
+                            element: (
+                                <AuthChecker
+                                    roles={[roles.ADMIN]}
+                                    children={<LearningPaths />}
                                 />
                             )
                         },
