@@ -61,9 +61,9 @@ const LearningPathTable: React.FC<LearningPathDataProps> = ({ learningPathData }
                                 <div className={styles.tableHeader}>
                                     <div>Problem Link</div>
                                     <div>Done</div>
-                                    <div>Bookmark</div>
+                                    <div>Proof Of Work</div>
                                     <div>Notes</div>
-                                    <div>Code</div>
+                                    <div>Status</div>
                                 </div>
 
                                 {learningPathData && (

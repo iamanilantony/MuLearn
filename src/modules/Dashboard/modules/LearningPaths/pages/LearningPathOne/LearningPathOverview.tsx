@@ -4,14 +4,18 @@ import styles from "./LearningPathOne.module.css";
 import { getDateDifference } from "/src/modules/Dashboard/utils/utils";
 import { Avatar } from "@chakra-ui/react";
 import { FaChevronRight } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import { getMeetups } from "../../../LearningCircleV2/services/LearningCircleAPIs";
 
 const LearningPathOverview = ({learningPathData, setActiveSection}: {learningPathData: SingleLearningPath, setActiveSection: React.Dispatch<React.SetStateAction<string>>}) => {
 
-    const learningCircles = [
-        { title: 'CET Java Learning Group', date: new Date('26 Feb 25'), learners: 4 },
-        { title: 'Java Learners Evening Club', date: new Date('26 Feb 25'), learners: 4 },
-        { title: 'Anil Sir teacing Java', date: new Date('26 Feb 25'), learners: 4 },
-    ]
+    const [learningCirclesData, setLearningCirclesData] = useState<CircleMeetupInfo[]>([]);
+
+    useEffect(() => {
+        getMeetups().then(res => {
+            setLearningCirclesData(res.slice(0, 3));
+        });
+    }, [])    
 
     return (
 
@@ -95,16 +99,18 @@ const LearningPathOverview = ({learningPathData, setActiveSection}: {learningPat
                         </div>
                         <div>
                             {
-                                learningCircles.map((lc, index) => (
+                                learningCirclesData.map((lc, index) => (
                                     <div key={index} className={styles.lcCards}>
                                         <div className={styles.lcCardData}>
-                                            <Avatar size="xs" name="Sage" style={{ marginBottom: '0' }} src="https://bit.ly/sage-adebayo" />
-                                            <p className={styles.lcCardTitle} style={{ fontWeight: '700', marginTop: '2px' }}>{lc.title}</p>
+                                            <div style={{display:'flex'}}>
+                                                <Avatar size="xs" name="Sage" style={{ marginBottom: '0', marginRight: '5px' }} src="https://bit.ly/sage-adebayo" />
+                                                <p className={styles.lcCardTitle} style={{ fontWeight: '700', marginTop: '2px' }}>{lc.title}</p>
+                                            </div>
                                             <FaChevronRight style={{ marginBottom: '0', marginTop: '6px' }} />
                                         </div>
                                         <div className={styles.lcCardInfo}>
                                             <span style={{ fontSize: '0.7rem', marginBottom: '0', fontWeight: '400' }}>4 Peers Are joining</span>
-                                            <p className={styles.lcCardDate} style={{ fontSize: '0.75rem', marginTop: '0', fontWeight: '600' }}>{getDateDifference(lc.date)}</p>
+                                            <p className={styles.lcCardDate} style={{ fontSize: '0.75rem', marginTop: '0', fontWeight: '600' }}>{getDateDifference(lc.meet_time)}</p>
                                             {/* <p className={styles.lcCardTitle}>{lc.learners} Learners Are joining</p> */}
                                         </div>
                                     </div>
@@ -112,7 +118,7 @@ const LearningPathOverview = ({learningPathData, setActiveSection}: {learningPat
                             }
                         </div>
                         <div className={styles.cardFooter}>
-                            <button><a href="https://discord.com/invite/gtech-mulearn-771670169691881483" target="_blank" rel="noreferrer">Explore More</a></button>
+                            <button onClick={()=> setActiveSection('Learning Circles')}>Explore More</button>
                         </div>
 
                     </div>

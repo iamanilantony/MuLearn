@@ -10,6 +10,7 @@ import { Avatar, AvatarGroup } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import LearningPathTable from "./LearningPathTable";
 import LearningPathOverview from "./LearningPathOverview";
+import LearningCircles from "./LearningCircles";
 
 const LearningPathOne = () => {
     const [activeTopic, setActiveTopic] = useState('');
@@ -126,7 +127,7 @@ const LearningPathOne = () => {
             {
                 activeSection === 'Learning Circles' && (
                     <div>
-
+                        <LearningCircles />
                     </div>
                 )
             }

@@ -35,26 +35,16 @@ const DashboardRootLayout = (props: { component?: any }) => {
             hasView: true,
             icon: <i className="fi fi-sr-clipboard-user"></i>
         },
+        // {
+        //     url: "/dashboard/connect-discord",
+        //     title: "Connect Discord",
+        //     hasView: !connected,
+        //     icon: <i className="fi fi-sr-data-transfer"></i>
+        // },
         {
-            url: "/dashboard/connect-discord",
-            title: "Connect Discord",
-            hasView: !connected,
-            icon: <i className="fi fi-sr-data-transfer"></i>
-        },
-        {
-            url: "/dashboard/campus-details",
-            title: "Campus Details",
-            hasView: true,
-            roles: [roles.CAMPUS_LEAD, roles.LEAD_ENABLER],
-            dynamicType: [managementTypes.CAMPUS],
-            icon: <i className="fi fi-sr-book-arrow-right"></i>
-        },
-        {
-            url: "/dashboard/hackathon",
+            url: "/dashboard/search",
             title: "Search",
             hasView: true,
-            roles: [roles.ADMIN],
-            dynamicType: [managementTypes.HACKATHON],
             icon: <FaMagnifyingGlass/>
         },
         {
@@ -64,29 +54,17 @@ const DashboardRootLayout = (props: { component?: any }) => {
             icon: <FaMapLocationDot/>
         },
         {
-            url: "/dashboard/hackathon",
+            url: "/dashboard/mentors",
             title: "Mentors",
             hasView: true,
-            roles: [roles.ADMIN],
-            dynamicType: [managementTypes.HACKATHON],
             icon: <FaWandMagicSparkles/>
         },
         {
-            url: "/dashboard/hackathon",
-            title: "Communities",
+            url: "/dashboard/special-events",
+            title: "Special Events",
             hasView: true,
-            roles: [roles.ADMIN],
-            dynamicType: [managementTypes.HACKATHON],
             icon: <IoGlobeOutline />
         },
-        // {
-        //     url: "/dashboard/hackathon",
-        //     title: "Hackathon",
-        //     hasView: true,
-        //     roles: [roles.ADMIN],
-        //     dynamicType: [managementTypes.HACKATHON],
-        //     icon: <i className="fi fi-sr-head-side-thinking"></i>
-        // },
         {
             url: "/dashboard/learningcircle",
             title: "Learning Circle",
@@ -94,7 +72,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
             icon: <i className="fi fi-sr-books"></i>
         },
         {
-            url: "",
+            url: "/dashboard/courses",
             title: "Courses",
             hasView: true,
             icon: <i className="fi fi-sr-building"></i>,
@@ -120,13 +98,13 @@ const DashboardRootLayout = (props: { component?: any }) => {
         //     icon: <i className="fi fi-sr-building"></i>
         // },
         {
-            url: "/dashboard/profile",
+            url: "/dashboard/bootcamps",
             title: "Bootcamps",
             hasView: true,
             icon: <FaUserFriends/>
         },
         {
-            url: "/dashboard/profile",
+            url: "/dashboard/muVerse",
             title: "μVerse",
             hasView: true,
             icon: <IoIosRocket/>
@@ -138,7 +116,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
             icon: <i className="fi fi-sr-clipboard-user"></i>
         },
         {
-            url: "",
+            url: "/dashboard/management",
             title: "Management",
             hasView: true,
             roles: [roles.ADMIN, roles.FELLOW, roles.ASSOCIATE],
@@ -334,17 +312,25 @@ const DashboardRootLayout = (props: { component?: any }) => {
             // ]
         },
         {
+            url: "/dashboard/campus-details",
+            title: "Campus Details",
+            hasView: true,
+            roles: [roles.CAMPUS_LEAD, roles.LEAD_ENABLER, roles.ADMIN],
+            // dynamicType: [managementTypes.CAMPUS],
+            icon: <i className="fi fi-sr-book-arrow-right"></i>
+        },
+        {
             url: "/dashboard/zonal-dashboard",
             title: "Zonal Dashboard",
             hasView: true,
-            roles: [roles.ZONAL_CAMPUS_LEAD],
+            roles: [roles.ZONAL_CAMPUS_LEAD, roles.ADMIN],
             icon: <i className="fi fi-sr-marker"></i>
         },
         {
             url: "/dashboard/district-dashboard",
             title: "District Dashbaord",
             hasView: true,
-            roles: [roles.DISTRICT_CAMPUS_LEAD],
+            roles: [roles.DISTRICT_CAMPUS_LEAD, roles.ADMIN],
             icon: <i className="fi fi-sr-map-marker"></i>
         }
     ];

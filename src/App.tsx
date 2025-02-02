@@ -60,6 +60,7 @@ import PathFinder from "./modules/Common/Authentication/pages/Onboarding/PathFin
 import RegisterPage from "./modules/Common/Authentication/pages/Onboarding/Register/Register";
 import LearningPaths from "./modules/Dashboard/modules/LearningPaths/pages/LearningPaths";
 import LearningPathOne from "./modules/Dashboard/modules/LearningPaths/pages/LearningPathOne/LearningPathOne";
+import ComingSoonPage from "./modules/Common/Authentication/pages/ComingSoon";
 
 const Profile = lazy(
     () => import("./modules/Dashboard/modules/Profile/pages/Profile")
@@ -354,6 +355,13 @@ function App() {
                         { path: "home", element: <ProfileV2 /> },
                         { path: "profile", element: <Profile /> },
                         { path: "profileV2", element: <ProfileV2 /> },
+                        { path: "search", element: <ComingSoonPage /> },
+                        { path: "mentors", element: <ComingSoonPage /> },
+                        { path: "special-events", element: <ComingSoonPage /> },
+                        { path: "bootcamps", element: <ComingSoonPage /> },
+                        { path: "courses", element: <ComingSoonPage /> },
+                        { path: "muverse", element: <ComingSoonPage /> },
+                        { path: "management", element: <ComingSoonPage /> },
                         {
                             path: "connect-discord",
                             element: <ConnectDiscord />

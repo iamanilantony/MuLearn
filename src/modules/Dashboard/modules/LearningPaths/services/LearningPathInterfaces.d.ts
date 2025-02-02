@@ -41,6 +41,7 @@ interface Topic {
 }
 
 interface Content {
+    id: Number;
     title: string;
     url: string;
     content: Content[]

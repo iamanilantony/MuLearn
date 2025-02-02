@@ -74,7 +74,7 @@ const LearningPaths = () => {
                     {/* Pagination Component */}
                     <div style={{marginTop: '40px'}}/>
                     {
-                        paginatedRoadmaps.length > perPage && (
+                        filteredRoadmaps.length > perPage && (
                             <Pagination
                                 currentPage={currentPage}
                                 totalPages={totalPages}
