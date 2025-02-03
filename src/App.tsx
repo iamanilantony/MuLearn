@@ -345,6 +345,13 @@ function App() {
         },
         // { path: "register/select-community", element: <CommunityPage /> },
         {
+            path: "/dashboard",
+            element: <DashboardRootLayout />,
+            children: [
+                { path: "learning-paths", element: <LearningPaths /> },
+            ]
+        },
+        {
             path: "/",
             element: <PrivateRoutes />,
             children: [
@@ -659,12 +666,12 @@ function App() {
                                 />
                             )
                         },
-                        {
-                            path: "learning-paths",
-                            element: (
-                                <LearningPaths />
-                            )
-                        },
+                        // {
+                        //     path: "learning-paths",
+                        //     element: (
+                        //         <LearningPaths />
+                        //     )
+                        // },
                         {
                             path: "learning-paths/:id",
                             element: (

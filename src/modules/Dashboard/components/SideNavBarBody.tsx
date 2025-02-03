@@ -1,6 +1,7 @@
 import { useEffect, useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { IoMdLogIn } from "react-icons/io";
 
 import {
     DropDownButtons,
@@ -55,6 +56,8 @@ const SideNavBarBody: React.FC<SideNavBarBodyProps> = ({ sidebarButtons, toggleS
     const toggleDropdown = (key: string) => {
         setDropDownState(prev => ({ ...prev, [key]: !prev[key] }));
     };
+
+    const refreshToken = localStorage.getItem("refreshToken");
 
     return (
         <div className={styles.side_nav_bar_items}>
@@ -119,19 +122,38 @@ const SideNavBarBody: React.FC<SideNavBarBodyProps> = ({ sidebarButtons, toggleS
                         // marginBottom: "0px"
                     }}
                 />
-                <MuButtonLight
-                    text="Logout"
-                    icon={<MuLogOut />}
-                    style={{
-                        backgroundColor: "#fff",
-                        color: "#FF7676"
-                    }}
-                    onClick={() => {
-                        localStorage.clear();
-                        toast.error("Logged Out, Redirecting to login page.");
-                        setTimeout(() => window.location.reload(), 900);
-                    }}
-                />
+                {
+                    refreshToken ? (
+                        <MuButtonLight
+                            text="Logout"
+                            icon={<MuLogOut />}
+                            style={{
+                                backgroundColor: "#fff",
+                                color: "#FF7676"
+                            }}
+                            onClick={() => {
+                                localStorage.clear();
+                                toast.error("Logged Out, Redirecting to login page.");
+                                setTimeout(() => window.location.reload(), 900);
+                            }}
+                        />
+                    ) : (
+                        <MuButtonLight
+                        text="LogIn"
+                        style={{
+                            backgroundColor: "#fff",
+                            color: "gray"
+                        }}
+                        // iconstyle={{marginRight: '1.2rem'}}
+                        icon={<IoMdLogIn style={{fontSize: '1.4rem'}}/>}
+                        onClick={() => {
+                            localStorage.clear();
+                            toast.error("Logged Out, Redirecting to login page.");
+                            setTimeout(() => window.location.reload(), 900);
+                        }}
+                    />
+                    )
+                }
             </div>
         </div>
     );
