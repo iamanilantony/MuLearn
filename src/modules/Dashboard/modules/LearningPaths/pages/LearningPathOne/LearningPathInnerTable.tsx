@@ -52,7 +52,7 @@ const LearningPathInnerTable = ({ content, expanded }: LearningPathInnerTablePar
     return (
         <>
             <div className={`${styles.lessonContainer} ${expanded ? styles.expanded : ""}`}>
-                {content && content.length > 0 ? (
+                {content && content?.length > 0 ? (
                     content.map((lesson: Content, lessonIndex) => (
                         <div key={lessonIndex} className={styles.lessonRow}>
                             <div className={styles.lessonLink}>
@@ -93,7 +93,7 @@ const LearningPathInnerTable = ({ content, expanded }: LearningPathInnerTablePar
                 isOpen={isModalOpen}
                 onClose={handleCloseModal}
                 contentId={selectedContentId}
-                existingProofUrl={content.find(c => c.id.toString() === selectedContentId)?.url}
+                existingProofUrl={content.find(c => c.id?.toString() === selectedContentId)?.url}
                 onSubmit={handleProofSubmit}
             />
         </>

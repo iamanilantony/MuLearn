@@ -301,25 +301,38 @@ function App() {
             path: "trivial-ideas",
             element: <Trivial />
         },
+        { path: "register/:role", element: <RegisterPage /> },
         {
-            path: "/",
-            element: <AuthRoutes />,
+            path: "register/",
             children: [
-                { path: "register/:role", element: <RegisterPage /> },
                 {
-                    path: "register/",
-                    children: [
-                        {
-                            path: "",
-                            element: <RegisterPage />
-                        }
-                    ]
-                },
-                { path: "login", element: <SignIn /> },
-                { path: "forgot-password", element: <ForgetPassword /> },
-                { path: "reset-password", element: <ResetPassword /> }
+                    path: "",
+                    element: <RegisterPage />
+                }
             ]
         },
+        { path: "login", element: <SignIn /> },
+        { path: "forgot-password", element: <ForgetPassword /> },
+        { path: "reset-password", element: <ResetPassword /> },
+        // {
+        //     path: "/",
+        //     element: <AuthRoutes />,
+        //     children: [
+        //         { path: "register/:role", element: <RegisterPage /> },
+        //         {
+        //             path: "register/",
+        //             children: [
+        //                 {
+        //                     path: "",
+        //                     element: <RegisterPage />
+        //                 }
+        //             ]
+        //         },
+        //         { path: "login", element: <SignIn /> },
+        //         { path: "forgot-password", element: <ForgetPassword /> },
+        //         { path: "reset-password", element: <ResetPassword /> }
+        //     ]
+        // },
         {
             path: "/register/interests",
             element: <UserInterest />
@@ -350,6 +363,21 @@ function App() {
             element: <DashboardRootLayout />,
             children: [
                 { path: "learning-paths", element: <LearningPaths /> },
+                {
+                    path: "learning-paths/:id",
+                    element: (
+                        <LearningPathOne/>
+                    )
+                },
+                {
+                    path: "learningcircle",
+                    element: <LearningCircleLanding />
+                },
+                { path: "search", element: <ComingSoonPage /> },
+                { path: "mentors", element: <ComingSoonPage /> },
+                { path: "special-events", element: <ComingSoonPage /> },
+                { path: "bootcamps", element: <ComingSoonPage /> },
+                { path: "courses", element: <ComingSoonPage /> },
             ]
         },
         {
@@ -363,11 +391,6 @@ function App() {
                         { path: "home", element: <ProfileV2 /> },
                         { path: "profile", element: <Profile /> },
                         { path: "profileV2", element: <ProfileV2 /> },
-                        { path: "search", element: <ComingSoonPage /> },
-                        { path: "mentors", element: <ComingSoonPage /> },
-                        { path: "special-events", element: <ComingSoonPage /> },
-                        { path: "bootcamps", element: <ComingSoonPage /> },
-                        { path: "courses", element: <ComingSoonPage /> },
                         { path: "muverse", element: <ComingSoonPage /> },
                         { path: "management", element: <ComingSoonPage /> },
                         {
@@ -674,12 +697,6 @@ function App() {
                         //     )
                         // },
                         {
-                            path: "learning-paths/:id",
-                            element: (
-                                <LearningPathOne/>
-                            )
-                        },
-                        {
                             path: "hackathon/edit/:id",
                             element: (
                                 <AuthChecker
@@ -763,10 +780,6 @@ function App() {
                         //     path: "learning-circle",
                         //     element: <LearningCircleLandingPage />
                         // },
-                        {
-                            path: "learningcircle",
-                            element: <LearningCircleLanding />
-                        },
                         {
                             path: "learningcircle/your-circles",
                             element: <YourLC />

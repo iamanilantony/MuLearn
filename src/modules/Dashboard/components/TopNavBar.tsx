@@ -132,7 +132,7 @@ const TopNavBar = () => {
 
                             }
 
-                            {refreshToken ? (
+                            {userSettings && (
                                 <div
                                     id="user_settings"
                                     className={styles.user_settings}
@@ -161,7 +161,8 @@ const TopNavBar = () => {
                                         }}
                                     />
                                 </div>
-                            ) :
+                            )}
+                            {!refreshToken &&
                                 <MuButtonLight
                                     text="LogIn"
                                     style={{

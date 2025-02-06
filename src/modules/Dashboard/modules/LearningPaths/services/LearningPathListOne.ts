@@ -990,26 +990,613 @@ export default [
                 ]
               }
             ]
-    },    
-    {
-        id: '2',
-        title: 'Full-Stack Web Development',
-        desc: 'Master HTML, CSS, JavaScript, React, Node.js, Express, MongoDB, and DevOps.',
-        level: 5,
-        tags: ['Web', 'React', 'Node.js'],
-        ig: 'Software',
-        learners: 430,
     },
     {
-        id: '3',
-        title: 'Python for Data Science',
-        desc: 'Learn Python, Pandas, NumPy, Matplotlib, Scikit-learn, and Machine Learning fundamentals.',
-        level: 4,
-        tags: ['Python', 'Data Science', 'ML'],
-        ig: 'Software',
-        learners: 370,
-    },
-    {
+      id: '2',
+      title: "Full-Stack Web Development",
+      desc: "Master HTML, CSS, JavaScript, React, Node.js, Express, MongoDB, and DevOps.",
+      overview: "This roadmap guides you through full-stack web development, starting from frontend basics to backend, databases, and deployment.",
+      learnings: [
+          "Build a solid foundation in HTML, CSS, and JavaScript for frontend development.",
+          "Learn React.js for creating modern, interactive user interfaces.",
+          "Master backend development with Node.js, Express.js, and MongoDB.",
+          "Gain experience in DevOps, testing, and deploying web applications."
+      ],
+      level: 5,
+      skills: ["HTML", "CSS", "JavaScript", "React", "Node.js", "MongoDB", "Express", "DevOps"],
+      projects: ["Portfolio Website", "E-commerce Platform", "Blog CMS", "Real-time Chat App"],
+      mainTopics: [
+          "Frontend Basics",
+          "JavaScript & DOM Manipulation",
+          "React.js",
+          "Backend Development",
+          "Databases",
+          "Authentication & Security",
+          "Testing & Debugging",
+          "DevOps & Deployment",
+          "System Design & Scalability"
+      ],
+      ig: "Software",
+      learners: 430,
+      mentors: 15,
+      topics: [
+          {
+              "code": "Frontend Basics",
+              "title": "HTML, CSS, and Responsive Design",
+              "content": [
+                  {
+                      "title": "Introduction to HTML & CSS",
+                      "content": [
+                          {
+                              "title": "HTML Basics",
+                              "url": "https://www.w3schools.com/html/html_intro.asp"
+                          },
+                          {
+                              "title": "CSS Basics & Styling Elements",
+                              "url": "https://www.w3schools.com/css/css_intro.asp"
+                          },
+                          {
+                              "title": "Responsive Design & Media Queries",
+                              "url": "https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Media_queries"
+                          }
+                      ]
+                  },
+                  {
+                      "title": "CSS Flexbox & Grid",
+                      "content": [
+                          {
+                              "title": "Mastering CSS Flexbox",
+                              "url": "https://css-tricks.com/snippets/css/a-guide-to-flexbox/"
+                          },
+                          {
+                              "title": "Understanding CSS Grid Layout",
+                              "url": "https://css-tricks.com/snippets/css/complete-guide-grid/"
+                          }
+                      ]
+                  }
+              ]
+          },
+          {
+              "code": "JavaScript & DOM Manipulation",
+              "title": "JavaScript Essentials",
+              "content": [
+                  {
+                      "title": "JavaScript Basics",
+                      "content": [
+                          {
+                              "title": "Introduction to JavaScript",
+                              "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Introduction"
+                          },
+                          {
+                              "title": "DOM Manipulation",
+                              "url": "https://www.w3schools.com/js/js_htmldom.asp"
+                          },
+                          {
+                              "title": "Event Handling in JavaScript",
+                              "url": "https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events"
+                          }
+                      ]
+                  }
+              ]
+          },
+          {
+              "code": "React.js",
+              "title": "Modern Frontend with React",
+              "content": [
+                  {
+                      "title": "Getting Started with React",
+                      "content": [
+                          {
+                              "title": "Introduction to React",
+                              "url": "https://react.dev/"
+                          },
+                          {
+                              "title": "Components and Props",
+                              "url": "https://react.dev/learn/your-first-component"
+                          },
+                          {
+                              "title": "State and Lifecycle",
+                              "url": "https://react.dev/learn/state-and-lifecycle"
+                          }
+                      ]
+                  }
+              ]
+          },
+          {
+              "code": "Backend Development",
+              "title": "Server-side Development with Node.js & Express.js",
+              "content": [
+                  {
+                      "title": "Node.js Basics",
+                      "content": [
+                          {
+                              "title": "Introduction to Node.js",
+                              "url": "https://nodejs.org/en/docs/guides/getting-started-guide"
+                          },
+                          {
+                              "title": "Creating an Express.js Server",
+                              "url": "https://expressjs.com/en/starter/hello-world.html"
+                          },
+                          {
+                              "title": "Handling API Requests with Express",
+                              "url": "https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/routes"
+                          }
+                      ]
+                  }
+              ]
+          },
+          {
+              "code": "Databases",
+              "title": "Working with MongoDB",
+              "content": [
+                  {
+                      "title": "Introduction to MongoDB",
+                      "url": "https://www.mongodb.com/docs/manual/introduction/"
+                  },
+                  {
+                      "title": "CRUD Operations with MongoDB",
+                      "url": "https://www.mongodb.com/docs/manual/crud/"
+                  }
+              ]
+          },
+          {
+              "code": "Authentication & Security",
+              "title": "Implementing User Authentication",
+              "content": [
+                  {
+                      "title": "Authentication with JWT",
+                      "url": "https://jwt.io/introduction/"
+                  },
+                  {
+                      "title": "Securing Web Applications",
+                      "url": "https://owasp.org/www-project-top-ten/"
+                  }
+              ]
+          },
+          {
+              "code": "Testing & Debugging",
+              "title": "Ensuring Code Quality",
+              "content": [
+                  {
+                      "title": "Introduction to Testing",
+                      "url": "https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Cross_browser_testing/Introduction"
+                  },
+                  {
+                      "title": "Unit Testing with Jest",
+                      "url": "https://jestjs.io/docs/getting-started"
+                  },
+                  {
+                      "title": "Debugging in Chrome DevTools",
+                      "url": "https://developer.chrome.com/docs/devtools/javascript/"
+                  }
+              ]
+          },
+          {
+              "code": "DevOps & Deployment",
+              "title": "Deploying and Managing Applications",
+              "content": [
+                  {
+                      "title": "Introduction to DevOps",
+                      "url": "https://aws.amazon.com/devops/what-is-devops/"
+                  },
+                  {
+                      "title": "Continuous Integration & Deployment",
+                      "url": "https://circleci.com/continuous-integration/"
+                  },
+                  {
+                      "title": "Deploying on AWS and Vercel",
+                      "url": "https://vercel.com/docs"
+                  }
+              ]
+          },
+          {
+              "code": "System Design & Scalability",
+              "title": "Building Scalable and Efficient Systems",
+              "content": [
+                  {
+                      "title": "Introduction to System Design",
+                      "url": "https://github.com/donnemartin/system-design-primer"
+                  },
+                  {
+                      "title": "Load Balancing & Caching",
+                      "url": "https://aws.amazon.com/caching/"
+                  },
+                  {
+                      "title": "Database Scaling Techniques",
+                      "url": "https://www.digitalocean.com/community/tutorial_series/database-scalability-best-practices"
+                  }
+            ]
+          },
+            {
+              "code": "Testing & Debugging",
+              "title": "Ensuring Code Quality",
+              "content": [
+                  {
+                      "title": "Introduction to Testing",
+                      "url": "https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Cross_browser_testing/Introduction"
+                  },
+                  {
+                      "title": "Unit Testing with Jest",
+                      "url": "https://jestjs.io/docs/getting-started"
+                  },
+                  {
+                      "title": "Debugging in Chrome DevTools",
+                      "url": "https://developer.chrome.com/docs/devtools/javascript/"
+                  }
+              ]
+          },
+          {
+              "code": "DevOps & Deployment",
+              "title": "Deploying and Managing Applications",
+              "content": [
+                  {
+                      "title": "Introduction to DevOps",
+                      "url": "https://aws.amazon.com/devops/what-is-devops/"
+                  },
+                  {
+                      "title": "Continuous Integration & Deployment",
+                      "url": "https://circleci.com/continuous-integration/"
+                  },
+                  {
+                      "title": "Deploying on AWS and Vercel",
+                      "url": "https://vercel.com/docs"
+                  }
+              ]
+          },
+          {
+              "code": "System Design & Scalability",
+              "title": "Building Scalable and Efficient Systems",
+              "content": [
+                  {
+                      "title": "Introduction to System Design",
+                      "url": "https://github.com/donnemartin/system-design-primer"
+                  },
+                  {
+                      "title": "Load Balancing & Caching",
+                      "url": "https://aws.amazon.com/caching/"
+                  },
+                  {
+                      "title": "Database Scaling Techniques",
+                      "url": "https://www.digitalocean.com/community/tutorial_series/database-scalability-best-practices"
+                  }
+                ]
+                }
+              ]
+            },
+            {
+              id: "3",
+              title: "Python for Data Science",
+              desc: "Learn Python, Pandas, NumPy, Matplotlib, Scikit-learn, and Machine Learning fundamentals.",
+              overview: "This roadmap provides a structured learning path for mastering Python for Data Science. It covers Python programming basics, data manipulation with Pandas and NumPy, data visualization, and an introduction to machine learning using Scikit-learn.",
+              learnings: [
+                  "Understand Python fundamentals and its application in data science.",
+                  "Learn data manipulation with Pandas and numerical computing with NumPy.",
+                  "Master data visualization using Matplotlib and Seaborn.",
+                  "Build and evaluate machine learning models using Scikit-learn."
+              ],
+              level: 4,
+              skills: ["Python", "Pandas", "NumPy", "Matplotlib", "Scikit-learn", "Machine Learning"],
+              projects: ["Data Analysis Project", "Exploratory Data Analysis (EDA) Project", "Predictive Model using Scikit-learn"],
+              mainTopics: [
+                  "Python Basics",
+                  "Data Handling with Pandas & NumPy",
+                  "Data Visualization",
+                  "Machine Learning Fundamentals",
+                  "Model Evaluation & Optimization"
+              ],
+              ig: "Software",
+              learners: 370,
+              mentors: 15,
+              topics: [
+                  {
+                      "code": "Python Basics",
+                      "title": "Python Fundamentals",
+                      "content": [
+                          {
+                              "title": "Introduction to Python",
+                              "content": [
+                                  { "title": "Why Python for Data Science?", "url": "https://www.geeksforgeeks.org/python-for-data-science/" },
+                                  { "title": "Installing Python and Setting Up Environment", "url": "https://realpython.com/installing-python/" },
+                                  { "title": "Python Basics: Variables, Data Types, and Operators", "url": "https://www.w3schools.com/python/python_variables.asp" }
+                              ]
+                          },
+                          {
+                              "title": "Control Structures and Functions",
+                              "content": [
+                                  { "title": "Conditionals and Loops", "url": "https://www.programiz.com/python-programming/if-elif-else" },
+                                  { "title": "Functions and Lambda Expressions", "url": "https://www.w3schools.com/python/python_functions.asp" }
+                              ]
+                          }
+                      ]
+                  },
+                  {
+                      "code": "Data Handling with Pandas & NumPy",
+                      "title": "Data Handling with Pandas & NumPy",
+                      "content": [
+                          {
+                              "title": "Introduction to Pandas",
+                              "content": [
+                                  { "title": "Pandas DataFrames and Series", "url": "https://pandas.pydata.org/docs/getting_started/intro_tutorials/01_table_oriented.html" },
+                                  { "title": "Data Cleaning and Manipulation", "url": "https://realpython.com/pandas-data-cleaning/" }
+                              ]
+                          },
+                          {
+                              "title": "NumPy for Numerical Computing",
+                              "content": [
+                                  { "title": "NumPy Arrays and Operations", "url": "https://numpy.org/doc/stable/user/absolute_beginners.html" },
+                                  { "title": "Matrix Operations with NumPy", "url": "https://www.geeksforgeeks.org/python-numpy/" }
+                              ]
+                          }
+                      ]
+                  },
+                  {
+                      "code": "Data Visualization",
+                      "title": "Data Visualization",
+                      "content": [
+                          {
+                              "title": "Matplotlib Basics",
+                              "content": [
+                                  { "title": "Creating Plots with Matplotlib", "url": "https://matplotlib.org/stable/tutorials/introductory/pyplot.html" },
+                                  { "title": "Customizing Plots", "url": "https://www.geeksforgeeks.org/matplotlib-tutorial/" }
+                              ]
+                          },
+                          {
+                              "title": "Seaborn for Statistical Data Visualization",
+                              "content": [
+                                  { "title": "Seaborn Basics", "url": "https://seaborn.pydata.org/tutorial.html" },
+                                  { "title": "Creating Advanced Visualizations", "url": "https://realpython.com/python-matplotlib-guide/" }
+                              ]
+                          }
+                      ]
+                  },
+                  {
+                      "code": "Machine Learning Fundamentals",
+                      "title": "Machine Learning Basics with Scikit-learn",
+                      "content": [
+                          {
+                              "title": "Introduction to Machine Learning",
+                              "content": [
+                                  { "title": "What is Machine Learning?", "url": "https://www.geeksforgeeks.org/machine-learning/" },
+                                  { "title": "Types of Machine Learning", "url": "https://www.analyticsvidhya.com/blog/2017/09/common-machine-learning-algorithms/" }
+                              ]
+                          },
+                          {
+                              "title": "Building Machine Learning Models",
+                              "content": [
+                                  { "title": "Linear Regression with Scikit-learn", "url": "https://scikit-learn.org/stable/modules/linear_model.html" },
+                                  { "title": "Classification with Decision Trees & Random Forests", "url": "https://scikit-learn.org/stable/modules/tree.html" }
+                              ]
+                          }
+                      ]
+                  },
+                  {
+                      "code": "Model Evaluation & Optimization",
+                      "title": "Model Evaluation & Optimization",
+                      "content": [
+                          {
+                              "title": "Evaluating Machine Learning Models",
+                              "content": [
+                                  { "title": "Confusion Matrix, Precision & Recall", "url": "https://www.datacamp.com/tutorial/precision-recall-classification-metrics" },
+                                  { "title": "Cross-Validation Techniques", "url": "https://scikit-learn.org/stable/modules/cross_validation.html" }
+                              ]
+                          },
+                          {
+                              "title": "Hyperparameter Tuning",
+                              "content": [
+                                  { "title": "Grid Search and Random Search", "url": "https://scikit-learn.org/stable/modules/grid_search.html" },
+                                  { "title": "Using Scikit-learn Pipelines", "url": "https://scikit-learn.org/stable/modules/compose.html" }
+                              ]
+                          }
+                      ]
+                  }
+              ]
+          },
+          {
+            id: "5",
+            title: "Game Development with Unreal Engine",
+            desc: "Learn Unreal Engine, C++ scripting, 2D & 3D game mechanics, and deployment.",
+            overview: "This roadmap covers Unreal Engine development from scratch, starting with the basics and gradually moving to advanced topics like C++ scripting, physics, AI, and deployment.",
+            learnings: [
+                "Understand the basics of Unreal Engine and its interface.",
+                "Learn Blueprints and C++ for scripting gameplay mechanics.",
+                "Develop 2D and 3D games with physics, animations, and AI.",
+                "Deploy games to PC, console, and mobile platforms."
+            ],
+            level: 4,
+            skills: ["Unreal Engine", "C++", "Blueprints", "Game Physics", "AI"],
+            projects: ["First-Person Shooter", "Platformer Game", "Racing Game", "Multiplayer Shooter"],
+            mainTopics: [
+                "Getting Started",
+                "Blueprints & C++",
+                "Game Mechanics",
+                "AI & Physics",
+                "Animation & UI",
+                "Multiplayer",
+                "Optimization & Deployment"
+            ],
+            ig: "Software",
+            learners: 300,
+            mentors: 10,
+            topics: [
+                {
+                    "code": "Getting Started",
+                    "title": "Introduction to Unreal Engine",
+                    "content": [
+                        {
+                            "title": "Unreal Engine Overview & Installation",
+                            "content": [
+                                {
+                                    "title": "Introduction to Unreal Engine",
+                                    "url": "https://www.unrealengine.com/en-US/what-is-unreal-engine"
+                                },
+                                {
+                                    "title": "Installing Unreal Engine & Setting Up",
+                                    "url": "https://www.unrealengine.com/en-US/download"
+                                },
+                                {
+                                    "title": "Navigating the Unreal Editor",
+                                    "url": "https://docs.unrealengine.com/4.27/en-US/GettingStarted/FromUnity/Overview/"
+                                }
+                            ]
+                        },
+                        {
+                            "title": "Basic Concepts & Project Setup",
+                            "content": [
+                                {
+                                    "title": "Creating a New Unreal Project",
+                                    "url": "https://docs.unrealengine.com/4.27/en-US/GettingStarted/YourFirstGame/"
+                                },
+                                {
+                                    "title": "Understanding Assets, Actors, and Components",
+                                    "url": "https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/ActorFramework/"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "code": "Blueprints & C++",
+                    "title": "Game Scripting with Blueprints & C++",
+                    "content": [
+                        {
+                            "title": "Introduction to Blueprints",
+                            "content": [
+                                {
+                                    "title": "What are Blueprints?",
+                                    "url": "https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/Blueprints/"
+                                },
+                                {
+                                    "title": "Creating and Using Blueprint Scripts",
+                                    "url": "https://www.unrealengine.com/en-US/blog/using-blueprints-to-create-gameplay-in-unreal-engine"
+                                }
+                            ]
+                        },
+                        {
+                            "title": "Unreal Engine C++ Basics",
+                            "content": [
+                                {
+                                    "title": "Introduction to C++ in Unreal Engine",
+                                    "url": "https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/ProgrammingWithCPP/"
+                                },
+                                {
+                                    "title": "Writing Your First C++ Class",
+                                    "url": "https://www.raywenderlich.com/5114-unreal-engine-4-for-beginners"
+                                }
+                            ]
+                        },
+                      ],
+                    },
+                        {
+                code: 'Game Mechanics',
+                title: 'Game Mechanics in Unreal Engine',
+                content: [
+                    {
+                        title: 'Core Game Mechanics',
+                        content: [
+                            {
+                                title: 'Introduction to Game Mechanics',
+                                url: 'https://www.gamedeveloper.com/design/game-mechanics-overview'
+                            },
+                            {
+                                title: 'Implementing Player Movement',
+                                url: 'https://docs.unrealengine.com/4.27/en-US/InteractiveExperiences/PlayerMovement/'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                code: 'AI & Physics',
+                title: 'AI & Physics in Unreal Engine',
+                content: [
+                    {
+                        title: 'Artificial Intelligence in Games',
+                        content: [
+                            {
+                                title: 'Introduction to AI in Unreal Engine',
+                                url: 'https://docs.unrealengine.com/4.27/en-US/InteractiveExperiences/AI/'
+                            }
+                        ]
+                    },
+                    {
+                        title: 'Physics Simulations',
+                        content: [
+                            {
+                                title: 'Physics in Unreal Engine',
+                                url: 'https://docs.unrealengine.com/4.27/en-US/Physics/'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                code: 'Animation & UI',
+                title: 'Animation & UI in Unreal Engine',
+                content: [
+                    {
+                        title: 'Character Animation',
+                        content: [
+                            {
+                                title: 'Creating Character Animations',
+                                url: 'https://docs.unrealengine.com/4.27/en-US/AnimatingObjects/'
+                            }
+                        ]
+                    },
+                    {
+                        title: 'User Interface (UI) Design',
+                        content: [
+                            {
+                                title: 'Designing UI with UMG',
+                                url: 'https://docs.unrealengine.com/4.27/en-US/UMG/'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                code: 'Multiplayer',
+                title: 'Multiplayer Development in Unreal Engine',
+                content: [
+                    {
+                        title: 'Networking Basics',
+                        content: [
+                            {
+                                title: 'Introduction to Multiplayer in Unreal',
+                                url: 'https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/Networking/'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                code: 'Optimization & Deployment',
+                title: 'Optimization & Deployment in Unreal Engine',
+                content: [
+                    {
+                        title: 'Game Optimization',
+                        content: [
+                            {
+                                title: 'Performance Optimization Techniques',
+                                url: 'https://docs.unrealengine.com/4.27/en-US/TestingAndOptimization/PerformanceAndProfiling/'
+                            }
+                        ]
+                    },
+                    {
+                        title: 'Deployment',
+                        content: [
+                            {
+                                title: 'Deploying to Different Platforms',
+                                url: 'https://docs.unrealengine.com/4.27/en-US/SharingAndReleasing/'
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+          
+        },
+    
+          {
         id: '4',
         title: 'Cybersecurity Fundamentals',
         desc: 'Understand cybersecurity principles, ethical hacking, penetration testing, and network security.',
@@ -1018,15 +1605,15 @@ export default [
         ig: 'Software',
         learners: 215,
     },
-    {
-        id: '5',
-        title: 'Game Development with Unity',
-        desc: 'Learn Unity engine, C# scripting, 2D & 3D game mechanics, and deployment.',
-        level: 4,
-        tags: ['Unity', 'Game Dev', 'C#'],
-        ig: 'Software',
-        learners: 300,
-    },
+    // {
+    //     id: '5',
+    //     title: 'Game Development with Unity',
+    //     desc: 'Learn Unity engine, C# scripting, 2D & 3D game mechanics, and deployment.',
+    //     level: 4,
+    //     tags: ['Unity', 'Game Dev', 'C#'],
+    //     ig: 'Software',
+    //     learners: 300,
+    // },
     {
         id: '6',
         title: 'Blockchain Development',

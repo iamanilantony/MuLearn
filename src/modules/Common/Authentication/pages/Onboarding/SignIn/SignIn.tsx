@@ -161,6 +161,9 @@ export default function SignIn() {
                                         Don't have an account? Sign up
                                     </a>
                                 </div>
+                                <div className={styles.noAccount} onClick={()=> navigate('/') } style={{cursor: 'pointer'}}>
+                                        Homepage
+                                </div>
                             </Form>
                         </div>
                     </div>
