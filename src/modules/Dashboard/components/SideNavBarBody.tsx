@@ -147,9 +147,7 @@ const SideNavBarBody: React.FC<SideNavBarBodyProps> = ({ sidebarButtons, toggleS
                         // iconstyle={{marginRight: '1.2rem'}}
                         icon={<IoMdLogIn style={{fontSize: '1.4rem'}}/>}
                         onClick={() => {
-                            localStorage.clear();
-                            toast.error("Logged Out, Redirecting to login page.");
-                            setTimeout(() => window.location.reload(), 900);
+                            navigate("/login")
                         }}
                     />
                     )

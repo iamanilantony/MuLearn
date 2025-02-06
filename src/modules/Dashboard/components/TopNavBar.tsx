@@ -3,6 +3,7 @@ import styles from "./SideNavBar.module.css";
 import { MdNotifications, MdNotificationAdd } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import dpm from "../assets/images/dpm.webp";
+import { IoMdLogIn } from "react-icons/io";
 import { fetchLocalStorage } from "@/MuLearnServices/common_functions";
 import {
     Popover,
@@ -66,6 +67,8 @@ const TopNavBar = () => {
         }
     }, [userSettings]);
 
+    const refreshToken = localStorage.getItem("refreshToken");
+
     return (
         <>
             <div id="top_nav" className={styles.top_nav}>
@@ -113,19 +116,23 @@ const TopNavBar = () => {
                                     />
                                 </PopoverContent>
                             </Popover>
+                            {
+                                refreshToken && (
+                                    <div id="profile" className={styles.profile}>
+                                        <img
+                                            onClick={event => {
+                                                event.stopPropagation(); // Stop the event from propagating
+                                                setUserSettings(!userSettings);
+                                            }}
+                                            src={profilePic ? profilePic : dpm}
+                                            alt=""
+                                        />
+                                    </div>
+                                )
 
-                            <div id="profile" className={styles.profile}>
-                                <img
-                                    onClick={event => {
-                                        event.stopPropagation(); // Stop the event from propagating
-                                        setUserSettings(!userSettings);
-                                    }}
-                                    src={profilePic ? profilePic : dpm}
-                                    alt=""
-                                />
-                            </div>
+                            }
 
-                            {userSettings && (
+                            {refreshToken ? (
                                 <div
                                     id="user_settings"
                                     className={styles.user_settings}
@@ -154,7 +161,23 @@ const TopNavBar = () => {
                                         }}
                                     />
                                 </div>
-                            )}
+                            ) :
+                                <MuButtonLight
+                                    text="LogIn"
+                                    style={{
+                                        backgroundColor: "#2563EB",
+                                        color: "white",
+                                        minWidth: "0",
+                                        width: "90px",
+                                        marginRight: "2rem"
+                                    }}
+                                    // iconstyle={{marginRight: '1.2rem'}}
+                                    // icon={<IoMdLogIn style={{ fontSize: '1.4rem' }} />}
+                                    onClick={() => {
+                                        navigate("/login")
+                                    }}
+                                />
+                            }
                         </div>
                     </div>
                     <hr />
