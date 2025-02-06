@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import communityImg from "./images/community.png";
 import mentorsImg from "./images/mentors.png";
 import askImg from "./images/ask.png";
@@ -75,9 +75,40 @@ const data = [
 ]
 
 
-
 const MuLearnLanding = () => {
     const navigate = useNavigate();
+
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    function NavLinks() {
+        return (
+            <>
+                <li onClick={() => navigate("/dashboard/home")}>
+                    Home
+                </li>
+                <li onClick={() => navigate("/dashboard/mentors")}>
+                    Mentorship
+                </li>
+                <li onClick={() => navigate("/dashboard/learning-paths")}>
+                    Learning Paths
+                </li>
+                <li onClick={() => navigate("/dashboard/learning-circles")}>
+                    Learning Circles
+                </li>
+                <li onClick={() => navigate("/")}>
+                    Why μLearn
+                </li>
+                <li onClick={() => navigate("/")}>
+                    How it Works
+                </li>
+            </>
+        )
+    }
+
+    function toggleMenu() {
+        setIsMenuOpen(!isMenuOpen);
+    }
+
     return (
         <div className={styles.landingContainer}>
             <nav className={styles.navbar}>
@@ -85,28 +116,23 @@ const MuLearnLanding = () => {
                     <img src='src/modules/Public/LearningCircles/Assets/µLearn.webp' alt="logo" width={"130px"} />
                 </div>
                 <ul className={styles.navLinks}>
-                    <li onClick={() => navigate("/dashboard/home")}>
-                        Home
-                    </li>
-                    <li onClick={() => navigate("/dashboard/mentors")}>
-                        Mentorship
-                    </li>
-                    <li onClick={() => navigate("/dashboard/learning-paths")}>
-                        Learning Paths
-                    </li>
-                    <li onClick={() => navigate("/dashboard/learning-circles")}>
-                        Learning Circles
-                    </li>
-                    <li onClick={() => navigate("/")}>
-                        Why μLearn
-                    </li>
-                    <li onClick={() => navigate("/")}>
-                        How it Works
-                    </li>
+                    <NavLinks />
                 </ul>
                 <div className={styles.navButtons}>
                     <button className={styles.loginBtn} onClick={() => navigate('/login')}>Login</button>
                 </div>
+                <div className={`${styles.mobileNavLinks} ${isMenuOpen ? styles.show : ''}`}>
+                    {/* Close Button */}
+                    <button className={styles.closeBtn} onClick={toggleMenu}>
+                        &times; {/* Unicode for 'X' symbol */}
+                    </button>
+                    <NavLinks />
+                </div>
+
+                <div className={styles.hamburger} onClick={toggleMenu}>
+                    &#9776;
+                </div>
+
             </nav>
             <header className={styles.heroSection}>
                 <div className={styles.heroLeft}>
@@ -214,7 +240,7 @@ const MuLearnLanding = () => {
                         Meet Aami, an eager learner hungry for growth! Join her voyage through the captivating µVerse, where she seizes opportunities, builds learning circles, and immerses herself in events, emerging industry-ready with newfound skills and confidence.
                     </p>
                 </div>
-                <div>
+                <div className={styles.iframeContainer}>
                     <iframe width="560" height="315" src="https://www.youtube.com/embed/M9serw-CLU0" title="YouTube video on M9serw-CLU0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
                 </div>
             </section>
@@ -277,7 +303,7 @@ const MuLearnLanding = () => {
                 </div>
             </section>
 
-            <section className={styles.topBottomGrid}>
+            <section className={`${styles.topBottomGrid} ${styles.zeroTopPadding}`}>
                 <div className={styles.oppurtunitiesTitle}>
                     <h1>
                         At The End Of a μLearners Journey
@@ -320,7 +346,7 @@ const MuLearnLanding = () => {
                     }
                 </div>
             </section>
-            <section className={styles.topBottomGrid}>
+            <section className={`${styles.topBottomGrid} ${styles.zeroTopPadding}`}>
                 <div className={styles.impact}>
                     <h1>The Impact of <span className={styles.highlight}>µLearn</span></h1>
                     <p>Over the last year, we as a community have made an impact on a significant number of students, mentors, and facilitators enabling them to gain more knowledge about the ecosystem of learning and was able to upskill themselves.</p>
