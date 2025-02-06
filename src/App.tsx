@@ -61,6 +61,7 @@ import RegisterPage from "./modules/Common/Authentication/pages/Onboarding/Regis
 import LearningPaths from "./modules/Dashboard/modules/LearningPaths/pages/LearningPaths";
 import LearningPathOne from "./modules/Dashboard/modules/LearningPaths/pages/LearningPathOne/LearningPathOne";
 import ComingSoonPage from "./modules/Common/Authentication/pages/ComingSoon";
+import MuLearnLanding from "./modules/Dashboard/modules/landing/pages/LandingPage";
 
 const Profile = lazy(
     () => import("./modules/Dashboard/modules/Profile/pages/Profile")
@@ -266,7 +267,7 @@ function App() {
         // Add redirect from '/' to '/login'
         {
             path: "/",
-            element: <Navigate to="/login" replace />
+            element: <MuLearnLanding />
         },
         {
             path: "*",
