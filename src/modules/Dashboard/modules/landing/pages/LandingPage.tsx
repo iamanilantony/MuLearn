@@ -118,19 +118,28 @@ const MuLearnLanding = () => {
                 <ul className={styles.navLinks}>
                     <NavLinks />
                 </ul>
-                <div className={styles.navButtons}>
-                    <button className={styles.loginBtn} onClick={() => navigate('/login')}>Login</button>
-                </div>
-                <div className={`${styles.mobileNavLinks} ${isMenuOpen ? styles.show : ''}`}>
-                    {/* Close Button */}
-                    <button className={styles.closeBtn} onClick={toggleMenu}>
-                        &times; {/* Unicode for 'X' symbol */}
-                    </button>
-                    <NavLinks />
-                </div>
+                <div style={{display:'flex', alignItems: 'center'}}>
 
-                <div className={styles.hamburger} onClick={toggleMenu}>
-                    &#9776;
+                {isMenuOpen && <div className={styles.navButtons}>
+                        <button className={styles.loginBtn} onClick={() => navigate('/login')}>Login</button>
+                    </div> }
+                    {
+                        isMenuOpen && (
+                            <div className={styles.mobileNavLinks}>
+                                {/* Close Button */}
+                                <button className={styles.closeBtn} onClick={() => setIsMenuOpen(false)}>
+                                    &times;
+                                </button>
+                                <NavLinks />
+                                <div className={styles.navButtons}>
+                        <button className={styles.loginBtn} onClick={() => navigate('/login')}>Login</button>
+                            </div>
+                            </div>
+                        )
+                    }
+                    <div className={styles.hamburger} onClick={() => setIsMenuOpen(true)}>
+                        &#9776;
+                    </div>
                 </div>
 
             </nav>

@@ -468,18 +468,20 @@
   border-radius: 5px;
 }
 
+.mobileNavLinks{
+  display: flex;
+  list-style: none;
+  transition: right 0.3s ease-in-out;
+  padding: 0;
+  margin: 0;
+  right: 0;
+}
+
 /* Show Hamburger for screens smaller than 768px */
 @media (max-width: 768px) {
   .hamburger {
     display: flex;
   }
-
-  
-.mobileNavLinks {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
 
 /* Styling for each li item */
 .mobileNavLinks li {
@@ -505,12 +507,11 @@
 
 /* Mobile Navigation Links Animation */
 .mobileNavLinks {
-  visibility: hidden;
   flex-direction: column;
   background-color: white;
   position: fixed;
   top: 0;
-  right: -100%;
+  /* right: -100%; */
   width: 100%;
   height: 100%;
   padding: 2rem;
@@ -520,12 +521,7 @@
   padding-top: 70px;
 }
 
-.mobileNavLinks.show {
-  right: 0;
-  display: flex;
-  visibility: visible;
-  transition: right 0.3s ease-in-out;
-}
+.sh
 
 .closeBtn {
   position: absolute;
@@ -661,6 +657,10 @@
 
   .community button {
     width: 100%;
+  }
+
+  .loginBtn{
+    margin-right: 1rem;
   }
 }
 
