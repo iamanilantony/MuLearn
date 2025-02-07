@@ -41,7 +41,7 @@ const LearningCircleLanding = () => {
     const navigate = useNavigate();
 
     const handleModalOpen = (event: CircleMeetupInfo) => {
-        setSelectedMeetup({...event, joiningUrl: "https://music.youtube.com/search?q=let+her+go"})
+        setSelectedMeetup(event)
         setIsModalOpen(true)
     }
 
@@ -94,12 +94,12 @@ const LearningCircleLanding = () => {
                     {selectedMeetup?.meet_time && <p><strong>Time:</strong> {new Date(selectedMeetup?.meet_time).toLocaleTimeString()}</p>}
                     {selectedMeetup?.attendee && <p><strong>Attendees:</strong> {Number(selectedMeetup?.attendee) || 10}</p> }
                     {/* Display joining URL (if it's an online event) */}
-                    {selectedMeetup?.joiningUrl && (
+                    {selectedMeetup?.joiningUrl || selectedMeetup?.meet_place && (
                         <div className={styles.joiningUrlSection}>
                             <p><strong>Joining URL:</strong></p>
                             <div className={styles.urlContainer}>
                                 <a
-                                    href={selectedMeetup.joiningUrl}
+                                    href={selectedMeetup.joiningUrl || selectedMeetup.meet_place}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className={styles.copyButton}
@@ -109,7 +109,7 @@ const LearningCircleLanding = () => {
                                 <button
                                     className={styles.copyButton}
                                     onClick={() => {
-                                        navigator.clipboard.writeText(selectedMeetup?.joiningUrl || "");
+                                        navigator.clipboard.writeText(selectedMeetup?.joiningUrl || selectedMeetup.meet_place);
                                         alert("URL copied to clipboard!");
                                     }}
                                 >
@@ -122,10 +122,10 @@ const LearningCircleLanding = () => {
             </MuModal>
             <MuModal
                 type="success"
-                onDone={handleSubmit}
                 onClose={() => setIsCreateModalOpen(false)}
                 title="Create Learning Circle"
                 isOpen={isCreateModalOpen}
+                showButton={false}
             >
                 <LearningCircleCreateForm setIsCreateModalOpen={setIsCreateModalOpen} />
             </MuModal>

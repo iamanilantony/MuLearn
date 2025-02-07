@@ -244,7 +244,7 @@ export const getLearningCircleInfo = async (
 
 export const createLearningCircle = async (
     params: LearningCircleCreate
-): Promise<boolean> => {
+): Promise<string |boolean> => {
     try {
         const response = await privateGateway.post(
             learningCircleRoutes.createLearningCircle,

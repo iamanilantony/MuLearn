@@ -106,10 +106,11 @@ const LearningCircles = () => {
             </MuModal>
             <MuModal
                 type="success"
-                onDone={handleSubmit}
+                // onDone={handleSubmit}
                 onClose={() => setIsCreateModalOpen(false)}
                 title="Create Learning Circle"
                 isOpen={isCreateModalOpen}
+                showButton={false}
             >
                 <LearningCircleCreateForm setIsCreateModalOpen={setIsCreateModalOpen}/>
             </MuModal>
