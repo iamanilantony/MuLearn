@@ -111,7 +111,7 @@ const MuLearnLanding = () => {
         <div className={styles.landingContainer}>
             <nav className={styles.navbar}>
                 <div className={styles.logo}>
-                    <img src='src/modules/Public/LearningCircles/Assets/µLearn.webp' alt="logo" width={"130px"} />
+                    <img src='/src/modules/Public/LearningCircles/Assets/µLearn.webp' alt="logo" width={"130px"} />
                 </div>
                 <ul className={styles.navLinks}>
                     <NavLinks />
