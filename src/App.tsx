@@ -62,6 +62,7 @@ import LearningPaths from "./modules/Dashboard/modules/LearningPaths/pages/Learn
 import LearningPathOne from "./modules/Dashboard/modules/LearningPaths/pages/LearningPathOne/LearningPathOne";
 import ComingSoonPage from "./modules/Common/Authentication/pages/ComingSoon";
 import MuLearnLanding from "./modules/Dashboard/modules/landing/pages/LandingPage";
+import CoursesMainPage from "./modules/Dashboard/modules/Courses/Pages/CoursesMainPage";
 
 const Profile = lazy(
     () => import("./modules/Dashboard/modules/Profile/pages/Profile")
@@ -377,7 +378,7 @@ function App() {
                 { path: "mentors", element: <ComingSoonPage /> },
                 { path: "special-events", element: <ComingSoonPage /> },
                 { path: "bootcamps", element: <ComingSoonPage /> },
-                { path: "courses", element: <ComingSoonPage /> },
+                { path: "courses", element: <CoursesMainPage /> },
             ]
         },
         {

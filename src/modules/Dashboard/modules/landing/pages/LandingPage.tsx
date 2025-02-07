@@ -105,9 +105,7 @@ const MuLearnLanding = () => {
         )
     }
 
-    function toggleMenu() {
-        setIsMenuOpen(!isMenuOpen);
-    }
+    const refreshToken = localStorage.getItem("refreshToken");
 
     return (
         <div className={styles.landingContainer}>
@@ -118,10 +116,15 @@ const MuLearnLanding = () => {
                 <ul className={styles.navLinks}>
                     <NavLinks />
                 </ul>
-                <div style={{display:'flex', alignItems: 'center'}}>
+                <div style={{ display: 'flex', alignItems: 'center' }}>
 
-                <div className={styles.navButtons}>
-                        <button className={`${styles.loginBtn} ${styles.logInDesktop}`} onClick={() => navigate('/login')}>Login</button>
+                    <div className={styles.navButtons}>
+                        {
+                            refreshToken ?
+                                <button className={`${styles.loginBtn} ${styles.logInDesktop}`} onClick={() => navigate('/dashboard/home')}>Dashboard</button>
+                                :
+                                <button className={`${styles.loginBtn} ${styles.logInDesktop}`} onClick={() => navigate('/login')}>Login</button>
+                        }
                     </div>
                     {
                         isMenuOpen && (
@@ -132,8 +135,13 @@ const MuLearnLanding = () => {
                                 </button>
                                 <NavLinks />
                                 <div className={styles.navButtons}>
-                        <button className={styles.loginBtn} onClick={() => navigate('/login')}>Login</button>
-                            </div>
+                                    {
+                                        refreshToken ?
+                                            <button className={`${styles.loginBtn} ${styles.logInDesktop}`} onClick={() => navigate('/dashboard/home')}>Dashboard</button>
+                                            :
+                                            <button className={`${styles.loginBtn} ${styles.logInDesktop}`} onClick={() => navigate('/login')}>Login</button>
+                                    }
+                                </div>
                             </div>
                         )
                     }
