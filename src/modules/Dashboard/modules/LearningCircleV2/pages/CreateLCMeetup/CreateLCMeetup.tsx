@@ -5,7 +5,6 @@ import { FormikTextInputWithoutLabel as SimpleInput } from "@/MuLearnComponents/
 import { Input, InputGroup, Switch, Tooltip } from "@chakra-ui/react";
 import {
     BiInfoCircle,
-    BiLeftArrow,
     BiRightArrow,
     BiSearch
 } from "react-icons/bi";
@@ -17,6 +16,7 @@ import {
 } from "../../services/LearningCircleAPIs";
 import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
+import { LCMeetCreate, MapResult } from "../../services/LearningCircleInterface";
 
 export default function CreateLCMeetup() {
     const [isLoading, setIsLoading] = useState(false);
