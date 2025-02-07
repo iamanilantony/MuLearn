@@ -2,6 +2,7 @@ import { privateGateway, publicGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes, learningCircleRoutes } from "@/MuLearnServices/urls";
 import { AxiosError } from "axios";
 import toast from "react-hot-toast";
+import { CircleMeetupInfo, LCMeetCreate, LCMeetup, LCReportInfo, LearningCircleCreate, LearningCircleInfo, LearningCircleInfoBasic, MapResult } from "./LearningCircleInterface";
 
 const openstreetmapurl =
     "https://nominatim.openstreetmap.org/search?format=json&q=";
