@@ -2,10 +2,13 @@ import { useState } from "react";
 import styles from "./LearningCircleLanding.module.css";
 import { createLearningCircle, scheduleMeetup } from "../../../LearningCircleV2/services/LearningCircleAPIs";
 import { useNavigate } from "react-router-dom";
+import ReactSelect from "react-select";
+import { getInterests } from "../../../ManageUsers/apis";
 
 
 const LearningCircleCreateForm = ({ setIsCreateModalOpen }: { setIsCreateModalOpen: (type: boolean) => void }) => {
     const [title, setTitle] = useState('');
+    const [ig, setIg] = useState('');
     const [description, setDescription] = useState('');
     const [meetingType, setMeetingType] = useState('online'); // default selection
     const [meetLink, setMeetLink] = useState('');
@@ -47,6 +50,15 @@ const LearningCircleCreateForm = ({ setIsCreateModalOpen }: { setIsCreateModalOp
         setIsCreateModalOpen(false);
     };
 
+    const getOptions = () => {
+        getInterests().then((data) => {
+            return data.map(ig => ({
+                label: ig.name,
+                value: ig.id
+            }))
+        })
+    }
+
 
     return (
         <form className={styles.form} onSubmit={handleSubmit}>
@@ -63,6 +75,33 @@ const LearningCircleCreateForm = ({ setIsCreateModalOpen }: { setIsCreateModalOp
                     required
                 />
             </div>
+
+            {/* Title Field */}
+            {/* <div className={styles.formGroup}>
+                <label htmlFor="title">Learning Circle</label>
+                <input
+                    id="lc"
+                    type="select"
+                    placeholder="What are you going to learn?"
+                    value={title}
+                    onChange={(e) => setIg(e.target.value)}
+                    className={styles.input}
+                    required
+                />
+            </div> */}
+            {/* <ReactSelect
+                                        // onInputChange={e => {
+                                        //     setIg(e);
+                                        // }}
+                                        options={getOptions()}
+                                        name="organization"
+                                        placeholder="Select Category"
+                                        // filterOption={CustomFilter}
+                                        // isDisabled={isloading}
+                                        onChange={(e: string) => {
+                                            setIg(e);
+                                        }}
+                                    /> */}
 
             {/* Description Field */}
             <div className={styles.formGroup}>
