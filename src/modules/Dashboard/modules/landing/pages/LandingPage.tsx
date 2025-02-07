@@ -10,6 +10,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import LearningPathList from "../../LearningPaths/services/LearningPathList";
 import { FaLinkedin, FaInstagram, FaYoutube, FaFacebook } from "react-icons/fa";
 import LearningPathCard from "../../LearningPaths/components/LearningPathCard";
+import MulearnBrand from "../../../assets/MulearnBrand";
 
 const data = [
     {
@@ -111,7 +112,7 @@ const MuLearnLanding = () => {
         <div className={styles.landingContainer}>
             <nav className={styles.navbar}>
                 <div className={styles.logo}>
-                    <img src='/src/modules/Public/LearningCircles/Assets/µLearn.webp' alt="logo" width={"130px"} />
+                    <MulearnBrand />
                 </div>
                 <ul className={styles.navLinks}>
                     <NavLinks />
