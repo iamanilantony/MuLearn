@@ -9,7 +9,7 @@ interface ModalProps {
     title: string;
     children: ReactNode;
     type: "error" | "success";
-    onDone: any;
+    onDone?: any;
     body?: string;
 }
 

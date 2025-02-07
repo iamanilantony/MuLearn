@@ -1,10 +1,12 @@
 import { Calendar, Clock, MapPin } from 'lucide-react';
 import styles from "./LearningCircleCard.module.css";
 import { getDateDifference } from '/src/modules/Dashboard/utils/utils';
+import { CircleMeetupInfo } from '../../../LearningCircleV2/services/LearningCircleInterface';
 
 // EventCard.tsx
 
 interface EventCardProps {
+  id: string
   title: string;
   institution: string;
   location: string;
@@ -14,18 +16,21 @@ interface EventCardProps {
   karmaPoints: number;
   joinedPeople: number;
   imageUrl?: string;
+  setIsModalOpen?: (event: CircleMeetupInfo) => void
   isDisabled?: boolean;
 }
 
 export const EventCard = ({
   title,
-  institution,
+  // institution,
+  id,
   location,
   date,
   time,
   venue,
   karmaPoints,
   joinedPeople,
+  setIsModalOpen,
   imageUrl,
   isDisabled = false
 }: EventCardProps) => {
@@ -51,6 +56,22 @@ export const EventCard = ({
         <button
           className={`${styles.joinButton} ${isDisabled ? styles.disabled : ''}`}
           disabled={isDisabled}
+          onClick={()=> setIsModalOpen && setIsModalOpen({
+            id,
+            title,
+            meet_place: location,
+            meet_time: date,
+            is_report_needed: false,
+            report_description: "",
+            coord_x: 0,
+            coord_y: 0,
+            duration: karmaPoints,
+            is_approved: false,
+            is_started: false,
+            is_ended: false,
+            attendee: null,
+            joiningUrl: null
+          })}
         >
           Join Now
         </button>

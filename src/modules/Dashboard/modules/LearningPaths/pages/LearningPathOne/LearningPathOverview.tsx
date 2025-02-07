@@ -6,6 +6,7 @@ import { Avatar } from "@chakra-ui/react";
 import { FaChevronRight } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { getMeetups } from "../../../LearningCircleV2/services/LearningCircleAPIs";
+import { CircleMeetupInfo } from "../../../LearningCircleV2/services/LearningCircleInterface";
 
 const LearningPathOverview = ({learningPathData, setActiveSection}: {learningPathData: SingleLearningPath, setActiveSection: React.Dispatch<React.SetStateAction<string>>}) => {
 

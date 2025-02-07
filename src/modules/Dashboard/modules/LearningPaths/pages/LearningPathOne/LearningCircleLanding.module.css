@@ -174,6 +174,62 @@
     width: 100%;
 }
 
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1rem;
+    color: #1a1a1a;
+  }
+  
+  .formGroup {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+  
+  .input,
+  .textarea {
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  .textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+  
+  .radioGroup {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .radioCard {
+    flex: 1;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  .radioCard:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .active {
+    border-color: #007bff;
+    background-color: #e7f1ff;
+  }
+  
+
 @media (width<1060px) {
     .learningCircleLandingPageDesc h1 {
         font-size: 1.65rem;

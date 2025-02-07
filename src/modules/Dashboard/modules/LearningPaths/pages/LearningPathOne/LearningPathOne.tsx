@@ -52,7 +52,7 @@ const LearningPathOne = () => {
             <div className={styles.header}>
                 <button className={styles.backButton} onClick={() => navigate('/dashboard/learning-paths')}>
                     <FiArrowLeft className={styles.backIcon} />
-                    <span>Java Developer Roadmap</span>
+                    <span>{learningPathData.title}</span>
                 </button>
             </div>
 

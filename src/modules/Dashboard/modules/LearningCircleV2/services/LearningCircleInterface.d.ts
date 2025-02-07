@@ -61,7 +61,7 @@ interface LearningCircleInfoBasic {
     next_meetup: LCMeetup;
 }
 
-interface CircleMeetupInfo {
+export interface CircleMeetupInfo {
     id: string;
     title: string;
     is_report_needed: boolean;
@@ -75,6 +75,7 @@ interface CircleMeetupInfo {
     is_started: boolean;
     is_ended: boolean;
     attendee: CircleMeetingAttendee | null;
+    joiningUrl: string | null
 }
 
 interface CircleMeetingAttendee {
