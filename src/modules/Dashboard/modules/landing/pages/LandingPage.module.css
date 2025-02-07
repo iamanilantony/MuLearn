@@ -614,6 +614,10 @@
     margin-top: 0px;
   }
 
+  .logInDesktop{
+    display: none;
+  }
+
   .hamburger {
     margin-left: auto;
   }

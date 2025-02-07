@@ -120,9 +120,9 @@ const MuLearnLanding = () => {
                 </ul>
                 <div style={{display:'flex', alignItems: 'center'}}>
 
-                {isMenuOpen && <div className={styles.navButtons}>
-                        <button className={styles.loginBtn} onClick={() => navigate('/login')}>Login</button>
-                    </div> }
+                <div className={styles.navButtons}>
+                        <button className={`${styles.loginBtn} ${styles.logInDesktop}`} onClick={() => navigate('/login')}>Login</button>
+                    </div>
                     {
                         isMenuOpen && (
                             <div className={styles.mobileNavLinks}>
