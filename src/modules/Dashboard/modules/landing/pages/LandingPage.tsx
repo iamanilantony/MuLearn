@@ -1,12 +1,6 @@
-import React, { useState } from "react";
-import communityImg from "./images/community.png";
-import mentorsImg from "./images/mentors.png";
-import askImg from "./images/ask.png";
-import roadmapsImg from "./images/roadmaps.png";
-import problemsImg from "./images/problems.png";
-import feedImg from "./images/feed.png";
+import { useState } from "react";
 import styles from "./LandingPage.module.css";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import LearningPathList from "../../LearningPaths/services/LearningPathList";
 import { FaLinkedin, FaInstagram, FaYoutube, FaFacebook } from "react-icons/fa";
 import LearningPathCard from "../../LearningPaths/components/LearningPathCard";
@@ -154,13 +148,15 @@ const MuLearnLanding = () => {
             </nav>
             <header className={styles.heroSection}>
                 <div className={styles.heroLeft}>
-                    <h1>Your ultimate gateway to <span className={styles.highlight}>peer-driven learning</span></h1>
+                    <h1>Your Ultimate Gateway to <span className={styles.highlight}>Peer-Led Growth</span></h1>
+                    <span className="dot"> </span> 
+                    <p>An open community for learners, makers, and innovators</p>
                     <ul className={styles.highlightPoints}>
                         <li className={styles.higlightPointItems}>
                             <div>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" fill="none"><path stroke="#467BFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.135 11.437 3.33 4.629c-.437-.783-.656-1.175-.619-1.495a1 1 0 0 1 .41-.697c.26-.189.71-.189 1.606-.189h2.235c.333 0 .5 0 .65.048a1 1 0 0 1 .357.205c.118.104.202.248.372.535L12 9.248l3.659-6.212c.169-.287.254-.43.37-.535a1 1 0 0 1 .359-.205c.15-.048.316-.048.65-.048h2.234c.897 0 1.345 0 1.607.189a1 1 0 0 1 .41.697c.036.32-.183.712-.62 1.495l-3.805 6.808M10.5 14.248l1.5-1v5m-1.25 0h2.5m3.346-7.096a6.5 6.5 0 1 1-9.192 9.192 6.5 6.5 0 0 1 9.192-9.192"></path></svg>
                             </div>
-                            <p>Work on jobs, gigs, and projects with peers</p>
+                            <p>Work on jobs, real-world projects & gigs with peers</p>
                         </li>
                         <li className={styles.higlightPointItems}>
                             <div>
@@ -187,48 +183,49 @@ const MuLearnLanding = () => {
                     </div>
                 </div>
                 <div className={styles.featuresGrid}>
-                    <div className={styles.featureCard} style={{ backgroundColor: 'rgb(233 252 241)' }}>
+                    <div className={styles.featureCard} style={{ backgroundColor: 'rgb(220 250 230)' }}>
                         <div>
                             <h3>Community</h3>
                             <p>Join 40,000+ learners & innovators.</p>
                         </div>
-                        <img src={"https://www.propeers.in/images/small-card-3.svg"} width={"90px"} alt="Community" />
+                        <img src={"/assets/landing/College Project Concept Illustration.png"} width={"140px"} alt="Community" />
                     </div>
-                    <div className={styles.featureCard} style={{ backgroundColor: 'rgb(255 204 247)' }}>
+                    <div className={styles.featureCard} style={{ backgroundColor: 'rgb(235 200 205)' }}>
                         <div>
                             <h3>Mentors</h3>
                             <p>Connect with industry experts & educators.</p>
                         </div>
-                        <img src={"https://www.propeers.in/images/Mentors-cuate.svg"} width={"90px"} alt="Mentors" />
+                        <img src={"/assets/landing/Content Team Concept Illustration.png"} width={"120px"} alt="Mentors" />
                     </div>
-                    <div className={styles.featureCard} style={{ backgroundColor: 'rgb(255 229 230)' }}>
+                    <div className={styles.featureCard} style={{ backgroundColor: 'rgb(255 200 205)' }}>
                         <div>
                             <h3>Ask Anything</h3>
                             <p>Get guidance from experienced mentors.</p>
                         </div>
-                        <img src={"https://www.propeers.in/images/rafiki.svg"} width={"90px"} alt="Ask Anything" />
+                        <img src={"/assets/landing/searching.png"} width={"90px"} alt="Ask Anything" />
                     </div>
-                    <div className={styles.featureCard} style={{ backgroundColor: 'rgb(255 245 229)' }}>
+                    <div className={styles.featureCard} style={{ backgroundColor: 'rgb(155 138 228)' }}>
                         <div>
                             <h3>Roadmaps</h3>
                             <p>Structured learning paths for skill mastery.</p>
                         </div>
-                        <img src={"https://www.propeers.in/images/big-card-2.svg"} width={"90px"} alt="Roadmaps" />
+                        <img src={"/assets/landing/Roadmap.png"} width={"110px"} alt="Roadmaps" />
                     </div>
-                    <div className={styles.featureCard} style={{ backgroundColor: 'rgb(229 237 255)' }}>
+                    <div className={styles.featureCard} style={{ backgroundColor: 'rgb(215 225 255)' }}>
                         <div>
                             <h3>Challenges</h3>
                             <p>Engage in real-world problem-solving.</p>
                         </div>
-                        <img src={"https://www.propeers.in/images/big-card-1.svg"} width={"90px"} alt="Challenges" />
+                        <img src={"/assets/landing/collab.png"} width={"130px"} alt="Challenges" />
                     </div>
-                    <div className={styles.featureCard} style={{ backgroundColor: 'rgb(148 163 184)' }}>
+                    <div className={styles.featureCard} style={{ backgroundColor: 'rgb(180 190 200)' }}>
                         <div>
                             <h3>Feed</h3>
                             <p>Discover skill-based posts & insights.</p>
                         </div>
                         <img src={"https://www.propeers.in/images/cuate.svg"} width={"90px"} alt="Feed" />
                     </div>
+
                 </div>
             </header>
 
