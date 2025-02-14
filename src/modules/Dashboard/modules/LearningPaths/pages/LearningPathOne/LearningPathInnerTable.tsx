@@ -63,25 +63,24 @@ const LearningPathInnerTable = ({ content, expanded }: LearningPathInnerTablePar
                             <div>
                                 <input type="checkbox" className={styles.checkbox} onChange={() => {}} />
                             </div>
-                            <div>
+                            {/* <div>
                                 <button 
                                     className={`${styles.iconButton} ${styles.bookmark}`}
                                     onClick={() => handleOpenModal(lesson.title)}
                                 >
                                     <BsFillCloudArrowUpFill />
                                 </button>
-                            </div>
-                            <div>
+                            </div> */}
+                            {/* <div>
                                 <button className={styles.iconEditButton}>
-                                    {/* <FiEdit /> */}
                                     500 Karma
                                 </button>
-                            </div>
-                            <div>
+                            </div> */}
+                            {/* <div>
                                 <button className={styles.statusButton} style={{color: 'orange'}}>
                                     pending
                                 </button>
-                            </div>
+                            </div> */}
                         </div>
                     ))
                 ) : (

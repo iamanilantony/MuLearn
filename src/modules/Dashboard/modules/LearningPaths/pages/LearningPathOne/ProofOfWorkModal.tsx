@@ -2,6 +2,7 @@
 import React, { useState, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 import styles from "./ProofOfWorkModal.module.css";
+import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
 
 interface ProofOfWorkModalProps {
   isOpen: boolean;
@@ -46,32 +47,38 @@ const ProofOfWorkModal = ({
     multiple: false
   });
 
+  const s3Client = new S3Client({
+    region: 'YOUR_REGION', // e.g., 'us-west-2'
+    credentials: {
+      accessKeyId: 'YOUR_ACCESS_KEY_ID',
+      secretAccessKey: 'YOUR_SECRET_ACCESS_KEY',
+    },
+  });
+
   const handleUpload = async (fileToUpload: File) => {
     try {
       setIsUploading(true);
-      
-      // Create form data
-      const formData = new FormData();
-      formData.append('file', fileToUpload);
-      formData.append('contentId', contentId);
-
-      // Replace with your actual API endpoint
-      const response = await fetch('/api/upload-proof', {
-        method: 'POST',
-        body: formData
-      });
-
-      if (!response.ok) {
-        throw new Error('Upload failed');
-      }
-
-      const data = await response.json();
-      setUploadedUrl(data.url);
+  
+      const fileKey = `uploads/${Date.now()}-${fileToUpload.name}`;
+  
+      const params = {
+        Bucket: 'YOUR_BUCKET_NAME',
+        Key: fileKey,
+        Body: fileToUpload,
+        ContentType: fileToUpload.type,
+      };
+  
+      const command = new PutObjectCommand(params);
+      await s3Client.send(command);
+  
+      const url = `https://${params.Bucket}.s3.${s3Client.config.region}.amazonaws.com/${fileKey}`;
+      setUploadedUrl(url);
       setIsUploading(false);
+      return url;
     } catch (error) {
       console.error('Upload error:', error);
       setIsUploading(false);
-      // Handle error appropriately
+      throw error;
     }
   };
 

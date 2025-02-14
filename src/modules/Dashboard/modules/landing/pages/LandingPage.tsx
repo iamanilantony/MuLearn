@@ -382,7 +382,7 @@ const MuLearnLanding = () => {
                 <div className={styles.community}>
                     <h1>Learn and Grow <span className={styles.highlight}>Together</span> as a <span className={styles.highlight}>Community</span></h1>
                     <h6>Are you ready to learn, grow and upskill yourself to the next level? Come, be a part of the community, and let's start learning in a new better way. Call in your friends as well, because things are going to change once you experience it and it is more effective when done with a group.</h6>
-                    <button>Join Discord Server</button>
+                    <button>Join The Community</button>
                 </div>
                 <div>
 
