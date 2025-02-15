@@ -1,0 +1,66 @@
+.banner {
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .slide {
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+  
+  .slideContent {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    right: 40px;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  .card {
+    transition: transform 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .mentorCard {
+    transition: all 0.3s ease;
+  }
+  
+  .mentorCard:hover {
+    transform: scale(1.05);
+  }
+  
+  .achievementCard {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .achievementCard:hover {
+    transform: translateY(-5px);
+  }
+  
+  .blogCard {
+    transition: all 0.3s ease;
+  }
+  
+  .blogCard:hover {
+    transform: translateY(-5px);
+  }
+  
+  .partnerLogo {
+    filter: grayscale(100%);
+    transition: all 0.3s ease;
+    opacity: 0.7;
+  }
+  
+  .partnerLogo:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+  }

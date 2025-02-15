@@ -1,0 +1,241 @@
+/* Main Wrapper combines overall layout styles */
+.MainWrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+/* Banner Section */
+.Banner {
+
+}
+
+.BannerContent {
+  text-align: left;
+}
+
+.BannerTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  color: #4B5563
+}
+
+.BannerSubtitle {
+  font-size: 0.95rem;
+}
+
+/* Main Container */
+.Container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  padding-left: 0;
+}
+
+/* Search and Filter Section */
+.SearchFilterWrapper {
+  margin-bottom: 2rem;
+}
+
+.SearchFilterInner {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: left;
+  justify-content: space-between;
+}
+
+@media (min-width: 768px) {
+  .SearchFilterInner {
+    /* flex-direction: row; */
+  }
+}
+
+/* Search Bar */
+.SearchBar {
+  position: relative;
+  width: 100%;
+  border-radius: 20px;
+}
+
+.SearchIcon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9CA3AF;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.SearchInput {
+  width: 100%;
+  padding: 0.5rem 1rem 0.5rem 2.5rem;
+  border: 1px solid #D1D5DB;
+  border-radius: 0.5rem;
+  outline: none;
+}
+
+.SearchInput:focus {
+  box-shadow: 0 0 0 2px #3B82F6;
+  border-color: transparent;
+}
+
+/* Category Filter */
+.CategoryFilter {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .CategoryFilter {
+    width: auto;
+  }
+}
+
+.CategoryButton {
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  background-color: #ffffff;
+  color: #374151;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.CategoryButton:hover {
+  background-color: #F3F4F6;
+}
+
+.CategoryButtonActive {
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  background-color: #3B82F6;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+
+/* Grid for Interest Groups */
+.Grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .Grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .Grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Group Card */
+.GroupCard {
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+              0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+/* Group Image Section */
+.GroupImageWrapper {
+  position: relative;
+  height: 12rem;
+}
+
+.GroupImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.GroupOverlay {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+}
+
+.GroupCategory {
+  font-size: 0.875rem;
+  font-weight: 500;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #374151;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+}
+
+/* Group Details */
+.GroupDetails {
+  padding: 1.5rem;
+}
+
+.GroupTitle {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.GroupParticipants {
+  display: flex;
+  align-items: center;
+  color: #4B5563;
+}
+
+.ParticipantsIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-right: 0.5rem;
+}
+
+/* Pagination */
+.Pagination {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.PaginationButton {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: #ffffff;
+  border: 1px solid #D1D5DB;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.PaginationButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.PaginationButton:hover {
+  background-color: #F3F4F6;
+}
+
+.PaginationButtonActive {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: #3B82F6;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+
+.PaginationIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+}

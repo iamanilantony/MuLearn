@@ -46,6 +46,7 @@
         "react-tooltip": "^5.18.1",
         "recharts": "^2.10.2",
         "sass": "^1.62.1",
+        "swiper": "^11.2.4",
         "title-case": "^3.0.3",
         "vite-plugin-compression": "^0.5.1",
         "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.0/xlsx-0.20.0.tgz",

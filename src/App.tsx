@@ -65,6 +65,7 @@ import MuLearnLanding from "./modules/Dashboard/modules/landing/pages/LandingPag
 import CoursesMainPage from "./modules/Dashboard/modules/Courses/Pages/CoursesMainPage";
 import SearchPage from "./modules/Dashboard/modules/Search/Pages/SearchPage";
 import MentorSearchPage from "./modules/Dashboard/modules/Mentors/Pages/MentorPage";
+import InterestGroupsPage from "./modules/Dashboard/modules/InterestGroups/pages/InterestGroupsPage";
 import SpecialEvents from "./modules/Dashboard/modules/SpecialEvents/pages/SpecialEvents";
 
 const Profile = lazy(
@@ -379,6 +380,7 @@ function App() {
                 },
                 { path: "search", element: <SearchPage/>},
                 { path: "mentors", element: <MentorSearchPage/> },
+                { path: "interestgroups", element: <InterestGroupsPage /> },
                 { path: "special-events", element: <SpecialEvents /> },
                 { path: "bootcamps", element: <ComingSoonPage /> },
                 { path: "learningCircles", element: <ComingSoonPage /> },
@@ -397,7 +399,6 @@ function App() {
                         { path: "profile", element: <Profile /> },
                         { path: "profileV2", element: <ProfileV2 /> },
                         { path: "muverse", element: <ComingSoonPage /> },
-                        { path: "interestgroups", element: <ComingSoonPage /> },
                         { path: "management", element: <ComingSoonPage /> },
                         {
                             path: "connect-discord",
