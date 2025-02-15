@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "react-tooltip/dist/react-tooltip.css";
 import { getLearningPathOne } from "../../services/LearningPathApis";
 import { SingleLearningPath } from "../../services/LearningPathInterfaces";
@@ -13,6 +13,8 @@ import LearningPathOverview from "./LearningPathOverview";
 import LearningCircles from "./LearningCircles";
 import ProofOfWork from "./ProofOfWork/ProofOfWork";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
+
+const TABS = ['Overview', 'Topics', 'Proof of Works', 'Learning Circles'];
 
 const LearningPathOne = () => {
   const [activeLevel, setActiveLevel] = useState(1);
@@ -34,13 +36,30 @@ const LearningPathOne = () => {
     topics: []
   });
   const { id = '' } = useParams();
+  const navigate = useNavigate();
+
+  // For slider indicator
+  const [sliderStyle, setSliderStyle] = useState({ left: 0, width: 0 });
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
   useEffect(() => {
     getLearningPathOne(id, setLearningPathData);
-    learningPathData.topics?.length && setActiveTopic(learningPathData.mainTopics[0]);
+    if (learningPathData.topics?.length && learningPathData.mainTopics.length > 0) {
+      setActiveTopic(learningPathData.mainTopics[0]);
+    }
   }, [id, learningPathData.mainTopics, learningPathData.topics?.length]);
 
-  const navigate = useNavigate();
+  // Update slider position whenever activeSection changes
+  useEffect(() => {
+    const activeIndex = TABS.findIndex(tab => tab === activeSection);
+    const activeTab = tabRefs.current[activeIndex];
+    if (activeTab) {
+      setSliderStyle({
+        left: activeTab.offsetLeft,
+        width: activeTab.offsetWidth,
+      });
+    }
+  }, [activeSection]);
 
   const navigationItems = [
     { icon: <BsShare />, text: 'Share Your Progress', color: 'orange' },
@@ -143,34 +162,43 @@ const LearningPathOne = () => {
 
       <div className={styles.navigationTabs}>
         <nav className={styles.tabList}>
-          {['Overview', 'Topics', 'Proof of Works', 'Learning Circles'].map((tab) => (
+          {TABS.map((tab, index) => (
             <button
               key={tab}
+              ref={(el) => (tabRefs.current[index] = el)}
               className={`${styles.tabButton} ${activeSection === tab ? styles.active : ''}`}
               onClick={() => setActiveSection(tab)}
             >
               {tab}
             </button>
           ))}
+          <div
+            className={styles.slider}
+            style={{
+              left: sliderStyle.left,
+              width: sliderStyle.width,
+              transition: "left 300ms ease, width 300ms ease"
+            }}
+          />
         </nav>
       </div>
 
       <TransitionGroup>
-        <CSSTransition
-          key={activeSection}
-          timeout={300}
-          classNames={{
-            enter: styles.slideEnter,
-            enterActive: styles.slideEnterActive,
-            exit: styles.slideExit,
-            exitActive: styles.slideExitActive,
-          }}
-        >
-          <div className={styles.sectionContent}>
-            {renderSectionContent()}
-          </div>
-        </CSSTransition>
-      </TransitionGroup>
+  <CSSTransition
+    key={activeSection}
+    timeout={400}
+    classNames={{
+      enter: styles.sectionSlideEnter,
+      enterActive: styles.sectionSlideEnterActive,
+      exit: styles.sectionSlideExit,
+      exitActive: styles.sectionSlideExitActive,
+    }}
+  >
+    <div className={styles.sectionContent}>
+      {renderSectionContent()}
+    </div>
+  </CSSTransition>
+</TransitionGroup>
     </div>
   );
 };

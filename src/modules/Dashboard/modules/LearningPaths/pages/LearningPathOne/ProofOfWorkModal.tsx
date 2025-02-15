@@ -26,6 +26,7 @@ const ProofOfWorkModal = ({
 
   const onDrop = useCallback(async (acceptedFiles: File[]) => {
     const selectedFile = acceptedFiles[0];
+    console.log(selectedFile,'selectedFile')
     if (selectedFile) {
       setFile(selectedFile);
       // Create preview for image files
@@ -48,39 +49,41 @@ const ProofOfWorkModal = ({
   });
 
   const s3Client = new S3Client({
-    region: 'YOUR_REGION', // e.g., 'us-west-2'
+    region: 'ap-northeast-1', // e.g., 'us-west-2'
     credentials: {
-      accessKeyId: 'YOUR_ACCESS_KEY_ID',
-      secretAccessKey: 'YOUR_SECRET_ACCESS_KEY',
+      accessKeyId: import.meta.env.VITE_AWS_ACCESSKEY,
+      secretAccessKey: import.meta.env.VITE_AWS_ACCESSSECRET,
     },
   });
 
-  const handleUpload = async (fileToUpload: File) => {
-    try {
-      setIsUploading(true);
-  
-      const fileKey = `uploads/${Date.now()}-${fileToUpload.name}`;
-  
-      const params = {
-        Bucket: 'YOUR_BUCKET_NAME',
-        Key: fileKey,
-        Body: fileToUpload,
-        ContentType: fileToUpload.type,
-      };
-  
-      const command = new PutObjectCommand(params);
-      await s3Client.send(command);
-  
-      const url = `https://${params.Bucket}.s3.${s3Client.config.region}.amazonaws.com/${fileKey}`;
-      setUploadedUrl(url);
-      setIsUploading(false);
-      return url;
-    } catch (error) {
-      console.error('Upload error:', error);
-      setIsUploading(false);
-      throw error;
-    }
-  };
+const handleUpload = async (fileToUpload: File) => {
+  console.log('triggered')
+  try {
+    setIsUploading(true);
+
+    const fileKey = `uploads/${Date.now()}-${fileToUpload.name}`;
+
+    const params = {
+      Bucket: 'mulearntestbucket',
+      Key: fileKey,
+      Body: fileToUpload.stream(), // Convert file to a ReadableStream
+      ContentType: fileToUpload.type,
+    };
+
+    const command = new PutObjectCommand(params);
+    await s3Client.send(command);
+
+    const url = `https://${params.Bucket}.s3.${s3Client.config.region}.amazonaws.com/${fileKey}`;
+    setUploadedUrl(url);
+    setIsUploading(false);
+    return url;
+  } catch (error) {
+    console.error('Upload error:', error);
+    setIsUploading(false);
+    throw error;
+  }
+};
+
 
   const handleSubmit = async () => {
     if (uploadedUrl) {

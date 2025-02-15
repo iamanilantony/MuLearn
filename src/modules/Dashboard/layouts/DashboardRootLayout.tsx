@@ -54,6 +54,12 @@ const DashboardRootLayout = (props: { component?: any }) => {
             icon: <FaMapLocationDot/>
         },
         {
+            url: "/dashboard/interestgroups",
+            title: "Interest Groups",
+            hasView: true,
+            icon: <FaUserFriends/>
+        },
+        {
             url: "/dashboard/mentors",
             title: "Mentors",
             hasView: true,
@@ -96,13 +102,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
         //     title: "Referrals",
         //     hasView: true,
         //     icon: <i className="fi fi-sr-building"></i>
-        // },
-        {
-            url: "/dashboard/bootcamps",
-            title: "Bootcamps",
-            hasView: true,
-            icon: <FaUserFriends/>
-        },
+        // }
         {
             url: "/dashboard/muVerse",
             title: "μVerse",

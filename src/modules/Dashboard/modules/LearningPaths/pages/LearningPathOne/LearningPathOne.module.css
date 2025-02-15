@@ -36,11 +36,6 @@
     margin-right: 8px;
 }
 
-.navigationTabs {
-    border-bottom: 1px solid #E5E7EB;
-    margin-bottom: 24px;
-}
-
 .tabList {
     display: flex;
     gap: 20px;
@@ -57,7 +52,7 @@
     font-size: 0.85rem;
 }
 
-.tabButton.active {
+/* .tabButton.active {
     color: #3B82F6;
 }
 
@@ -69,7 +64,7 @@
     right: 0;
     height: 2px;
     background-color: #3B82F6;
-}
+} */
 
 .actionButtons {
     display: flex;
@@ -413,6 +408,60 @@
     display: flex;
     flex-direction: column;
   }
+
+  .sectionSlideEnter {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  
+  .sectionSlideEnterActive {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 400ms ease-out, transform 400ms ease-out;
+  }
+  
+  .sectionSlideExit {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .sectionSlideExitActive {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 400ms ease-out, transform 400ms ease-out;
+  }
+
+  .navigationTabs {
+    position: relative;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 1rem;
+  }
+  
+  .tabList {
+    display: flex;
+    position: relative;
+  }
+  
+  .tabButton {
+    background: none;
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    position: relative;
+  }
+  
+  .tabButton:hover {
+    color: #007bff;
+  }
+  
+  .slider {
+    position: absolute;
+    bottom: 0;
+    height: 3px;
+    background-color: #007bff;
+    border-radius: 2px;
+  }
+  
 
   .slideEnter {
     opacity: 0;
