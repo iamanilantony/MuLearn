@@ -6,6 +6,7 @@ import LearningPathList from "../../LearningPaths/services/LearningPathList";
 import { FaLinkedin, FaInstagram, FaYoutube, FaFacebook } from "react-icons/fa";
 import LearningPathCard from "../../LearningPaths/components/LearningPathCard";
 import MulearnBrand from "../../../assets/MulearnBrand";
+import RolesSection from "../components/RolesSection";
 
 // Data remains the same
 const data = [
@@ -182,7 +183,7 @@ const MuLearnLanding = () => {
           >
             An open community for learners, makers, and innovators
           </motion.p>
-          <motion.ul
+          {/* <motion.ul
             className={styles.highlightPoints}
             initial="hidden"
             whileInView="visible"
@@ -201,14 +202,13 @@ const MuLearnLanding = () => {
                 custom={point.id}
                 variants={textVariant}
               >
-                <div>
-                  {/* Replace with SVG icon if desired */}
-                    <img src={point.icon} alt='icon' className={styles.imgIcon} width={"50px"}/>
+                <div className={styles.imgIconContainer}>
+                  <img src={point.icon} alt='icon' className={styles.imgIcon} width="50px" height="50px" />
                 </div>
                 <p>{point.point}</p>
               </motion.li>
             ))}
-          </motion.ul>
+          </motion.ul> */}
           <motion.div
             className={styles.ctaButtons}
             initial="hidden"
@@ -298,7 +298,7 @@ const MuLearnLanding = () => {
       </motion.header>
 
       {/* Structured Learning Paths Section */}
-      <motion.section
+      {/* <motion.section
         className={styles.topBottomGrid}
         variants={fadeInUp}
         initial="hidden"
@@ -335,7 +335,7 @@ const MuLearnLanding = () => {
         >
           Explore Learning Paths
         </motion.button>
-      </motion.section>
+      </motion.section> */}
 
       {/* Story Section */}
       <motion.section
@@ -485,6 +485,9 @@ const MuLearnLanding = () => {
           ))}
         </motion.div>
       </motion.section>
+
+      <RolesSection />
+
 
       {/* Impact Section */}
       <motion.section
