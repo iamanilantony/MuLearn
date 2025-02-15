@@ -72,8 +72,11 @@ export default function CollegePage() {
         string | null
     >(null);
     const college_types = ["School", "College"];
-    const ruri = window.location.href.split("=")[1];
-
+    let ruri = window.location.href.split("=")[1];
+    
+    if (ruri === "noredirect") {
+        ruri = "dashboard/home";
+    }
     const CustomFilter = (
         { label, value }: { label: string; value: string },
         string: string
