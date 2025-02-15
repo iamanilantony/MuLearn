@@ -63,6 +63,7 @@ import LearningPathOne from "./modules/Dashboard/modules/LearningPaths/pages/Lea
 import ComingSoonPage from "./modules/Common/Authentication/pages/ComingSoon";
 import MuLearnLanding from "./modules/Dashboard/modules/landing/pages/LandingPage";
 import CoursesMainPage from "./modules/Dashboard/modules/Courses/Pages/CoursesMainPage";
+import SearchPage from "./modules/Dashboard/modules/Search/Pages/SearchPage";
 
 const Profile = lazy(
     () => import("./modules/Dashboard/modules/Profile/pages/Profile")
@@ -374,7 +375,7 @@ function App() {
                     path: "learningcircle",
                     element: <LearningCircleLanding />
                 },
-                { path: "search", element: <ComingSoonPage /> },
+                { path: "search", element: <SearchPage/>},
                 { path: "mentors", element: <ComingSoonPage /> },
                 { path: "special-events", element: <ComingSoonPage /> },
                 { path: "bootcamps", element: <ComingSoonPage /> },
