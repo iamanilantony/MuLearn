@@ -2,6 +2,7 @@
 import React, { useState, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 import styles from "./ProofOfWorkModal.module.css";
+import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
 
 interface ProofOfWorkModalProps {
   isOpen: boolean;
@@ -25,6 +26,7 @@ const ProofOfWorkModal = ({
 
   const onDrop = useCallback(async (acceptedFiles: File[]) => {
     const selectedFile = acceptedFiles[0];
+    console.log(selectedFile,'selectedFile')
     if (selectedFile) {
       setFile(selectedFile);
       // Create preview for image files
@@ -46,34 +48,42 @@ const ProofOfWorkModal = ({
     multiple: false
   });
 
-  const handleUpload = async (fileToUpload: File) => {
-    try {
-      setIsUploading(true);
-      
-      // Create form data
-      const formData = new FormData();
-      formData.append('file', fileToUpload);
-      formData.append('contentId', contentId);
+  const s3Client = new S3Client({
+    region: 'ap-northeast-1', // e.g., 'us-west-2'
+    credentials: {
+      accessKeyId: import.meta.env.VITE_AWS_ACCESSKEY,
+      secretAccessKey: import.meta.env.VITE_AWS_ACCESSSECRET,
+    },
+  });
 
-      // Replace with your actual API endpoint
-      const response = await fetch('/api/upload-proof', {
-        method: 'POST',
-        body: formData
-      });
+const handleUpload = async (fileToUpload: File) => {
+  console.log('triggered')
+  try {
+    setIsUploading(true);
 
-      if (!response.ok) {
-        throw new Error('Upload failed');
-      }
+    const fileKey = `uploads/${Date.now()}-${fileToUpload.name}`;
 
-      const data = await response.json();
-      setUploadedUrl(data.url);
-      setIsUploading(false);
-    } catch (error) {
-      console.error('Upload error:', error);
-      setIsUploading(false);
-      // Handle error appropriately
-    }
-  };
+    const params = {
+      Bucket: 'mulearntestbucket',
+      Key: fileKey,
+      Body: fileToUpload.stream(), // Convert file to a ReadableStream
+      ContentType: fileToUpload.type,
+    };
+
+    const command = new PutObjectCommand(params);
+    await s3Client.send(command);
+
+    const url = `https://${params.Bucket}.s3.${s3Client.config.region}.amazonaws.com/${fileKey}`;
+    setUploadedUrl(url);
+    setIsUploading(false);
+    return url;
+  } catch (error) {
+    console.error('Upload error:', error);
+    setIsUploading(false);
+    throw error;
+  }
+};
+
 
   const handleSubmit = async () => {
     if (uploadedUrl) {

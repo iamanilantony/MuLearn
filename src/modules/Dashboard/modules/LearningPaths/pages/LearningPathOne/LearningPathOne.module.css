@@ -36,11 +36,6 @@
     margin-right: 8px;
 }
 
-.navigationTabs {
-    border-bottom: 1px solid #E5E7EB;
-    margin-bottom: 24px;
-}
-
 .tabList {
     display: flex;
     gap: 20px;
@@ -57,7 +52,7 @@
     font-size: 0.85rem;
 }
 
-.tabButton.active {
+/* .tabButton.active {
     color: #3B82F6;
 }
 
@@ -69,7 +64,7 @@
     right: 0;
     height: 2px;
     background-color: #3B82F6;
-}
+} */
 
 .actionButtons {
     display: flex;
@@ -297,12 +292,17 @@
 
 .topicsNav {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 8px;
+    border-radius: 10px;
     overflow-x: auto;
     gap: 16px;
     margin-bottom: 32px;
     padding-bottom: 8px;
     scrollbar-width: thin;
     border-bottom: 1px solid #E5E7EB;
+    background-color: white;
 }
 
 .topicButton {
@@ -337,7 +337,6 @@
     border-radius: 8px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
-
 .contentHeader {
     padding: 16px;
     background-color: #3B82F6;
@@ -349,9 +348,189 @@
     align-items: center;
 }
 
+.contentHeaderPW {
+    padding: 16px;
+    /* background-color: #3B82F6; */
+    color: #4b4b4b;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .contentTitle {
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-weight: 600;
+}
+
+/* Container holding the entire table */
+.tableContainer {
+    width: 100%;
+    margin: 20px auto;
+    overflow-x: auto;
+  }
+  
+  /* The table element styling */
+  .proofTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    color:rgb(93, 93, 93)
+  }
+  
+  /* Table header styling */
+  .proofTable th {
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    font-size: 0.9rem;
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 600;
+  }
+  
+  /* Table cell styling */
+  .proofTable td {
+    border: 1px solid #ddd;
+    padding: 12px 16px;
+    text-align: left;
+    vertical-align: middle;
+  }
+
+  
+
+  .tableCell{
+    font-size: 0.85rem;
+    padding: 2rem;
+  }
+
+  .tableCellElement{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sectionSlideEnter {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  
+  .sectionSlideEnterActive {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 400ms ease-out, transform 400ms ease-out;
+  }
+  
+  .sectionSlideExit {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .sectionSlideExitActive {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 400ms ease-out, transform 400ms ease-out;
+  }
+
+  .navigationTabs {
+    position: relative;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 1rem;
+  }
+  
+  .tabList {
+    display: flex;
+    position: relative;
+  }
+  
+  .tabButton {
+    background: none;
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    position: relative;
+  }
+  
+  .tabButton:hover {
+    color: #007bff;
+  }
+  
+  .slider {
+    position: absolute;
+    bottom: 0;
+    height: 3px;
+    background-color: #007bff;
+    border-radius: 2px;
+  }
+  
+
+  .slideEnter {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  
+  .slideEnterActive {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 400ms ease-out, transform 400ms ease-out;
+  }
+  
+  .slideExit {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .slideExitActive {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 400ms ease-out, transform 400ms ease-out;
+  }
+
+  .tableCellElement strong{
+    font-size: .9rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Alternate row background */
+  .tableRow:nth-child(even) {
+    background-color: #fafafa;
+  }
+  
+  /* Styling for the upload button */
+  .uploadButton {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .uploadButton:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Styling for the toggle button */
+  .toggleButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+  }
+  
+  .toggleButton:hover {
+    color: #007bff;
+  }
+  
+
+.HeaderProofOfWork{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .progressContainer {
@@ -377,8 +556,8 @@
 
 .tableHeader {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 4fr 1fr;
+    /* grid-template-columns: 2fr 1fr 1fr 1fr 1fr; */
     gap: 16px;
     font-size: 0.8rem;
     padding: 16px;
@@ -390,7 +569,7 @@
 
 .lessonRow {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 4fr 1fr;
     gap: 16px;
     padding: 16px;
     padding-left: 8px;

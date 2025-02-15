@@ -378,6 +378,7 @@ function App() {
                 { path: "mentors", element: <ComingSoonPage /> },
                 { path: "special-events", element: <ComingSoonPage /> },
                 { path: "bootcamps", element: <ComingSoonPage /> },
+                { path: "learningCircles", element: <ComingSoonPage /> },
                 { path: "courses", element: <CoursesMainPage /> },
             ]
         },
@@ -393,6 +394,7 @@ function App() {
                         { path: "profile", element: <Profile /> },
                         { path: "profileV2", element: <ProfileV2 /> },
                         { path: "muverse", element: <ComingSoonPage /> },
+                        { path: "interestgroups", element: <ComingSoonPage /> },
                         { path: "management", element: <ComingSoonPage /> },
                         {
                             path: "connect-discord",

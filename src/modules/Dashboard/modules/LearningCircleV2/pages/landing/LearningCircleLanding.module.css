@@ -6,7 +6,7 @@
 .FindCircleContent,
 .LearningCircleCreateContent {
     width: 100%;
-    padding: 1rem 3rem;
+    /* padding: 1rem 3rem; */
     display: flex;
     flex-direction: column;
     gap: 2rem;

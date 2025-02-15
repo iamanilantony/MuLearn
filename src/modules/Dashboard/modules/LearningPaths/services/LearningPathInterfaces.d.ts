@@ -63,6 +63,22 @@ interface SingleLearningPath {
     topics: Topic[];
 }
 
+interface taskList{
+    proofOfWork: string
+    karmaPoint: number
+    topic: number
+    description: string
+}
+interface problemsList {
+    level: number;
+    tasks: taskList[]
+}
+
+interface SingleLearningPathTasks {
+    id: string;
+    problems: problemsList[]
+}
+
 interface HackathonApplication {
     field_name: string;
     field_type: string;

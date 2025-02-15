@@ -59,11 +59,11 @@ const LearningPathTable: React.FC<LearningPathDataProps> = ({ learningPathData }
                         {expandedTopics.has(index) && (
                             <>
                                 <div className={styles.tableHeader}>
-                                    <div>Problem Link</div>
+                                    <div>Topics</div>
                                     <div>Done</div>
-                                    <div>Proof Of Work</div>
+                                    {/* <div>Proof Of Work</div>
                                     <div>Notes</div>
-                                    <div>Status</div>
+                                    <div>Status</div> */}
                                 </div>
 
                                 {learningPathData && (
