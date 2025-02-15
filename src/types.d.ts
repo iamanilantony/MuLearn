@@ -44,7 +44,19 @@ type Mentor = {
     image: string;
 }
 
-
+type SpecialEvent = {
+    id: number;
+    title: string;
+    description: string;
+    date: string;
+    recurrence?: string;
+    participants?: number;
+    image: string;
+    link: string;
+    isExpired?: boolean
+    isComingSoon? :boolean
+    isLive: boolean
+}
 
 type ColOrder = { column: string; Label: string; isSortable: boolean };
 
