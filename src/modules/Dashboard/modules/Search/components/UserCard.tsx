@@ -16,7 +16,7 @@ interface UserCardProps {
 }
 
 const UserCard: React.FC<UserCardProps> = ({ user }) => {
-    console.log(styles)
+    
     return (
         <div className={styles.userCard}>
             <img
