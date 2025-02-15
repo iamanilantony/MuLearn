@@ -19,28 +19,32 @@ const mockMentors: Mentor[] = [
         name: "Sarah Johnson",
         role: "CTO @AIStartup",
         expertise: ["AI", "Machine Learning", "Tech Leadership"],
-        image: "/placeholder.svg?height=100&width=100"
+        image: profileImage
     },
     {
         id: 3,
         name: "Mike Chen",
         role: "Director of Engineering @BigTech",
-        expertise: ["System Architecture", "Team Management", "Cloud Computing"],
-        image: "/placeholder.svg?height=100&width=100"
+        expertise: [
+            "System Architecture",
+            "Team Management",
+            "Cloud Computing"
+        ],
+        image: profileImage
     },
     {
         id: 4,
         name: "Elena Rodriguez",
         role: "Founder & CEO @CyberShield",
         expertise: ["Cyber Security", "Blockchain", "Business Strategy"],
-        image: "/placeholder.svg?height=100&width=100"
+        image: profileImage
     },
     {
         id: 5,
         name: "James Wilson",
         role: "Serial Entrepreneur",
         expertise: ["Entrepreneurship", "Product Strategy", "Venture Capital"],
-        image: "/placeholder.svg?height=100&width=100"
+        image: profileImage
     }
 ];
 
@@ -65,7 +69,7 @@ const MentorSearchPage: React.FC = () => {
                     placeholder="Search for Mentors"
                     className={styles.searchInput}
                     value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
+                    onChange={e => setSearchTerm(e.target.value)}
                 />
             </div>
             <div className={styles.mentorGrid}>

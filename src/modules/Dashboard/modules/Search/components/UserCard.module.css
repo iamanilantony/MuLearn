@@ -30,17 +30,36 @@
     background-color: blue;
 }
 
-.userName {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 5px;
+.userDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    flex: 1;
+    justify-content: start;
+    align-items: start;
 }
 
-.userCollege {
+.userHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-bottom: .5rem;
+}
+
+.userCollege{
     font-size: 14px;
     color: #666;
     margin-bottom: 5px;
+    margin-top: -.5rem;
 }
+
+.userMUID{
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 5px;
+    margin-top: -.5rem;
+}
+
 
 .interestGroups {
     display: flex;

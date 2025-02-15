@@ -1,15 +1,7 @@
 import type React from "react";
 import styles from "./UserCard.module.css";
 
-// Define the User interface
-interface User {
-    id: number;
-    name: string;
-    college: string;
-    interests: string[];
-    karma: number;
-    image: string;
-}
+
 
 interface UserCardProps {
     user: User;
@@ -25,8 +17,11 @@ const UserCard: React.FC<UserCardProps> = ({ user }) => {
                 className={styles.userImage}
             />
             <div className={styles.userDetails}>
-                <h2 className={styles.userName}>{user.name}</h2>
-                <p className={styles.userCollege}>{user.college}</p>
+                <div className={styles.userHeader}>
+                    <h2 className={styles.userName}>{user.name}{" "}<span>({user.college})</span></h2>
+                    <h3 className={styles.userMUID}>{user.muid}</h3>
+                </div>
+              
                 <div className={styles.interestGroups}>
                     {user.interests.map((interest, index) => (
                         <span key={index} className={styles.interestTag}>
