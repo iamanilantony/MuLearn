@@ -358,8 +358,6 @@ const MuLearnLanding = () => {
           variants={fadeInUp}
         >
           <iframe
-            width="560"
-            height="315"
             src="https://www.youtube.com/embed/M9serw-CLU0"
             title="YouTube video on M9serw-CLU0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
