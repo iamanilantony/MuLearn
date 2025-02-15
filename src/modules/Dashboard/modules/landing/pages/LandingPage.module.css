@@ -504,6 +504,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 30px;
 }
 
 .impact p {
@@ -516,7 +517,26 @@
   font-size: 3.2rem;
   text-align: left;
   font-weight: 800;
+  display: flex;
+  flex-direction: column;
+  line-height: normal;
+  min-width: 400px;
 }
+
+/* Impact Responsiveness Start */
+
+@media (max-width: 1080px) {
+  .impact h1 {
+    font-size: 2.5rem;
+    min-width: 300px;
+  }
+
+  .impact p {
+    font-size: 0.8rem;
+  }
+}
+
+/* Impact Responsiveness End */
 
 .dataGrid {
   display: grid;
@@ -676,6 +696,10 @@
   .navButtons .loginBtn {
     font-size: 0.8rem;
   }
+
+  .dataGrid {
+    grid-template-columns: repeat(3, minmax(20rem, 2fr));
+  }
 }
 
 @media (max-width: 1150px) {
@@ -754,14 +778,14 @@
   }
 }
 
-/* Navbar Responsiveness End */
-
 @media (max-width: 620px) {
   .navButtons {
     display: block;
     margin-top: 1rem;
   }
 }
+
+/* Navbar Responsiveness End */
 
 /* Responsive */
 @media (max-width: 1024px) {
@@ -835,6 +859,11 @@
   .topBottomGrid .camparison .comparisonTable tr td {
     padding: 1.5rem 0.75rem;
   }
+
+
+  .dataGrid {
+    grid-template-columns: repeat(2, minmax(20rem, 2fr));
+  }
 }
 
 @media (max-width: 768px) {
@@ -874,10 +903,16 @@
   .impact {
     flex-direction: column;
     align-items: center;
+    gap: 22px;
   }
 
   .impact h1 {
     font-size: 2.5rem;
+    align-items: center;
+  }
+
+  .impact p {
+    text-align: center;
   }
 
   .community button {
@@ -990,8 +1025,16 @@
   }
 
   .topBottomGrid .impact h1 {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .topBottomGrid .impact p {
+    text-align: left;
+  }
+
+  .topBottomGrid .impact h1 {
     font-size: 10vw;
-    margin-bottom: 22px;
     line-height: 120%;
   }
 
@@ -1042,4 +1085,14 @@
 
 .zeroTopPadding {
   padding-top: 0px;
+}
+
+@media (max-width: 620px) {
+  .dataGrid .dataCard {
+    padding: 10px 0px;
+  }
+
+  .dataGrid {
+    grid-template-columns: repeat(2, minmax(auto, 2fr));
+  }
 }
