@@ -65,6 +65,7 @@ import MuLearnLanding from "./modules/Dashboard/modules/landing/pages/LandingPag
 import CoursesMainPage from "./modules/Dashboard/modules/Courses/Pages/CoursesMainPage";
 import SearchPage from "./modules/Dashboard/modules/Search/Pages/SearchPage";
 import MentorSearchPage from "./modules/Dashboard/modules/Mentors/Pages/MentorPage";
+import SpecialEvents from "./modules/Dashboard/modules/SpecialEvents/pages/SpecialEvents";
 
 const Profile = lazy(
     () => import("./modules/Dashboard/modules/Profile/pages/Profile")
@@ -378,7 +379,7 @@ function App() {
                 },
                 { path: "search", element: <SearchPage/>},
                 { path: "mentors", element: <MentorSearchPage/> },
-                { path: "special-events", element: <ComingSoonPage /> },
+                { path: "special-events", element: <SpecialEvents /> },
                 { path: "bootcamps", element: <ComingSoonPage /> },
                 { path: "learningCircles", element: <ComingSoonPage /> },
                 { path: "courses", element: <CoursesMainPage /> },
