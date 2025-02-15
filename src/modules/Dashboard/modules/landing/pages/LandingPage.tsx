@@ -416,7 +416,7 @@ const MuLearnLanding = () => {
 
       {/* Opportunities Section */}
       <motion.section
-        className={`${styles.topBottomGrid} ${styles.zeroTopPadding}`}
+        className={`${styles.topBottomGrid} ${styles.opportunitiesSection}`}
         variants={fadeInUp}
         initial="hidden"
         whileInView="visible"

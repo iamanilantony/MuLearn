@@ -80,6 +80,7 @@
   font-size: 3.1rem;
   font-weight: 800;
   text-align: left;
+  max-width: 700px;
 }
 
 .heroLeft p {
@@ -133,6 +134,10 @@
 }
 
 .ctaButtons {
+  margin-top: 1rem;
+}
+
+.ctaButtons button {
   margin-top: 1rem;
 }
 
@@ -413,7 +418,7 @@
   }
 
   .oppurtunities {
-    margin-top: 2rem;
+    margin-top: 4rem;
     grid-template-columns: 1fr 1fr;
   }
 
@@ -844,6 +849,20 @@
   .highlightPoints li {
     text-align: center;
   }
+
+
+
+  /* Spacing Responsiveness Start */
+
+  .heroSection, .topBottomGrid {
+    padding-bottom: 0px;
+  }
+
+  .leftRightGrid, .opportunitiesSection {
+    padding-top: 10rem;
+  }
+
+  /* Spacing Responsiveness End */
 }
 
 @media (max-width: 980px) {
@@ -894,6 +913,7 @@
   .heroLeft h1 {
     text-align: center;
     font-size: 2.5rem;
+    margin-top: 2rem;
   }
 
   .cards {
@@ -1008,6 +1028,7 @@
   .topBottomGrid .camparison h1 {
     font-size: 6vw;
     max-width: 370px;
+    margin-bottom: 2rem;
   }
 
   .topBottomGrid .camparison .comparisonTable tr th {
@@ -1022,6 +1043,7 @@
 
   .topBottomGrid .oppurtunities {
     scale: 0.9;
+    margin-top: 2rem;
   }
 
   .topBottomGrid .impact h1 {
