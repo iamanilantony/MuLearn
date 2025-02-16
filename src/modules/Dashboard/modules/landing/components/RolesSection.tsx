@@ -43,7 +43,7 @@ const rolesContent: RolesContent = {
       description:
         'Provide your tools, platforms, and expertise for free while tapping into pre-trained talent. Save onboarding time and scale your projects efficiently.',
       image:
-        '/assets/roles_images/Team Work Icon.png',
+      '/assets/roles_images/Podcast_Social.png',
     },
     {
       id: 2,
@@ -51,7 +51,7 @@ const rolesContent: RolesContent = {
       description:
         'Introduce your products directly to a community of curious, tech-savvy developers, accelerating your market reach and user feedback.',
       image:
-      '/assets/roles_images/ideo.png',
+      '/assets/roles_images/Creative_Writing.png',
     },
     {
       id: 3,
@@ -59,7 +59,7 @@ const rolesContent: RolesContent = {
       description:
         'Hire pre-trained, motivated developers who are ready to contribute from day one—reducing training costs and speeding up project delivery.',
       image:
-      '/assets/roles_images/joyful.png',
+      '/assets/roles_images/Business_Woman.png',
     },
     {
       id: 4,
@@ -67,7 +67,7 @@ const rolesContent: RolesContent = {
       description:
       'Enhance your brand reputation by actively participating in a free learning community and nurturing long-term relationships with future innovators.',
       image:
-      '/assets/roles_images/Strategy Business Vector.png',
+      '/assets/roles_images/Online_Support.png',
     },
   ],
   learner: [

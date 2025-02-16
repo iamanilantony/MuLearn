@@ -211,6 +211,19 @@
     margin-top: 10px;
 }
 
+.karma{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.karma span{
+    color: red;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
 /* responsive */
 @media screen and (min-width: 1324px) {
     .right_side .top_nav .nav {
