@@ -19,7 +19,7 @@ export function LeaderboardTable({ leaderboardData, filter }: TableProps) {
   return (
     <div className={styles.tableWrapper}>
       <table className={styles.table}>
-        <thead>
+        <thead className={styles.tableHead}>
           <tr>
             <th>Rank</th>
             <th>Name</th>
