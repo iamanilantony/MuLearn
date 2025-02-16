@@ -67,6 +67,7 @@ import SearchPage from "./modules/Dashboard/modules/Search/Pages/SearchPage";
 import MentorSearchPage from "./modules/Dashboard/modules/Mentors/Pages/MentorPage";
 import InterestGroupsPage from "./modules/Dashboard/modules/InterestGroups/pages/InterestGroupsPage";
 import SpecialEvents from "./modules/Dashboard/modules/SpecialEvents/pages/SpecialEvents";
+import Leaderboard from "./modules/Dashboard/modules/LeaderBoard/pages/Leaderboard";
 
 const Profile = lazy(
     () => import("./modules/Dashboard/modules/Profile/pages/Profile")
@@ -382,6 +383,7 @@ function App() {
                 { path: "mentors", element: <MentorSearchPage/> },
                 { path: "interestgroups", element: <InterestGroupsPage /> },
                 { path: "special-events", element: <SpecialEvents /> },
+                {path: "leaderboard", element: <Leaderboard />},
                 { path: "bootcamps", element: <ComingSoonPage /> },
                 { path: "learningCircles", element: <ComingSoonPage /> },
                 { path: "courses", element: <CoursesMainPage /> },
