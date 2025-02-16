@@ -71,6 +71,14 @@ const SearchPage: React.FC = () => {
 
     return (
         <div className={styles.pageContainer}>
+              <div className={styles.Banner}>
+                <div className={styles.BannerContent}>
+                    <h1 className={styles.BannerTitle}>Find & Connect</h1>
+                    <p className={styles.BannerSubtitle}>
+                    Explore a curated network of individuals based on interest groups, names, or colleges. Navigate technology, management, and creativity with clarity and purpose. 
+                    </p>
+                </div>
+            </div>
             <div className={styles.searchContainer}>
                 <FiSearch className={styles.searchIcon} />
                 <input
