@@ -61,7 +61,7 @@ const MuLearnLanding = () => {
         <li onClick={() => navigate("/dashboard/home")}>Home</li>
         <li onClick={() => navigate("/dashboard/mentors")}>Mentorship</li>
         <li onClick={() => navigate("/dashboard/learning-paths")}>Learning Paths</li>
-        <li onClick={() => navigate("/dashboard/learningCircles")}>Learning Circles</li>
+        <li onClick={() => navigate("/dashboard/learningcircle")}>Learning Circles</li>
         <li onClick={() => navigate("/")}>Why μLearn</li>
         <li onClick={() => navigate("/")}>How to Collaborate</li>
       </>
@@ -218,7 +218,7 @@ const MuLearnLanding = () => {
           >
             <button
               className={styles.joinBtn}
-              onClick={() => navigate("/register")}
+              onClick={() => (refreshToken? navigate("/dashboard/home"): navigate("/register"))}
             >
               Join for Free
             </button>
