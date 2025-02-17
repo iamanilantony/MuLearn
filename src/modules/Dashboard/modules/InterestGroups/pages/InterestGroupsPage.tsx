@@ -1,12 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Search, Users, ChevronLeft, ChevronRight } from 'lucide-react';
 import styles from './InterestGroupsPage.module.css';
+import { useNavigate } from 'react-router-dom';
+import { FiArrowLeft } from 'react-icons/fi';
+import { getInterestGroups } from '../../InterestGroup/apis';
+import MuLoader from '@/MuLearnComponents/MuLoader/MuLoader';
 
 function InterestGroupsPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 9;
+  const navigate = useNavigate();
+
+  const [data, setData] = useState<any[]>([]);
+  const [totalPages, setTotalPages] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
+  const [perPage, setPerPage] = useState(20);
+  const firstFetch = useRef(true);
 
   const categories = [
     { id: 'all', name: 'All Categories' },
@@ -17,102 +28,44 @@ function InterestGroupsPage() {
     { id: 'science', name: 'Science' },
   ];
 
-  const interestGroups = [
-    {
-      id: 1,
-      title: "Space Explorers",
-      category: "space",
-      participants: 1250,
-      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1920",
-    },
-    {
-      id: 2,
-      title: "AI Innovators",
-      category: "tech",
-      participants: 890,
-      image: "https://images.unsplash.com/photo-1677442136019-21780ecad095?q=80&w=1920",
-    },
-    {
-      id: 3,
-      title: "Gaming League",
-      category: "gaming",
-      participants: 2100,
-      image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1920",
-    },
-    {
-      id: 4,
-      title: "Digital Artists",
-      category: "art",
-      participants: 750,
-      image: "https://images.unsplash.com/photo-1561740031-3edeb7da8511?q=80&w=1920",
-    },
-    {
-      id: 5,
-      title: "Quantum Physics",
-      category: "science",
-      participants: 430,
-      image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=1920",
-    },
-    {
-      id: 6,
-      title: "Web3 Developers",
-      category: "tech",
-      participants: 680,
-      image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=1920",
-    },
-    {
-      id: 7,
-      title: "Mars Society",
-      category: "space",
-      participants: 920,
-      image: "https://images.unsplash.com/photo-1614728894747-a83421789f10?q=80&w=1920",
-    },
-    {
-      id: 8,
-      title: "Esports Team",
-      category: "gaming",
-      participants: 1500,
-      image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1920",
-    },
-    {
-      id: 9,
-      title: "3D Modeling",
-      category: "art",
-      participants: 640,
-      image: "https://images.unsplash.com/photo-1617791160505-6f00504e3519?q=80&w=1920",
-    },
-    {
-      id: 10,
-      title: "Biology Research",
-      category: "science",
-      participants: 380,
-      image: "https://images.unsplash.com/photo-1576086213369-97a306d36557?q=80&w=1920",
-    },
-    {
-      id: 11,
-      title: "Robotics Club",
-      category: "tech",
-      participants: 520,
-      image: "https://images.unsplash.com/photo-1561557944-6e7860d1a7eb?q=80&w=1920",
-    },
-    {
-      id: 12,
-      title: "Astronomy Club",
-      category: "space",
-      participants: 850,
-      image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1920",
-    },
+  const imageUrls = [
+    "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1920",
+    "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1920",
+    "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=1920",
+    "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1920",
+    "https://images.unsplash.com/photo-1617791160505-6f00504e3519?q=80&w=1920",
+    "https://images.unsplash.com/photo-1576086213369-97a306d36557?q=80&w=1920",
+    "https://images.unsplash.com/photo-1561557944-6e7860d1a7eb?q=80&w=1920",
+    "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1920"
   ];
 
+
+  useEffect(() => {
+    if (firstFetch.current) {
+      getInterestGroups(
+        setData,
+        1,
+        perPage,
+        setIsLoading,
+        setTotalPages,
+        "",
+        ""
+      );
+    }
+    firstFetch.current = false;
+  }, []);
+
   // Filter groups based on search and category
-  const filteredGroups = interestGroups.filter(group => {
-    const matchesSearch = group.title.toLowerCase().includes(searchQuery.toLowerCase());
+  const filteredGroups = data.filter(group => {
+    const matchesSearch = group.name.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesCategory = selectedCategory === 'all' || group.category === selectedCategory;
     return matchesSearch && matchesCategory;
   });
 
+
   // Pagination
-  const totalPages = Math.ceil(filteredGroups.length / itemsPerPage);
+  // const totalPages = Math.ceil(filteredGroups.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const paginatedGroups = filteredGroups.slice(startIndex, startIndex + itemsPerPage);
 
@@ -122,8 +75,8 @@ function InterestGroupsPage() {
   };
 
   return (
+    
     <div className={styles.MainWrapper}>
-      {/* Banner */}
       <div className={styles.Banner}>
         <div className={styles.BannerContent}>
           <h1 className={styles.BannerTitle}>Discover Interest Groups</h1>
@@ -144,20 +97,20 @@ function InterestGroupsPage() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className={styles.SearchInput}
-              />
+                />
             </div>
 
             {/* Category Filter */}
             <div className={styles.CategoryFilter}>
               {categories.map((category) => (
                 <button
-                  key={category.id}
-                  onClick={() => setSelectedCategory(category.id)}
-                  className={
-                    selectedCategory === category.id
-                      ? styles.CategoryButtonActive
-                      : styles.CategoryButton
-                  }
+                key={category.id}
+                onClick={() => setSelectedCategory(category.id)}
+                className={
+                  selectedCategory === category.id
+                  ? styles.CategoryButtonActive
+                  : styles.CategoryButton
+                }
                 >
                   {category.name}
                 </button>
@@ -165,13 +118,35 @@ function InterestGroupsPage() {
             </div>
           </div>
         </div>
+              {isLoading && (
+                          <div>
+                              <MuLoader />
+                          </div>
+                      )}
 
         {/* Interest Groups Grid */}
         <div className={styles.Grid}>
           {paginatedGroups.map((group) => (
-            <div key={group.id} className={styles.GroupCard}>
+            <div key={group.id} className={styles.GroupCard} onClick={() => navigate(`/dashboard/interestgroups/${group.id}`)}>
               <div className={styles.GroupImageWrapper}>
-                <img src={group.image} alt={group.title} className={styles.GroupImage} />
+                {
+                  group.image ? (
+                    <img src={group.image} alt={group.name} className={styles.GroupImage} />
+                  ) : (
+                    // <img src={`https://source.unsplash.com/random/800x600/?${group.name}`} alt={group.name} className={styles.GroupImage} />
+                    (() => {
+                      const randomIndex = Math.floor(Math.random() * imageUrls.length);
+                      const randomImageUrl = imageUrls[randomIndex];
+                      return (
+                        <img
+                          src={randomImageUrl}
+                          alt="Random"
+                          className={styles.GroupImage}
+                        />
+                      );
+                    })()
+                  )
+                }
                 <div className={styles.GroupOverlay}>
                   <span className={styles.GroupCategory}>
                     {categories.find(c => c.id === group.category)?.name}
@@ -179,10 +154,10 @@ function InterestGroupsPage() {
                 </div>
               </div>
               <div className={styles.GroupDetails}>
-                <h3 className={styles.GroupTitle}>{group.title}</h3>
+                <h3 className={styles.GroupTitle}>{group.name}</h3>
                 <div className={styles.GroupParticipants}>
                   <Users className={styles.ParticipantsIcon} />
-                  <span>{group.participants.toLocaleString()} participants</span>
+                  <span>{group.members} participants</span>
                 </div>
               </div>
             </div>
@@ -199,7 +174,7 @@ function InterestGroupsPage() {
             >
               <ChevronLeft className={styles.PaginationIcon} />
             </button>
-            
+
             {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
               <button
                 key={page}
