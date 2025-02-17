@@ -77,9 +77,9 @@ export interface CircleMeetupInfo {
     is_approved: boolean;
     is_started: boolean;
     is_ended: boolean;
-    attendee: CircleMeetingAttendee | null;
-    joiningUrl: string | null
-}
+    attendee: CircleMeetingAttendee | null; 
+    meet_link: string | null
+​​}
 
 interface CircleMeetingAttendee {
     is_joined: boolean;

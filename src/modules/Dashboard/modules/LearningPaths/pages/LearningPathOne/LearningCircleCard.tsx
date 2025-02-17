@@ -15,6 +15,7 @@ interface EventCardProps {
   venue: string;
   karmaPoints: number;
   joinedPeople: number;
+  joiningUrl: string | null;
   imageUrl?: string;
   setIsModalOpen?: (event: CircleMeetupInfo) => void
   isDisabled?: boolean;
@@ -30,6 +31,7 @@ export const EventCard = ({
   venue,
   karmaPoints,
   joinedPeople,
+  joiningUrl,
   setIsModalOpen,
   imageUrl,
   isDisabled = false
@@ -70,7 +72,7 @@ export const EventCard = ({
             is_started: false,
             is_ended: false,
             attendee: null,
-            joiningUrl: null
+            meet_link: joiningUrl,
           })}
         >
           Join Now

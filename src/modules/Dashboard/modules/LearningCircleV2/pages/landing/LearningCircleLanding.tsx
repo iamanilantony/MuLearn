@@ -53,6 +53,15 @@ const LearningCircleLanding = () => {
         });
     }, [selectedCategory]);
 
+
+    const handleUpdateLC = () => {
+        setisLoading(true);
+        getMeetups(selectedCategory?.value).then(res => {
+            setMeetups(res);
+            setisLoading(false);
+        });
+    };
+
     const selectionChange = (selected: Option | null) => {
         setSelectedCategory(selected);
     };
@@ -77,12 +86,12 @@ const LearningCircleLanding = () => {
     return (
         <>
             <MuModal
-                type="success" 
+                type="success"
                 onDone={() => {
                     setIsModalOpen(false);
                 }}
                 onClose={() => {
-                    setIsModalOpen(false); 
+                    setIsModalOpen(false);
                 }}
                 title="Event Details"
                 isOpen={isModalOpen}
@@ -92,14 +101,14 @@ const LearningCircleLanding = () => {
                     <p><strong>Location:</strong> {selectedMeetup?.meet_place}</p>
                     {selectedMeetup?.meet_time && <p><strong>Date:</strong> {new Date(selectedMeetup?.meet_time).toLocaleDateString()}</p>}
                     {selectedMeetup?.meet_time && <p><strong>Time:</strong> {new Date(selectedMeetup?.meet_time).toLocaleTimeString()}</p>}
-                    {selectedMeetup?.attendee && <p><strong>Attendees:</strong> {Number(selectedMeetup?.attendee) || 10}</p> }
+                    {selectedMeetup?.attendee && <p><strong>Attendees:</strong> {Number(selectedMeetup?.attendee) || 10}</p>}
                     {/* Display joining URL (if it's an online event) */}
-                    {selectedMeetup?.joiningUrl || selectedMeetup?.meet_place && (
+                    {selectedMeetup?.meet_place === "Google Meet" && selectedMeetup?.meet_link && (
                         <div className={styles.joiningUrlSection}>
                             <p><strong>Joining URL:</strong></p>
                             <div className={styles.urlContainer}>
                                 <a
-                                    href={selectedMeetup.joiningUrl || selectedMeetup.meet_place}
+                                    href={selectedMeetup.meet_link || ""}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className={styles.copyButton}
@@ -109,7 +118,7 @@ const LearningCircleLanding = () => {
                                 <button
                                     className={styles.copyButton}
                                     onClick={() => {
-                                        navigator.clipboard.writeText(selectedMeetup?.joiningUrl || selectedMeetup.meet_place);
+                                        navigator.clipboard.writeText(selectedMeetup.meet_link || "");
                                         alert("URL copied to clipboard!");
                                     }}
                                 >
@@ -118,6 +127,7 @@ const LearningCircleLanding = () => {
                             </div>
                         </div>
                     )}
+
                 </div>
             </MuModal>
             <MuModal
@@ -127,7 +137,7 @@ const LearningCircleLanding = () => {
                 isOpen={isCreateModalOpen}
                 showButton={false}
             >
-                <LearningCircleCreateForm setIsCreateModalOpen={setIsCreateModalOpen} />
+                <LearningCircleCreateForm setIsCreateModalOpen={setIsCreateModalOpen} onSuccess={handleUpdateLC}/>
             </MuModal>
             {isLoading ? (
                 <div className={styles.loader_container}>
@@ -187,6 +197,7 @@ const LearningCircleLanding = () => {
                                     date={event.meet_time}
                                     time={event.meet_time}
                                     venue={event.meet_place}
+                                    joiningUrl={event.meet_link}
                                     karmaPoints={event.duration}
                                     joinedPeople={Number(event.attendee) || 10}
                                     imageUrl="https://img.freepik.com/free-vector/people-studying-learning-room_74855-6615.jpg?t=st=1738405617~exp=1738409217~hmac=7d528d88304c4f919c3c258289bbce219d623170f0c85eff4b9cf1f348a2c1c4&w=2000"
