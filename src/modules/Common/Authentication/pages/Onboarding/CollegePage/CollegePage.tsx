@@ -131,7 +131,7 @@ export default function CollegePage() {
                     if (ruri) {
                         navigate(`/${ruri}`);
                     } else {
-                        navigate("/dashboard/connect-discord");
+                        navigate("/dashboard/home");
                     }
                 }
             });
@@ -157,7 +157,7 @@ export default function CollegePage() {
                 if (ruri) {
                     navigate(`/${ruri}`);
                 } else {
-                    navigate("/dashboard/connect-discord");
+                    navigate("/dashboard/home");
                 }
             }
         });
@@ -353,7 +353,7 @@ export default function CollegePage() {
                                                 navigate(`/${ruri}`);
                                             } else {
                                                 navigate(
-                                                    "/dashboard/connect-discord"
+                                                    "/dashboard/home"
                                                 );
                                             }
                                         }}

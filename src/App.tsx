@@ -66,6 +66,7 @@ import CoursesMainPage from "./modules/Dashboard/modules/Courses/Pages/CoursesMa
 import SearchPage from "./modules/Dashboard/modules/Search/Pages/SearchPage";
 import MentorSearchPage from "./modules/Dashboard/modules/Mentors/Pages/MentorPage";
 import InterestGroupsPage from "./modules/Dashboard/modules/InterestGroups/pages/InterestGroupsPage";
+import InterestGroupOne from "./modules/Dashboard/modules/InterestGroups/pages/One/InterestGroupOne";
 import SpecialEvents from "./modules/Dashboard/modules/SpecialEvents/pages/SpecialEvents";
 import Leaderboard from "./modules/Dashboard/modules/LeaderBoard/pages/Leaderboard";
 
@@ -382,6 +383,7 @@ function App() {
                 { path: "search", element: <SearchPage/>},
                 { path: "mentors", element: <MentorSearchPage/> },
                 { path: "interestgroups", element: <InterestGroupsPage /> },
+                { path: "interestgroups/:id", element: <InterestGroupOne /> },
                 { path: "special-events", element: <SpecialEvents /> },
                 {path: "leaderboard", element: <Leaderboard />},
                 { path: "bootcamps", element: <ComingSoonPage /> },
