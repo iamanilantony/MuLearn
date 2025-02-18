@@ -116,11 +116,12 @@ const TopNavBar = () => {
                                     />
                                 </PopoverContent>
                             </Popover>
-                            <div className={styles.karma}>
-                            <img src="/assets/Flame Icon.png" width="28px" alt="img"
-                                onClick={() => {
-                                    navigate("/login")
+                            <div className={styles.karma}
+                                 onClick={() => {
+                                    navigate("/dashboard/leaderboard")
                                 }}
+                            >
+                            <img src="/assets/Flame Icon.png" width="28px" alt="img"
                                 />
                                 <span>10000</span>
                                 </div>

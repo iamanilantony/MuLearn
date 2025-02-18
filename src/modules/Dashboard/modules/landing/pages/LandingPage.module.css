@@ -83,7 +83,7 @@
 .heroLeft h1 {
   font-size: 3.1rem;
   font-weight: 800;
-  text-align: left;
+  text-align: center;
 }
 
 .heroLeft p {
@@ -91,7 +91,7 @@
   font-weight: 500;
   color: gray;
   /* max-width: 28rem; */
-  text-align: left;
+  text-align: center;
 }
 
 .highlightPoints {
