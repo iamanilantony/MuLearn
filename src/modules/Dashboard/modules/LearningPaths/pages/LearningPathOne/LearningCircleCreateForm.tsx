@@ -6,7 +6,7 @@ import ReactSelect from "react-select";
 import { getInterests } from "../../../ManageUsers/apis";
 
 
-const LearningCircleCreateForm = ({ setIsCreateModalOpen }: { setIsCreateModalOpen: (type: boolean) => void }) => {
+const LearningCircleCreateForm = ({ setIsCreateModalOpen, onSuccess }: { setIsCreateModalOpen: (type: boolean) => void, onSuccess: () => void }) => {
     const [title, setTitle] = useState('');
     const [ig, setIg] = useState('');
     const [description, setDescription] = useState('');
@@ -20,6 +20,7 @@ const LearningCircleCreateForm = ({ setIsCreateModalOpen }: { setIsCreateModalOp
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e && e.preventDefault();
+        
         // var lcId: string | boolean = '';
         const data = {
             title,
@@ -40,10 +41,12 @@ const LearningCircleCreateForm = ({ setIsCreateModalOpen }: { setIsCreateModalOp
                 scheduleMeetup({ circle_id: status as string, title: data.title, description: data.description, meet_place: data.location || "Google Meet", meet_time: data.time, duration: 4, mode: data.location ? "offline" : "online", coord_x: 0, coord_y: 0, is_report_needed: false, report_description: '', meet_link: data.meetLink || "https://meet.google.com" }).then(status => {
                     // setIsLoading(false);
                     if (status) {
+                        // onSuccess();
                         // navigate(
                         //     `/dashboard/learningcircle/dashboard/${params.circle_id}`
                         // );
                     }
+                    onSuccess(); 
                 });
             }
         });

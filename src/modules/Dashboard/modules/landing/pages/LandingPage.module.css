@@ -2,8 +2,9 @@
 
 .landingContainer {
   font-family: Arial, sans-serif;
-  padding: 1rem 15rem;
+  padding: 1rem 12rem;
   text-align: center;
+  text-wrap: balanced;
 }
 
 .navbar {
@@ -36,6 +37,8 @@
 .highlight {
   color: #007bff;
   font-weight: bold;
+
+
 }
 
 .featuresGrid {
