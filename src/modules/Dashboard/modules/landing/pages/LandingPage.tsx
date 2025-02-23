@@ -8,6 +8,12 @@ import LearningPathCard from "../../LearningPaths/components/LearningPathCard";
 import MulearnBrand from "../../../assets/MulearnBrand";
 import RolesSection from "../components/RolesSection";
 
+//images for the special events cards
+import top100coders from "../../SpecialEvents/assets/top-100.webp";
+import launchpad from "../../SpecialEvents/assets/launchpad.webp";
+import trivialideas from "../../SpecialEvents/assets/trivialideas.webp";
+import SpecialEventCardLanding from "../components/SpecialEventCardLanding/SpecialEventCardLanding";
+
 // Data remains the same
 const data = [
   { label: "Members", value: "43,994+" },
@@ -25,6 +31,43 @@ const data = [
   { label: "Worth of Gig Works", value: "1Cr+" },
   { label: "Enablers", value: "511+" },
   { label: "Mentors", value: "383+" }
+];
+
+const SpecialEventsList: SpecialEvent[] = [
+  {
+    id: 1,
+    title: "Top 100 Coders",
+    description:
+      "Welcome to the Top 100 Coders initiative Recognised by Kerala Govt. We're on a mission to recognize and empower the best coders in India. If you're passionate about coding and want to make a significant impact in the tech community, you're in the right place.",
+    date: "2025-04-09",
+    participants: 100,
+    link: "https://top100coders.com/",
+    image: top100coders,
+    isLive: true
+  },
+  {
+    id: 2,
+    title: "Launchpad",
+    description:
+      "Launchpad Kerala 2024 is a premier job fair that brings together talented individuals and innovative companies in the technical and engineering fields.",
+    date: "2024-06-02",
+    participants: 200,
+    link: "https://launchpadkerala.org/",
+    image: launchpad,
+    isLive: false
+  },
+  {
+    id: 3,
+    title: "Trivial Ideas",
+    description:
+      "Have an idea that's out-of-the-box crazy? This is your chance to turn it into a real product! ",
+    recurrence: "Monthly",
+    date: "2025-02-02",
+    participants: 500,
+    link: "https://www.instagram.com/mulearn.official/p/C6eHEzJyMMn/",
+    image: trivialideas,
+    isLive: false
+  }
 ];
 
 // Variants for staggered animations
@@ -218,7 +261,7 @@ const MuLearnLanding = () => {
           >
             <button
               className={styles.joinBtn}
-              onClick={() => (refreshToken? navigate("/dashboard/home"): navigate("/register"))}
+              onClick={() => (refreshToken ? navigate("/dashboard/home") : navigate("/register"))}
             >
               Join for Free
             </button>
@@ -226,7 +269,7 @@ const MuLearnLanding = () => {
               className={styles.downloadBtn}
               onClick={() => navigate("/dashboard/learning-paths")}
             >
-              Explore Learning Paths 
+              Explore Learning Paths
             </button>
           </motion.div>
         </div>
@@ -358,12 +401,33 @@ const MuLearnLanding = () => {
           variants={fadeInUp}
         >
           <iframe
-            width="560"
-            height="315"
             src="https://www.youtube.com/embed/M9serw-CLU0"
             title="YouTube video on M9serw-CLU0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           ></iframe>
+        </motion.div>
+      </motion.section>
+
+
+      {/* Special Events Section */}
+      <motion.section
+        className={styles.specialEventsSection}
+        variants={fadeInUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
+        <motion.div className={styles.specialEvents} variants={fadeInUp}>
+          <h1>Special Events</h1>
+          <h6>Discover exclusive events designed to inspire innovation, enhance skills, and foster meaningful connections across technology, management, and creativity.</h6>
+          <div className={styles.specialEventsCards}>
+            {SpecialEventsList.map(specialevent => (
+              <SpecialEventCardLanding
+                key={specialevent.id}
+                specialevent={specialevent}
+              />
+            ))}
+          </div>
         </motion.div>
       </motion.section>
 
@@ -418,7 +482,7 @@ const MuLearnLanding = () => {
 
       {/* Opportunities Section */}
       <motion.section
-        className={`${styles.topBottomGrid} ${styles.zeroTopPadding}`}
+        className={`${styles.topBottomGrid} ${styles.opportunitiesSection}`}
         variants={fadeInUp}
         initial="hidden"
         whileInView="visible"

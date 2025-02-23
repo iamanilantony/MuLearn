@@ -63,6 +63,7 @@ import LearningPathOne from "./modules/Dashboard/modules/LearningPaths/pages/Lea
 import ComingSoonPage from "./modules/Common/Authentication/pages/ComingSoon";
 import MuLearnLanding from "./modules/Dashboard/modules/landing/pages/LandingPage";
 import CoursesMainPage from "./modules/Dashboard/modules/Courses/Pages/CoursesMainPage";
+import ManagementPage from "./modules/Dashboard/modules/Management/Pages/ManagementPage";
 import SearchPage from "./modules/Dashboard/modules/Search/Pages/SearchPage";
 import MentorSearchPage from "./modules/Dashboard/modules/Mentors/Pages/MentorPage";
 import InterestGroupsPage from "./modules/Dashboard/modules/InterestGroups/pages/InterestGroupsPage";
@@ -406,7 +407,8 @@ function App() {
                         { path: "profile", element: <Profile /> },
                         { path: "profileV2", element: <ProfileV2 /> },
                         { path: "muverse", element: <ComingSoonPage /> },
-                        { path: "management", element: <ComingSoonPage /> },
+                        { path: "interestgroups", element: <ComingSoonPage /> },
+                        { path: "management", element: <ManagementPage /> },
                         {
                             path: "connect-discord",
                             element: <ConnectDiscord />

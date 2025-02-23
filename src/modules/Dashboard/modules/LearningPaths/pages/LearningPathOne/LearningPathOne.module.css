@@ -1,9 +1,11 @@
 .roadmapContainer {
-    max-width: 1200px;
+    /* max-width: 1200px; */
+    max-width: 100%;
     margin-left: 30px;
     align-self: flex-start;
     /* padding: 24px 16px; */
-    overflow-x: auto; 
+    overflow-x: auto;
+    width: 100%;
 }
 
 .header {
@@ -637,6 +639,7 @@
     max-width: 1000px;
     margin: 0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    width: 100%;
 }
 
 .header {
