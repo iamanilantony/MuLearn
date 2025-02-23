@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import AboutSection from './AboutSection';
 import ForumSection from './ForumSection';
 import MembersSection from './MembersSection';
@@ -7,6 +7,16 @@ import styles from './CommunityForum.module.css';
 
 const CommunityForumPage = () => {
   const [activeTab, setActiveTab] = useState('Forum');
+  const [contentHeight, setContentHeight] = useState(0);
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  // Update height when tab changes
+  useEffect(() => {
+    if (contentRef.current) {
+      const newHeight = contentRef.current.scrollHeight;
+      setContentHeight(newHeight);
+    }
+  }, [activeTab]);
 
   return (
     <div className={styles.container}>
@@ -38,12 +48,18 @@ const CommunityForumPage = () => {
         </button>
       </div>
 
-      {/* Content Area */}
+      {/* Content Area with Transition */}
       <div className={styles.contentArea}>
-        {activeTab === 'About' && <AboutSection />}
-        {activeTab === 'Forum' && <ForumSection />}
-        {activeTab === 'Members' && <MembersSection />}
-        {activeTab === 'Events' && <EventsSection />}
+        <div
+          className={styles.transitionWrapper}
+          style={{ maxHeight: contentHeight ? `${contentHeight}px` : 'auto' }}
+          ref={contentRef}
+        >
+          {activeTab === 'About' && <AboutSection />}
+          {activeTab === 'Forum' && <ForumSection />}
+          {activeTab === 'Members' && <MembersSection />}
+          {activeTab === 'Events' && <EventsSection />}
+        </div>
       </div>
     </div>
   );

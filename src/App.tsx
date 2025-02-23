@@ -68,7 +68,9 @@ import MentorSearchPage from "./modules/Dashboard/modules/Mentors/Pages/MentorPa
 import InterestGroupsPage from "./modules/Dashboard/modules/InterestGroups/pages/InterestGroupsPage";
 import InterestGroupOne from "./modules/Dashboard/modules/InterestGroups/pages/One/InterestGroupOne";
 import SpecialEvents from "./modules/Dashboard/modules/SpecialEvents/pages/SpecialEvents";
-import Leaderboard from "./modules/Dashboard/modules/LeaderBoard/pages/Leaderboard";
+import Leaderboard from "./modules/Dashboard/modules/LeaderBoard/components/Leaderboard";
+import CampusPage from "./modules/Dashboard/modules/Campus/pages/CampusPage";
+import MuLeaderboardPage from "./modules/Dashboard/modules/LeaderBoard/pages/MuLeaderboardPage";
 
 const Profile = lazy(
     () => import("./modules/Dashboard/modules/Profile/pages/Profile")
@@ -385,10 +387,11 @@ function App() {
                 { path: "interestgroups", element: <InterestGroupsPage /> },
                 { path: "interestgroups/:id", element: <InterestGroupOne /> },
                 { path: "special-events", element: <SpecialEvents /> },
-                {path: "leaderboard", element: <Leaderboard />},
+                {path: "leaderboard", element: <MuLeaderboardPage />},
                 { path: "bootcamps", element: <ComingSoonPage /> },
                 { path: "learningCircles", element: <ComingSoonPage /> },
                 { path: "courses", element: <CoursesMainPage /> },
+                {path: "campus", element: <CampusPage/>}
             ]
         },
         {

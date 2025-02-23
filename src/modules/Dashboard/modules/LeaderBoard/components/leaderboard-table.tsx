@@ -1,21 +1,19 @@
-import styles from "../pages/leaderboard.module.css"
+import styles from "../pages/leaderboard.module.css";
 
 interface TableProps {
   leaderboardData: {
-    name: string
-    avatar: string
-    monthly: number
-    yearly: number
-    overall: number
-  }[]
-  filter: FilterType
+    name: string;
+    avatar: string;
+    monthly: number;
+    yearly: number;
+    overall: number;
+  }[];
+  filter: "monthly" | "yearly" | "overall";
 }
-
-type FilterType = "monthly" | "yearly" | "overall"
 
 export function LeaderboardTable({ leaderboardData, filter }: TableProps) {
   const sortedData = [...leaderboardData].sort((a, b) => b[filter] - a[filter]);
-  
+
   return (
     <div className={styles.tableWrapper}>
       <table className={styles.table}>
@@ -31,10 +29,14 @@ export function LeaderboardTable({ leaderboardData, filter }: TableProps) {
         <tbody>
           {sortedData.map((entry, index) => (
             <tr key={entry.name}>
-              <td>{index + 4}</td>
+              <td>{index + 4}</td> {/* Starts at 4 since top 3 are in TopPlayers */}
               <td>
                 <div className={styles.nameCell}>
-                  <img src={entry.avatar || "/placeholder.svg"} alt="" className={styles.tableAvatar} />
+                  <img
+                    src={entry.avatar || "/placeholder.svg"}
+                    alt=""
+                    className={styles.tableAvatar}
+                  />
                   <span>{entry.name}</span>
                 </div>
               </td>
@@ -46,5 +48,5 @@ export function LeaderboardTable({ leaderboardData, filter }: TableProps) {
         </tbody>
       </table>
     </div>
-  )
+  );
 }
