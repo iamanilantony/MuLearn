@@ -33,6 +33,21 @@
     border: none;
     cursor: pointer;
   }
+  .contentArea {
+    overflow: hidden; /* Prevents content from spilling during transition */
+  }
+  
+  /* Transition Wrapper for smooth height and fade */
+  .transitionWrapper {
+    transition: max-height 0.5s ease, opacity 0.3s ease; /* Smooth height and fade */
+    opacity: 1;
+    overflow: hidden; /* Ensures content doesn’t show outside during collapse */
+  }
+  
+  /* When content is changing, fade out slightly then back in */
+  .transitionWrapper[data-changing] {
+    opacity: 0.5;
+  }
   
   /* Content Area */
   .contentArea {
@@ -43,6 +58,7 @@
   .sectionContent {
     padding: 0;
     text-align: left;
+    height: auto;
   }
   
   .sectionContent h2 {

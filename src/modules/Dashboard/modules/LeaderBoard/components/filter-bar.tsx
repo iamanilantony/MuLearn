@@ -1,50 +1,53 @@
-import styles from "../pages/leaderboard.module.css"
-
-type FilterType = "monthly" | "yearly" | "overall"
+import styles from "../pages/leaderboard.module.css";
 
 interface FilterBarProps {
-  activeFilter: FilterType
-  setActiveFilter: (filter: FilterType) => void
-  activeCategory: string
-  setActiveCategory: (category: string) => void
+  activeFilter: "monthly" | "yearly" | "overall";
+  setActiveFilter: (filter: "monthly" | "yearly" | "overall") => void;
+  activeCategory: string;
+  setActiveCategory: (category: string) => void;
+  filterOptions: ("monthly" | "yearly" | "overall")[];
+  categoryOptions: { label: string; value: string }[];
 }
 
-export function FilterBar({ activeFilter, setActiveFilter, activeCategory, setActiveCategory }: FilterBarProps) {
+export function FilterBar({
+  activeFilter,
+  setActiveFilter,
+  activeCategory,
+  setActiveCategory,
+  filterOptions,
+  categoryOptions,
+}: FilterBarProps) {
   return (
     <div className={styles.filterBar}>
       <div className={styles.filterTabs}>
-        <button
-          type="button"
-          className={`${styles.filterTab} ${activeFilter === "monthly" ? styles.active : ""}`}
-          onClick={() => setActiveFilter("monthly")}
-        >
-          Monthly
-        </button>
-        <button
-          type="button"
-          className={`${styles.filterTab} ${activeFilter === "yearly" ? styles.active : ""}`}
-          onClick={() => setActiveFilter("yearly")}
-        >
-          Yearly
-        </button>
-        <button
-          type="button"
-          className={`${styles.filterTab} ${activeFilter === "overall" ? styles.active : ""}`}
-          onClick={() => setActiveFilter("overall")}
-        >
-          Overall
-        </button>
+        {filterOptions.map((filter) => (
+          <button
+            key={filter}
+            type="button"
+            className={`${styles.filterTab} ${activeFilter === filter ? styles.active : ""}`}
+            onClick={() => setActiveFilter(filter)}
+          >
+            {filter.charAt(0).toUpperCase() + filter.slice(1)}
+          </button>
+        ))}
       </div>
 
       <div className={styles.filterActions}>
-        <select className={styles.select} value={activeCategory} onChange={(e) => setActiveCategory(e.target.value)}>
-          <option value="all">All Categories</option>
-          <option value="student">Student</option>
-          <option value="mentor">Mentor</option>
-          <option value="campus">Campus</option>
+        <select
+          className={styles.select}
+          value={activeCategory}
+          onChange={(e) => setActiveCategory(e.target.value)}
+        >
+          {categoryOptions.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
         </select>
-        <button type="button" className={styles.buttonSecondary}>Show My Place</button>
+        <button type="button" className={styles.buttonSecondary}>
+          Show My Place
+        </button>
       </div>
     </div>
-  )
+  );
 }

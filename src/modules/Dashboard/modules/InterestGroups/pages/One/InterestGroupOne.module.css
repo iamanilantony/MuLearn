@@ -2,6 +2,7 @@
 .container {
   padding: 24px;
   background-color: #ffffff;
+  max-width: 100%;
 }
 
 /* Grid Layout */
@@ -88,6 +89,7 @@
   margin-bottom: 0.5rem;
 }
 
+
 .sidebarBanner img{
   border-radius: 20px;
   height: auto;
@@ -102,6 +104,7 @@
 .sidebar{
   display: flex;
   justify-content: center;
+
 }
 
 .forumTitle {
@@ -328,6 +331,7 @@
   border-radius: 12px;
   padding: 16px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  position: sticky;
 }
 
 .sidebarTitle {
