@@ -77,13 +77,13 @@ const TopNavBar = () => {
                         <b className={styles.greetings}><i>Hello</i>, <b>{name}</b> 👋</b>
                         <div className={styles.mulearn_brand2}></div>
                         <div className={styles.menu}>
-                            <a
+                            {/* <a
                                 href="http://discord.mulearn.org"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
                                 <SiDiscord size={30} />
-                            </a>
+                            </a> */}
                             {/* <i className="fi fi-sr-settings"></i> */}
                             <Popover placement="bottom-end">
                                 <PopoverTrigger>
@@ -116,6 +116,15 @@ const TopNavBar = () => {
                                     />
                                 </PopoverContent>
                             </Popover>
+                            <div className={styles.karma}
+                                 onClick={() => {
+                                    navigate("/dashboard/leaderboard")
+                                }}
+                            >
+                            <img src="/assets/Flame Icon.png" width="28px" alt="img"
+                                />
+                                <span>10000</span>
+                                </div>
                             {
                                 refreshToken && (
                                     <div id="profile" className={styles.profile}>

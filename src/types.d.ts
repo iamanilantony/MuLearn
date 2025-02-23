@@ -26,6 +26,38 @@ type UserInfo = {
     interest_selected: string | null;
 };
 
+type User ={
+    id: number;
+    muid: string;
+    name: string;
+    college: string;
+    interests: string[];
+    karma: number;
+    image: string;
+}
+
+type Mentor = {
+    id: number;
+    name: string;
+    role: string;
+    expertise: string[];
+    image: string;
+}
+
+type SpecialEvent = {
+    id: number;
+    title: string;
+    description: string;
+    date: string;
+    recurrence?: string;
+    participants?: number;
+    image: string;
+    link: string;
+    isExpired?: boolean
+    isComingSoon? :boolean
+    isLive: boolean
+}
+
 type ColOrder = { column: string; Label: string; isSortable: boolean };
 
 // just pass json structure type as parameters

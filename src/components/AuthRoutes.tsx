@@ -22,7 +22,7 @@ const AuthRoutes: React.FC = () => {
             // to={
             //     onboardingStatus
             //         ? "/dashboard/profile"
-            //         : "/dashboard/connect-discord"
+            //         : "/dashboard/home"
             // }
         />
     ) : (

@@ -36,7 +36,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
             icon: <i className="fi fi-sr-clipboard-user"></i>
         },
         // {
-        //     url: "/dashboard/connect-discord",
+        //     url: "/dashboard/home",
         //     title: "Connect Discord",
         //     hasView: !connected,
         //     icon: <i className="fi fi-sr-data-transfer"></i>

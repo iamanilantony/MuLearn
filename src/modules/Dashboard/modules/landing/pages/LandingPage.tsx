@@ -6,6 +6,7 @@ import LearningPathList from "../../LearningPaths/services/LearningPathList";
 import { FaLinkedin, FaInstagram, FaYoutube, FaFacebook } from "react-icons/fa";
 import LearningPathCard from "../../LearningPaths/components/LearningPathCard";
 import MulearnBrand from "../../../assets/MulearnBrand";
+import RolesSection from "../components/RolesSection";
 
 // Data remains the same
 const data = [
@@ -60,7 +61,7 @@ const MuLearnLanding = () => {
         <li onClick={() => navigate("/dashboard/home")}>Home</li>
         <li onClick={() => navigate("/dashboard/mentors")}>Mentorship</li>
         <li onClick={() => navigate("/dashboard/learning-paths")}>Learning Paths</li>
-        <li onClick={() => navigate("/dashboard/learningCircles")}>Learning Circles</li>
+        <li onClick={() => navigate("/dashboard/learningcircle")}>Learning Circles</li>
         <li onClick={() => navigate("/")}>Why μLearn</li>
         <li onClick={() => navigate("/")}>How to Collaborate</li>
       </>
@@ -182,7 +183,7 @@ const MuLearnLanding = () => {
           >
             An open community for learners, makers, and innovators
           </motion.p>
-          <motion.ul
+          {/* <motion.ul
             className={styles.highlightPoints}
             initial="hidden"
             whileInView="visible"
@@ -201,14 +202,13 @@ const MuLearnLanding = () => {
                 custom={point.id}
                 variants={textVariant}
               >
-                <div>
-                  {/* Replace with SVG icon if desired */}
-                    <img src={point.icon} alt='icon' className={styles.imgIcon} width={"50px"}/>
+                <div className={styles.imgIconContainer}>
+                  <img src={point.icon} alt='icon' className={styles.imgIcon} width="50px" height="50px" />
                 </div>
                 <p>{point.point}</p>
               </motion.li>
             ))}
-          </motion.ul>
+          </motion.ul> */}
           <motion.div
             className={styles.ctaButtons}
             initial="hidden"
@@ -218,7 +218,7 @@ const MuLearnLanding = () => {
           >
             <button
               className={styles.joinBtn}
-              onClick={() => navigate("/register")}
+              onClick={() => (refreshToken? navigate("/dashboard/home"): navigate("/register"))}
             >
               Join for Free
             </button>
@@ -298,7 +298,7 @@ const MuLearnLanding = () => {
       </motion.header>
 
       {/* Structured Learning Paths Section */}
-      <motion.section
+      {/* <motion.section
         className={styles.topBottomGrid}
         variants={fadeInUp}
         initial="hidden"
@@ -335,7 +335,7 @@ const MuLearnLanding = () => {
         >
           Explore Learning Paths
         </motion.button>
-      </motion.section>
+      </motion.section> */}
 
       {/* Story Section */}
       <motion.section
@@ -347,7 +347,7 @@ const MuLearnLanding = () => {
       >
         <motion.div className={styles.storyTitle} variants={fadeInUp}>
           <h1>
-            The Story of Aami <span className={styles.highlight}>MuStory</span>
+            Understand μLearn with a <span className={styles.highlight}>Story</span>
           </h1>
           <p>
             Meet Aami, an eager learner hungry for growth! Join her voyage through the captivating µVerse, where she seizes opportunities, builds learning circles, and immerses herself in events, emerging industry-ready with newfound skills and confidence.
@@ -483,6 +483,9 @@ const MuLearnLanding = () => {
           ))}
         </motion.div>
       </motion.section>
+
+      <RolesSection />
+
 
       {/* Impact Section */}
       <motion.section

@@ -2,8 +2,9 @@
 
 .landingContainer {
   font-family: Arial, sans-serif;
-  padding: 1rem 15rem;
+  padding: 1rem 12rem;
   text-align: center;
+  text-wrap: balanced;
 }
 
 .navbar {
@@ -36,11 +37,13 @@
 .highlight {
   color: #007bff;
   font-weight: bold;
+
+
 }
 
 .featuresGrid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 20px;
   margin-top: 30px;
 }
@@ -63,15 +66,16 @@
 
 .heroSection {
   display: flex;
+  flex-direction: column;
   padding: 8rem 0rem;
 }
 
 .heroLeft {
-  width: 80%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   margin-right: 2rem;
   padding-right: 2rem;
 }
@@ -79,8 +83,7 @@
 .heroLeft h1 {
   font-size: 3.1rem;
   font-weight: 800;
-  text-align: left;
-  max-width: 700px;
+  text-align: center;
 }
 
 .heroLeft p {
@@ -88,7 +91,7 @@
   font-weight: 500;
   color: gray;
   /* max-width: 28rem; */
-  text-align: left;
+  text-align: center;
 }
 
 .highlightPoints {
@@ -143,6 +146,7 @@
 
 .featureCard {
   display: flex;
+  flex-direction: column;
   align-items: center;
   cursor: pointer;
   padding: 3rem 1rem;
@@ -180,7 +184,7 @@
 }
 
 .storyTitle h1 {
-  font-size: 3.5rem;
+  font-size: 3rem;
   text-align: left;
   max-width: 35rem;
   font-weight: 800;
@@ -510,6 +514,12 @@
   justify-content: space-between;
   align-items: center;
   gap: 30px;
+  max-width: fit-content;
+  margin-right: 2rem;
+}
+
+.imgIconContainer{
+  width: 55px;
 }
 
 .impact p {

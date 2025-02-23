@@ -43,7 +43,14 @@ const LearningCircles = () => {
         });
     }, [selectedCategory]);
 
-
+    const handleUpdateLC = () => {
+        setisLoading(true);
+        getMeetups(selectedCategory?.value).then(res => {
+            setMeetups(res);
+            setisLoading(false);
+        });
+    };
+    
     const handleModalOpen = (event: CircleMeetupInfo) => {
         setSelectedMeetup(event)
         setIsModalOpen(true)
@@ -112,7 +119,7 @@ const LearningCircles = () => {
                 isOpen={isCreateModalOpen}
                 showButton={false}
             >
-                <LearningCircleCreateForm setIsCreateModalOpen={setIsCreateModalOpen}/>
+                <LearningCircleCreateForm setIsCreateModalOpen={setIsCreateModalOpen} onSuccess={handleUpdateLC}/>
             </MuModal>
             {isLoading ? (
                 <div className={styles.loader_container}>
