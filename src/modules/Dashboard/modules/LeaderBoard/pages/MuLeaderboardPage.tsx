@@ -75,8 +75,6 @@ const MuLeaderboardPage = () => {
    
   return (
     <div className={styles.pageWrapper}>
-
-      <h1 className={styles.pageTitle}>MuLearn Leaderboard</h1>
       <Leaderboard
             data={[...leaderboardDataSample, ...campusLeaderboardData]}
             filterOptions={["monthly", "yearly", "overall"]}
